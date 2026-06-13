@@ -1239,6 +1239,26 @@
       "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Subset|0",
       "addedAt": "2026-06-13T20:22:52.930Z",
       "syncedAt": null
+    },
+    {
+      "id": "1eb2d25d-be44-4579-891a-0170244c8a04",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_SelectSubset_0",
+      "content": "## SelectSubset\n\n ### Responsibility\nThe `SelectSubset` type is designed to facilitate the selection of specific fields from a Prisma model while ensuring that only those specified fields are included. It helps in creating subsets of data by either including or omitting certain properties based on user input, providing clear error messages when both `select` and `omit` options are used simultaneously.\n\n### Primary Inputs\n- **T**: The original type from which the subset is to be created.\n- **U**: A partial type that specifies which fields should be included in the subset.\n\n### Output\n- A new type (`SelectSubset<T, U>`) that includes only those properties of `T` which are also present in `U`. If a property in `T` is not present in `U`, it is excluded from the output.\n\n### Immediate Dependencies\n- **TypeScript**: Utilizes TypeScript's type system to define conditional types and mapped types.\n\n### Role in Module\nThe `SelectSubset` type serves as a utility for creating data subsets based on user specifications, ensuring that only allowed fields are included or excluded from the final output. This is particularly useful when dealing with complex Prisma model structures where not all fields may be needed at once.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|SelectSubset|0",
+      "addedAt": "2026-06-13T20:23:54.441Z",
+      "syncedAt": null
     }
   ]
 }

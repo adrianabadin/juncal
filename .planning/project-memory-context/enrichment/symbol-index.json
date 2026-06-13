@@ -432,5 +432,12 @@
     "codeHash": "023296493e18e2ae",
     "status": "enriched",
     "lastEnrichedAt": "2026-06-13T20:22:52.910Z"
+  },
+  "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|SelectSubset|0": {
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_SelectSubset_0",
+    "graphNodeId": null,
+    "codeHash": "4929a4638419bb4e",
+    "status": "enriched",
+    "lastEnrichedAt": "2026-06-13T20:23:54.422Z"
   }
 }
