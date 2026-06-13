@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `Extension` type is defined to represent the extension points within Prisma's schema, specifically for user arguments (`UserArgs`) as part of the `Extensions` namespace from the `@prisma/client/runtime/client` module. This type helps in defining and managing custom extensions or additional properties that can be added to Prisma models without modifying their core structure.\n\n### Primary Inputs\n- **None** (This is a type definition, not an operation with external inputs)\n\n### Output\n- **Type Definition**: `Extension` which extends the `runtime.Types.Extensions.UserArgs` type from the `@prisma/client/runtime/client` module.\n\n### Immediate Dependencies\n- **Imported Modules**:\n  - `@prisma/client/runtime/client`: Provides the base types and namespaces for Prisma extensions.\n\n### Role in Module\nThis type serves as a bridge between the internal Prisma types and user-defined models, allowing users to extend their models with custom properties or behaviors defined within the schema without directly interacting with low-level library details. It encapsulates how external entities can be attached to specific parts of the Prisma model structure, enhancing flexibility and extensibility in database operations.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

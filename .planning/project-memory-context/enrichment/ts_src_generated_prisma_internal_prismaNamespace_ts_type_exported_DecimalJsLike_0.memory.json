@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `DecimalJsLike` type is defined to represent the interface for handling decimal numbers similar to those used in JavaScript's Decimal.js library within the Prisma client. This type ensures that the values handled by the Prisma client are consistent and accurately represented as decimals, facilitating precise numerical operations.\n\n### Primary Inputs\n- **runtime.DecimalJsLike**: The interface for handling decimal numbers is imported from the `@prisma/client/runtime/client` module.\n\n### Output\n- **type DecimalJsLike = runtime.DecimalJsLike**: A TypeScript type alias that mirrors the structure of `runtime.DecimalJsLike`. This allows Prisma client operations to accept and return values in a decimal format, enhancing numerical precision and consistency.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: The module from which the `DecimalJsLike` interface is imported.\n\n### Role in Module\nThis type definition serves as a bridge between Prisma's internal handling of decimal numbers (using Decimal.js) and the TypeScript types used within the application codebase. It ensures that any interactions with decimals through the Prisma client are correctly typed, facilitating better type safety and clarity in numerical operations involving potentially high precision values.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

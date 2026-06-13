@@ -859,6 +859,66 @@
       "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Decimal|0",
       "addedAt": "2026-06-13T20:04:43.610Z",
       "syncedAt": null
+    },
+    {
+      "id": "b0e9df13-ccc7-4eec-a3d5-9041ae1c4fe9",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_DecimalJsLike_0",
+      "content": "## DecimalJsLike\n\n ### Responsibility\nThe `DecimalJsLike` type is defined to represent the interface for handling decimal numbers similar to those used in JavaScript's Decimal.js library within the Prisma client. This type ensures that the values handled by the Prisma client are consistent and accurately represented as decimals, facilitating precise numerical operations.\n\n### Primary Inputs\n- **runtime.DecimalJsLike**: The interface for handling decimal numbers is imported from the `@prisma/client/runtime/client` module.\n\n### Output\n- **type DecimalJsLike = runtime.DecimalJsLike**: A TypeScript type alias that mirrors the structure of `runtime.DecimalJsLike`. This allows Prisma client operations to accept and return values in a decimal format, enhancing numerical precision and consistency.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: The module from which the `DecimalJsLike` interface is imported.\n\n### Role in Module\nThis type definition serves as a bridge between Prisma's internal handling of decimal numbers (using Decimal.js) and the TypeScript types used within the application codebase. It ensures that any interactions with decimals through the Prisma client are correctly typed, facilitating better type safety and clarity in numerical operations involving potentially high precision values.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|DecimalJsLike|0",
+      "addedAt": "2026-06-13T20:05:55.141Z",
+      "syncedAt": null
+    },
+    {
+      "id": "266098a3-2388-4b49-b6a6-8967429af6ef",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Extension_0",
+      "content": "## Extension\n\n ### Responsibility\nThe `Extension` type is defined to represent the extension points within Prisma's schema, specifically for user arguments (`UserArgs`) as part of the `Extensions` namespace from the `@prisma/client/runtime/client` module. This type helps in defining and managing custom extensions or additional properties that can be added to Prisma models without modifying their core structure.\n\n### Primary Inputs\n- **None** (This is a type definition, not an operation with external inputs)\n\n### Output\n- **Type Definition**: `Extension` which extends the `runtime.Types.Extensions.UserArgs` type from the `@prisma/client/runtime/client` module.\n\n### Immediate Dependencies\n- **Imported Modules**:\n  - `@prisma/client/runtime/client`: Provides the base types and namespaces for Prisma extensions.\n\n### Role in Module\nThis type serves as a bridge between the internal Prisma types and user-defined models, allowing users to extend their models with custom properties or behaviors defined within the schema without directly interacting with low-level library details. It encapsulates how external entities can be attached to specific parts of the Prisma model structure, enhancing flexibility and extensibility in database operations.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Extension|0",
+      "addedAt": "2026-06-13T20:06:54.351Z",
+      "syncedAt": null
+    },
+    {
+      "id": "e3a2bc4a-8738-4b8c-8427-5e8ffe98da20",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Args_0",
+      "content": "## Args\n\n ### Responsibility\nThe responsibility of the `Args` type is to define an interface for arguments that can be passed to various operations (specified by the generic parameter `F`, which extends `runtime.Operation`) within the Prisma client. This type ensures that the arguments conform to the expected format required by Prisma's internal runtime types.\n\n### Primary Inputs\n- **T**: A generic type representing the data model fields or properties.\n- **F**: A generic type constrained to be a member of `runtime.Operation`, specifying the operation type (e.g., query, mutation).\n\n### Output\nThe output is a TypeScript type that represents arguments for a specific Prisma operation, ensuring compatibility with Prisma's internal types and allowing for strong typing throughout the application.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This module provides the `runtime` namespace which includes definitions for operations and their arguments.\n- **../models**: Represents the data models defined in your Prisma schema, used to ensure type safety when interacting with database records.\n- **./class**: The local file exporting the `PrismaClient` class, possibly used within this module or its dependencies.\n\n### Role in Module\nThe `Args` type serves as a bridge between the application code and Prisma's internal types, ensuring that all operations use consistent argument structures. This promotes better type safety and clarity in how data is passed to and from database operations.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Args|0",
+      "addedAt": "2026-06-13T20:07:49.868Z",
+      "syncedAt": null
     }
   ]
 }
