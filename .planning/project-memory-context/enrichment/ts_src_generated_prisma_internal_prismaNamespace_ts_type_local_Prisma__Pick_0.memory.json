@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `Prisma__Pick` type is a utility type used to create a new type by picking specific properties (`K`) from an existing type (`T`). This helps in reducing the size of objects or interfaces by excluding unnecessary properties.\n\n### Primary Inputs\n- **T**: The original type from which properties are picked.\n- **K**: A set of keys (`K extends keyof T`) that specifies which properties should be included in the new type.\n\n### Output\nA new type with only the specified properties from `T`.\n\n### Immediate Dependencies\n- None, this is a TypeScript utility type and does not depend on external libraries or modules.\n\n### Role in Module\nThe `Prisma__Pick` type serves as a reusable utility within the Prisma client module to facilitate creating types with specific properties, which can be used for cleaner code and better type safety when working with Prisma models.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

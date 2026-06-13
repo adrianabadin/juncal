@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `Enumerable` type is defined to allow a value of type `T` to be either a single instance of `T` or an array of instances of `T`. This provides flexibility for fields that can accept multiple values, such as arrays in JSON objects.\n\n### Primary Inputs\n- **T**: A generic type parameter representing any TypeScript type.\n\n### Output\n- **Enumerable<T>**: Either a single instance of `T` or an array of instances of `T`.\n\n### Immediate Dependencies\n- None, this is a standalone TypeScript type definition.\n\n### Role in Module\nThis type serves as a utility to make fields flexible in data models by allowing them to accept either singular values or arrays of values, which is particularly useful for representing collections like arrays in JSON objects. This flexibility enhances the usability and versatility of Prisma's generated types.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `InputJsonArray` type is to define a custom type that represents an array of JSON values within Prisma, specifically for use in generated code by Prisma Client. This type extends from the `runtime.InputJsonArray` provided by the Prisma library, ensuring compatibility and integration with Prisma's data model.\n\n### Primary Inputs\nThe primary input for this responsibility is the import statement:\n```typescript\nexport type InputJsonArray = runtime.InputJsonArray\n```\nThis line imports the `InputJsonArray` type from the Prisma runtime module, which is necessary for defining how JSON arrays should be handled in the Prisma Client context.\n\n### Output\nThe output of this type definition is a new TypeScript type named `InputJsonArray`. This type can be used within your application to define variables or properties that accept JSON array values.\n\n### Immediate Dependencies\nThe immediate dependencies for this responsibility include:\n- Import from the Prisma runtime module: `import * as runtime from \"@prisma/client/runtime/client\";`\n- Import TypeScript type definition: `export type InputJsonArray = runtime.InputJsonArray;`\n\n### Role in Module\nIn the context of the module, `InputJsonArray` serves as a fundamental building block for defining how JSON arrays are to be handled within Prisma Client's data model. This type is used internally by Prisma to ensure that JSON array inputs conform to expected formats and can be processed correctly by the database. By exporting this type from the module, it becomes available for use in other parts of the application where handling JSON arrays is necessary according to Prisma's specifications.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

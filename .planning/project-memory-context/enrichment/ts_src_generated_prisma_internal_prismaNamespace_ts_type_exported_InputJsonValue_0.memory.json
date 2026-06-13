@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `InputJsonValue` type is to define a custom type that represents JSON values as used by Prisma, which is compatible with the `@prisma/client` runtime. This allows for seamless integration and type safety when dealing with JSON data within your Prisma schema and generated client.\n\n### Primary Inputs\nThe primary input for this responsibility is the import from `@prisma/client/runtime/client`, specifically the `InputJsonValue` type defined there.\n\n### Output\nThe output of this type definition is a TypeScript type named `InputJsonValue`. This type can be used in your Prisma models and queries to ensure that JSON data is handled correctly according to its intended structure.\n\n### Immediate Dependencies\n- **@prisma/client**: The dependency directly imported here provides the runtime support for handling JSON values as per Prisma's specifications.\n\n### Role in Module\nIn the module where this type is defined (`src/generated/prisma/internal/prismaNamespace.ts`), `InputJsonValue` serves as a foundational type that other parts of the application can import and use to maintain consistency and type safety across different layers of your application that interact with Prisma, especially when dealing with JSON fields in database models.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

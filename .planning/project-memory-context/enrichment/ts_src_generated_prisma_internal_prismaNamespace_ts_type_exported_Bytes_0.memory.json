@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility:**\nDefines the `Bytes` type as an alias for the `runtime.Bytes` type from Prisma's internal library, ensuring compatibility and abstraction between different versions or implementations of Prisma.\n\n**Primary Inputs:**\n- None explicitly listed; this is a type definition.\n\n**Output:**\n- A TypeScript type named `Bytes`.\n\n**Immediate Dependencies:**\n- Import from \"@prisma/client/runtime/client\" as `runtime`\n\n**Role in Module:**\nThis code serves to abstract the underlying data types used by Prisma, making it easier to manage and update dependencies without affecting higher-level logic that uses these types. It ensures compatibility between different versions of Prisma's runtime library and application code.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

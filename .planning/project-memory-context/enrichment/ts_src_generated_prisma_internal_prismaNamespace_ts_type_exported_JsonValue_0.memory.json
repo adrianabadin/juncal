@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `JsonValue` type is to define a type that represents the possible JSON values as defined by the Prisma runtime. This type allows for flexibility and correctness when handling JSON data within the Prisma context.\n\n### Primary Inputs\nThe primary input for this type definition is not explicitly inputs but rather an import from the `@prisma/client/runtime/client` module, which exports a `JsonValue` type that represents any valid JSON value (string, number, object, array, boolean, or null).\n\n### Output\nThe output of using the `JsonValue` type is to provide TypeScript with a specific type that can be used throughout the application where handling JSON data is expected. This ensures type safety and clarity in how JSON data is handled within your Prisma models and operations.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: Provides the `JsonValue` type definition which this code imports and re-exports as `JsonValue`.\n\n### Role in Module\nIn the module where this type is defined (`src/generated/prisma/internal/prismaNamespace.ts`), the role of `JsonValue` is to standardize how JSON data is handled across all Prisma models and operations within the application. This helps maintain consistency and correctness when dealing with JSON values in a TypeScript environment integrated with Prisma.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `SelectAndOmit` type is designed to represent options for selecting and omitting fields when querying or updating data using Prisma. It allows users to specify which fields they want to include (`select`) and which ones they want to exclude (`omit`) from the result.\n\n### Primary Inputs\n- **select**: An object where keys are field names, and values can be `true` (include) or `false` (exclude).\n- **omit**: Similar to `select`, but specifies fields to omit.\n\n### Output\n- A type that encapsulates the selection and omission options for Prisma queries.\n\n### Immediate Dependencies\n- None directly specified in the code snippet, but it depends on the structure of the data model defined in `Prisma`.\n\n### Role in Module\nThis type is used within the PrismaClient module to enable flexible querying and updating mechanisms by allowing users to specify exactly which fields they need or don't need from database records. It enhances the expressiveness and configurability of Prisma operations without hardcoding field inclusions or exclusions, making it adaptable to different data structures and requirements dynamically at runtime.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

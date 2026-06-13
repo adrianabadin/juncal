@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `JsonObject` type is to define a custom type that extends the `runtime.JsonObject` from the Prisma library, allowing it to be used within your application's codebase for handling JSON objects consistently and safely.\n\n### Primary Inputs\n- **None** (This type definition does not take any inputs directly)\n\n### Output\n- **Type**: The output is a TypeScript type alias (`export type JsonObject = runtime.JsonObject`), which means it doesn't produce a new value but rather renames or extends the existing `runtime.JsonObject` type from Prisma's runtime module.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This is where the `JsonObject` type is defined and imported from, ensuring compatibility with Prisma's internal types.\n\n### Role in Module\nThe role of this type definition is to provide a standardized way to handle JSON objects across your application using Prisma as the ORM. It ensures that whenever you work with JSON data within your models or services, you are consistently working with `runtime.JsonObject` but with a more specific and meaningful name (`JsonObject`) in your codebase for better readability and maintainability.\n\n### Example Usage\nHere's an example of how this type might be used:\n```typescript\nimport { PrismaClient } from '@prisma/client';\n\nconst prisma = new PrismaClient();\n\nasync function createUserWithPreferences(username: string, preferences: JsonObject) {\n  const user = await prisma.user.create({\n    data: {\n      username: username,\n      preferences: preferences\n    }\n  });\n  return user;\n}\n```\nIn this example, `JsonObject` is used to define the type for the `preferences` field in the `User` model, ensuring that all JSON objects handled by Prisma are consistently typed and compatible with your application's data structures.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

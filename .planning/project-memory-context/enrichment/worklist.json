@@ -1483,9 +1483,21 @@
     "codeHash": "07308865d660b044",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Bytes|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Bytes_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:11:50.098Z",
+        "endedAt": "2026-06-13T20:12:11.011Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:12:11.012Z"
   },
   {
     "language": "ts",
@@ -1500,9 +1512,21 @@
     "codeHash": "dc3a383c0a828e01",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonObject|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonObject_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:12:24.610Z",
+        "endedAt": "2026-06-13T20:13:05.816Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:13:05.820Z"
   },
   {
     "language": "ts",
@@ -1517,9 +1541,21 @@
     "codeHash": "48cfe249b8d40810",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonArray|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonArray_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:13:24.941Z",
+        "endedAt": "2026-06-13T20:13:49.454Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:13:49.456Z"
   },
   {
     "language": "ts",
@@ -1534,9 +1570,21 @@
     "codeHash": "06f5853f887d1fc0",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonValue|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonValue_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:14:07.806Z",
+        "endedAt": "2026-06-13T20:14:35.618Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:14:35.620Z"
   },
   {
     "language": "ts",
@@ -1551,9 +1599,21 @@
     "codeHash": "8e70e08446695322",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonObject|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonObject_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:15:05.672Z",
+        "endedAt": "2026-06-13T20:15:53.127Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:15:53.128Z"
   },
   {
     "language": "ts",
@@ -1568,9 +1628,21 @@
     "codeHash": "42729ce8615e5b1b",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonArray|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonArray_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:16:23.152Z",
+        "endedAt": "2026-06-13T20:16:57.467Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:16:57.470Z"
   },
   {
     "language": "ts",
@@ -1585,9 +1657,21 @@
     "codeHash": "ae6fbb1e4423e5b3",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonValue|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonValue_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:17:27.517Z",
+        "endedAt": "2026-06-13T20:18:14.029Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:18:14.031Z"
   },
   {
     "language": "ts",
@@ -1602,9 +1686,21 @@
     "codeHash": "b0ce5a2caaa65c4a",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|SelectAndInclude|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_SelectAndInclude_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:18:20.168Z",
+        "endedAt": "2026-06-13T20:19:17.613Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:19:17.614Z"
   },
   {
     "language": "ts",
@@ -1619,9 +1715,21 @@
     "codeHash": "a307bda9e1e1c160",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|SelectAndOmit|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_SelectAndOmit_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:19:47.647Z",
+        "endedAt": "2026-06-13T20:20:15.431Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:20:15.433Z"
   },
   {
     "language": "ts",
@@ -1636,9 +1744,21 @@
     "codeHash": "a61f1e2edb0ad277",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|Prisma__Pick|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_Prisma__Pick_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:20:19.450Z",
+        "endedAt": "2026-06-13T20:20:57.456Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:20:57.458Z"
   },
   {
     "language": "ts",
@@ -1653,9 +1773,21 @@
     "codeHash": "53307ab12a6fce24",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Enumerable|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Enumerable_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:21:01.409Z",
+        "endedAt": "2026-06-13T20:21:33.846Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:21:33.847Z"
   },
   {
     "language": "ts",
@@ -1670,9 +1802,21 @@
     "codeHash": "023296493e18e2ae",
     "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Subset|0",
     "graphNodeId": null,
-    "status": "pending",
-    "memoryId": null,
-    "hashVersion": "xxh3-1"
+    "status": "enriched",
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Subset_0",
+    "hashVersion": "xxh3-1",
+    "attempts": [
+      {
+        "mode": "local-model",
+        "provider": "ollama",
+        "model": "deepseek-coder-v2:16b-ctx16k",
+        "status": "succeeded",
+        "startedAt": "2026-06-13T20:21:54.936Z",
+        "endedAt": "2026-06-13T20:22:52.908Z"
+      }
+    ],
+    "lastModeUsed": "local-model",
+    "enrichedAt": "2026-06-13T20:22:52.910Z"
   },
   {
     "language": "ts",

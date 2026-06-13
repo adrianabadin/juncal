@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `JsonArray` type is to define and export a TypeScript type that represents the `runtime.JsonArray` from the Prisma library, allowing it to be used within your application's codebase for handling JSON arrays consistently.\n\n### Primary Inputs\n- **None** (This type definition does not take any inputs directly; it is simply an alias for a type defined in another module.)\n\n### Output\n- **TypeScript Type**: The exported `JsonArray` type, which is an alias for `runtime.JsonArray`.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This dependency includes the definition of `JsonArray` that you are referencing and aliasing in your code.\n\n### Role in Module\nThe role of this type within the module is to provide a standardized way to handle JSON arrays across different parts of your application, ensuring consistency and compatibility with how Prisma handles these types internally. This helps maintain a clear separation between your application logic and the underlying data model definitions while allowing seamless integration and interoperability with Prisma's runtime functionalities.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

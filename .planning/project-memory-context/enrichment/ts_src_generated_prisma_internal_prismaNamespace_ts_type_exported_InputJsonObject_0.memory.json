@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `InputJsonObject` type is to define a custom type that represents an input JSON object, compatible with Prisma's internal runtime. This type ensures consistency and type safety when dealing with JSON data within your application.\n\n### Primary Inputs\n- **runtime.InputJsonObject**: This is the base type provided by Prisma's runtime library, which defines how JSON objects should be handled in a generic way.\n\n### Output\n- **export type InputJsonObject = runtime.InputJsonObject**: This export statement creates a new TypeScript type alias `InputJsonObject` that mirrors the structure of `runtime.InputJsonObject`.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This is the Prisma client runtime library, providing essential types and functionalities for interacting with the database.\n- **../models**: Represents your application's model definitions which might include references to `InputJsonObject` if they are used in models.\n- **./class**: Your custom implementation of a Prisma Client, which could be using or extending the base Prisma client types including `InputJsonObject`.\n\n### Role in Module\nThe `InputJsonObject` type serves as a fundamental building block for handling JSON data within your application's context where it interfaces with Prisma. It ensures that any JSON input to or from Prisma operations is consistently typed, which can help prevent errors and improve code reliability. This type is likely used throughout the module wherever JSON data needs to be handled in a structured manner across different parts of your application.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

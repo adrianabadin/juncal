@@ -1,0 +1,34 @@
+import { Result, ok, err } from "@shared/domain/Result";
+import { DomainError } from "@shared/domain/DomainError";
+import { ShiftReplacement } from "@shift-replacements/domain/entities/ShiftReplacement";
+import { RequestState } from "@shift-replacements/domain/enums/RequestState";
+import { ShiftReplacementRepository } from "@shift-replacements/domain/ports/ShiftReplacementRepository";
+
+export type HasSpecialty = (userId: string, specialtyId: string) => Promise<boolean>;
+
+export interface RequestAbsenceCommand {
+  requesterId: string;
+  isActive: boolean;
+  date: Date;
+  specialtyId: string;
+}
+
+export class RequestAbsence {
+  constructor(
+    private readonly repo: ShiftReplacementRepository,
+    private readonly hasSpecialty: HasSpecialty,
+  ) {}
+
+  async execute(cmd: RequestAbsenceCommand): Promise<Result<ShiftReplacement, DomainError>> {
+    if (!cmd.isActive)
+      return err(new DomainError("INACTIVE_USER", "Tu cuenta no está activa"));
+    if (!(await this.hasSpecialty(cmd.requesterId, cmd.specialtyId)))
+      return err(new DomainError("SPECIALTY_NOT_OWNED", "No tenés esa especialidad asignada"));
+
+    const created = await this.repo.create({
+      date: cmd.date, requesterId: cmd.requesterId, specialtyId: cmd.specialtyId,
+      applicantId: null, state: RequestState.OPEN, resolvedById: null,
+    });
+    return ok(created);
+  }
+}

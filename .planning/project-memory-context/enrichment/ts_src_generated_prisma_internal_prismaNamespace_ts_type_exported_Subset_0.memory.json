@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `Subset<T, U>` type is designed to create a new type that includes only the properties from `T` which also exist in `U`. This helps in creating more precise types by excluding properties not present in another type.\n\n### Primary Inputs\n- **T**: The original type from which properties are to be selected.\n- **U**: The reference type against which properties of `T` are checked.\n\n### Output\nA new type that includes only the properties of `T` which are also present in `U`. If a property in `T` does not exist in `U`, it is excluded from the resulting type.\n\n### Immediate Dependencies\n- **TypeScript**: The language feature used to define conditional types and mapped types.\n\n### Role in Module\nThis utility type serves as a generic helper within the Prisma namespace, facilitating more precise type definitions for generated models or any other use cases where subsetting types is beneficial. It helps maintain type safety by ensuring that only valid properties are included based on another reference type.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

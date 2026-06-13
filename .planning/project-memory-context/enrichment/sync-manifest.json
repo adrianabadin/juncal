@@ -999,6 +999,246 @@
       "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaVersion|0",
       "addedAt": "2026-06-13T20:11:32.077Z",
       "syncedAt": null
+    },
+    {
+      "id": "6dfe626e-57a8-4300-99e1-64d9d0037650",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Bytes_0",
+      "content": "## Bytes\n\n **Responsibility:**\nDefines the `Bytes` type as an alias for the `runtime.Bytes` type from Prisma's internal library, ensuring compatibility and abstraction between different versions or implementations of Prisma.\n\n**Primary Inputs:**\n- None explicitly listed; this is a type definition.\n\n**Output:**\n- A TypeScript type named `Bytes`.\n\n**Immediate Dependencies:**\n- Import from \"@prisma/client/runtime/client\" as `runtime`\n\n**Role in Module:**\nThis code serves to abstract the underlying data types used by Prisma, making it easier to manage and update dependencies without affecting higher-level logic that uses these types. It ensures compatibility between different versions of Prisma's runtime library and application code.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Bytes|0",
+      "addedAt": "2026-06-13T20:12:11.026Z",
+      "syncedAt": null
+    },
+    {
+      "id": "05869ca4-2ca8-44fc-b474-a27b2d748a4e",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonObject_0",
+      "content": "## JsonObject\n\n ### Responsibility\nThe responsibility of the `JsonObject` type is to define a custom type that extends the `runtime.JsonObject` from the Prisma library, allowing it to be used within your application's codebase for handling JSON objects consistently and safely.\n\n### Primary Inputs\n- **None** (This type definition does not take any inputs directly)\n\n### Output\n- **Type**: The output is a TypeScript type alias (`export type JsonObject = runtime.JsonObject`), which means it doesn't produce a new value but rather renames or extends the existing `runtime.JsonObject` type from Prisma's runtime module.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This is where the `JsonObject` type is defined and imported from, ensuring compatibility with Prisma's internal types.\n\n### Role in Module\nThe role of this type definition is to provide a standardized way to handle JSON objects across your application using Prisma as the ORM. It ensures that whenever you work with JSON data within your models or services, you are consistently working with `runtime.JsonObject` but with a more specific and meaningful name (`JsonObject`) in your codebase for better readability and maintainability.\n\n### Example Usage\nHere's an example of how this type might be used:\n```typescript\nimport { PrismaClient } from '@prisma/client';\n\nconst prisma = new PrismaClient();\n\nasync function createUserWithPreferences(username: string, preferences: JsonObject) {\n  const user = await prisma.user.create({\n    data: {\n      username: username,\n      preferences: preferences\n    }\n  });\n  return user;\n}\n```\nIn this example, `JsonObject` is used to define the type for the `preferences` field in the `User` model, ensuring that all JSON objects handled by Prisma are consistently typed and compatible with your application's data structures.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonObject|0",
+      "addedAt": "2026-06-13T20:13:05.838Z",
+      "syncedAt": null
+    },
+    {
+      "id": "5800d502-9078-416b-a130-423574185235",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonArray_0",
+      "content": "## JsonArray\n\n ### Responsibility\nThe responsibility of the `JsonArray` type is to define and export a TypeScript type that represents the `runtime.JsonArray` from the Prisma library, allowing it to be used within your application's codebase for handling JSON arrays consistently.\n\n### Primary Inputs\n- **None** (This type definition does not take any inputs directly; it is simply an alias for a type defined in another module.)\n\n### Output\n- **TypeScript Type**: The exported `JsonArray` type, which is an alias for `runtime.JsonArray`.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This dependency includes the definition of `JsonArray` that you are referencing and aliasing in your code.\n\n### Role in Module\nThe role of this type within the module is to provide a standardized way to handle JSON arrays across different parts of your application, ensuring consistency and compatibility with how Prisma handles these types internally. This helps maintain a clear separation between your application logic and the underlying data model definitions while allowing seamless integration and interoperability with Prisma's runtime functionalities.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonArray|0",
+      "addedAt": "2026-06-13T20:13:49.471Z",
+      "syncedAt": null
+    },
+    {
+      "id": "128ef91b-92ad-47ac-afc1-66b9af0e92f2",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_JsonValue_0",
+      "content": "## JsonValue\n\n ### Responsibility\nThe responsibility of the `JsonValue` type is to define a type that represents the possible JSON values as defined by the Prisma runtime. This type allows for flexibility and correctness when handling JSON data within the Prisma context.\n\n### Primary Inputs\nThe primary input for this type definition is not explicitly inputs but rather an import from the `@prisma/client/runtime/client` module, which exports a `JsonValue` type that represents any valid JSON value (string, number, object, array, boolean, or null).\n\n### Output\nThe output of using the `JsonValue` type is to provide TypeScript with a specific type that can be used throughout the application where handling JSON data is expected. This ensures type safety and clarity in how JSON data is handled within your Prisma models and operations.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: Provides the `JsonValue` type definition which this code imports and re-exports as `JsonValue`.\n\n### Role in Module\nIn the module where this type is defined (`src/generated/prisma/internal/prismaNamespace.ts`), the role of `JsonValue` is to standardize how JSON data is handled across all Prisma models and operations within the application. This helps maintain consistency and correctness when dealing with JSON values in a TypeScript environment integrated with Prisma.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|JsonValue|0",
+      "addedAt": "2026-06-13T20:14:35.639Z",
+      "syncedAt": null
+    },
+    {
+      "id": "525a7b13-b1cd-446c-b93b-04d31f51012c",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonObject_0",
+      "content": "## InputJsonObject\n\n ### Responsibility\nThe responsibility of the `InputJsonObject` type is to define a custom type that represents an input JSON object, compatible with Prisma's internal runtime. This type ensures consistency and type safety when dealing with JSON data within your application.\n\n### Primary Inputs\n- **runtime.InputJsonObject**: This is the base type provided by Prisma's runtime library, which defines how JSON objects should be handled in a generic way.\n\n### Output\n- **export type InputJsonObject = runtime.InputJsonObject**: This export statement creates a new TypeScript type alias `InputJsonObject` that mirrors the structure of `runtime.InputJsonObject`.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This is the Prisma client runtime library, providing essential types and functionalities for interacting with the database.\n- **../models**: Represents your application's model definitions which might include references to `InputJsonObject` if they are used in models.\n- **./class**: Your custom implementation of a Prisma Client, which could be using or extending the base Prisma client types including `InputJsonObject`.\n\n### Role in Module\nThe `InputJsonObject` type serves as a fundamental building block for handling JSON data within your application's context where it interfaces with Prisma. It ensures that any JSON input to or from Prisma operations is consistently typed, which can help prevent errors and improve code reliability. This type is likely used throughout the module wherever JSON data needs to be handled in a structured manner across different parts of your application.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonObject|0",
+      "addedAt": "2026-06-13T20:15:53.142Z",
+      "syncedAt": null
+    },
+    {
+      "id": "75042363-bcbe-47a4-b675-7e65eb4d229f",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonArray_0",
+      "content": "## InputJsonArray\n\n ### Responsibility\nThe responsibility of the `InputJsonArray` type is to define a custom type that represents an array of JSON values within Prisma, specifically for use in generated code by Prisma Client. This type extends from the `runtime.InputJsonArray` provided by the Prisma library, ensuring compatibility and integration with Prisma's data model.\n\n### Primary Inputs\nThe primary input for this responsibility is the import statement:\n```typescript\nexport type InputJsonArray = runtime.InputJsonArray\n```\nThis line imports the `InputJsonArray` type from the Prisma runtime module, which is necessary for defining how JSON arrays should be handled in the Prisma Client context.\n\n### Output\nThe output of this type definition is a new TypeScript type named `InputJsonArray`. This type can be used within your application to define variables or properties that accept JSON array values.\n\n### Immediate Dependencies\nThe immediate dependencies for this responsibility include:\n- Import from the Prisma runtime module: `import * as runtime from \"@prisma/client/runtime/client\";`\n- Import TypeScript type definition: `export type InputJsonArray = runtime.InputJsonArray;`\n\n### Role in Module\nIn the context of the module, `InputJsonArray` serves as a fundamental building block for defining how JSON arrays are to be handled within Prisma Client's data model. This type is used internally by Prisma to ensure that JSON array inputs conform to expected formats and can be processed correctly by the database. By exporting this type from the module, it becomes available for use in other parts of the application where handling JSON arrays is necessary according to Prisma's specifications.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonArray|0",
+      "addedAt": "2026-06-13T20:16:57.492Z",
+      "syncedAt": null
+    },
+    {
+      "id": "e6618525-2fb6-46f6-843c-06f1e76a68dd",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_InputJsonValue_0",
+      "content": "## InputJsonValue\n\n ### Responsibility\nThe responsibility of the `InputJsonValue` type is to define a custom type that represents JSON values as used by Prisma, which is compatible with the `@prisma/client` runtime. This allows for seamless integration and type safety when dealing with JSON data within your Prisma schema and generated client.\n\n### Primary Inputs\nThe primary input for this responsibility is the import from `@prisma/client/runtime/client`, specifically the `InputJsonValue` type defined there.\n\n### Output\nThe output of this type definition is a TypeScript type named `InputJsonValue`. This type can be used in your Prisma models and queries to ensure that JSON data is handled correctly according to its intended structure.\n\n### Immediate Dependencies\n- **@prisma/client**: The dependency directly imported here provides the runtime support for handling JSON values as per Prisma's specifications.\n\n### Role in Module\nIn the module where this type is defined (`src/generated/prisma/internal/prismaNamespace.ts`), `InputJsonValue` serves as a foundational type that other parts of the application can import and use to maintain consistency and type safety across different layers of your application that interact with Prisma, especially when dealing with JSON fields in database models.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|InputJsonValue|0",
+      "addedAt": "2026-06-13T20:18:14.058Z",
+      "syncedAt": null
+    },
+    {
+      "id": "ec749ead-7c4c-4f29-b0f6-a91d39adc434",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_SelectAndInclude_0",
+      "content": "## SelectAndInclude\n\n ### Responsibility\nThe `SelectAndInclude` type is designed to represent the ability to selectively include or exclude certain fields (via `select`) and related models (via `include`) when querying data from a Prisma model. This type facilitates flexible data fetching by allowing developers to specify exactly what parts of the data they need, reducing unnecessary overhead and improving performance.\n\n### Primary Inputs\n- **select**: An object that specifies which fields of the model should be included in the query result. The structure and content of this object can vary depending on the specific requirements of the query.\n- **include**: Another object that specifies whether to include related models or their fields when querying. This too can have a complex structure based on the relationships defined in the Prisma schema.\n\n### Output\nThe output is an object where `select` and `include` are both optional, allowing for flexibility in how data is fetched from the database. The exact format of these objects depends on the specific requirements of the query and the structure of the Prisma model definitions.\n\n### Immediate Dependencies\n- **PrismaClient**: This dependency is inherent to any interaction with a Prisma-backed application, as it provides the interface for querying the database.\n- **runtime from \"@prisma/client/runtime/client\"**: This module contains essential runtime functionalities for interacting with Prisma, including query execution and result processing.\n- **Prisma Namespace**: The `src/generated/prisma/internal/prismaNamespace.ts` file likely contains auto-generated code related to the Prisma client, which defines the models and their structures.\n\n### Role in Module\nThe `SelectAndInclude` type serves as a fundamental building block within the module for handling complex data fetching scenarios using Prisma. It allows developers to define precisely what data is needed from the database, optimizing both query performance and API response size based on specific application requirements. This type helps maintain modularity by encapsulating selection logic within its own structure, making it easier to manage and extend as the complexity of queries grows or changes over time.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|SelectAndInclude|0",
+      "addedAt": "2026-06-13T20:19:17.627Z",
+      "syncedAt": null
+    },
+    {
+      "id": "3feecf11-6f95-4d47-af1f-a2f2e439747e",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_SelectAndOmit_0",
+      "content": "## SelectAndOmit\n\n ### Responsibility\nThe `SelectAndOmit` type is designed to represent options for selecting and omitting fields when querying or updating data using Prisma. It allows users to specify which fields they want to include (`select`) and which ones they want to exclude (`omit`) from the result.\n\n### Primary Inputs\n- **select**: An object where keys are field names, and values can be `true` (include) or `false` (exclude).\n- **omit**: Similar to `select`, but specifies fields to omit.\n\n### Output\n- A type that encapsulates the selection and omission options for Prisma queries.\n\n### Immediate Dependencies\n- None directly specified in the code snippet, but it depends on the structure of the data model defined in `Prisma`.\n\n### Role in Module\nThis type is used within the PrismaClient module to enable flexible querying and updating mechanisms by allowing users to specify exactly which fields they need or don't need from database records. It enhances the expressiveness and configurability of Prisma operations without hardcoding field inclusions or exclusions, making it adaptable to different data structures and requirements dynamically at runtime.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|SelectAndOmit|0",
+      "addedAt": "2026-06-13T20:20:15.448Z",
+      "syncedAt": null
+    },
+    {
+      "id": "94f61c8d-c434-4c34-82d0-3c3412ed2b7e",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_local_Prisma__Pick_0",
+      "content": "## Prisma__Pick\n\n ### Responsibility\nThe `Prisma__Pick` type is a utility type used to create a new type by picking specific properties (`K`) from an existing type (`T`). This helps in reducing the size of objects or interfaces by excluding unnecessary properties.\n\n### Primary Inputs\n- **T**: The original type from which properties are picked.\n- **K**: A set of keys (`K extends keyof T`) that specifies which properties should be included in the new type.\n\n### Output\nA new type with only the specified properties from `T`.\n\n### Immediate Dependencies\n- None, this is a TypeScript utility type and does not depend on external libraries or modules.\n\n### Role in Module\nThe `Prisma__Pick` type serves as a reusable utility within the Prisma client module to facilitate creating types with specific properties, which can be used for cleaner code and better type safety when working with Prisma models.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|local|Prisma__Pick|0",
+      "addedAt": "2026-06-13T20:20:57.483Z",
+      "syncedAt": null
+    },
+    {
+      "id": "6420c8e9-706a-47f2-b036-833c3b4d50b1",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Enumerable_0",
+      "content": "## Enumerable\n\n ### Responsibility\nThe `Enumerable` type is defined to allow a value of type `T` to be either a single instance of `T` or an array of instances of `T`. This provides flexibility for fields that can accept multiple values, such as arrays in JSON objects.\n\n### Primary Inputs\n- **T**: A generic type parameter representing any TypeScript type.\n\n### Output\n- **Enumerable<T>**: Either a single instance of `T` or an array of instances of `T`.\n\n### Immediate Dependencies\n- None, this is a standalone TypeScript type definition.\n\n### Role in Module\nThis type serves as a utility to make fields flexible in data models by allowing them to accept either singular values or arrays of values, which is particularly useful for representing collections like arrays in JSON objects. This flexibility enhances the usability and versatility of Prisma's generated types.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Enumerable|0",
+      "addedAt": "2026-06-13T20:21:33.859Z",
+      "syncedAt": null
+    },
+    {
+      "id": "cac36b08-4b76-4916-ac25-213de85f27d9",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Subset_0",
+      "content": "## Subset\n\n ### Responsibility\nThe `Subset<T, U>` type is designed to create a new type that includes only the properties from `T` which also exist in `U`. This helps in creating more precise types by excluding properties not present in another type.\n\n### Primary Inputs\n- **T**: The original type from which properties are to be selected.\n- **U**: The reference type against which properties of `T` are checked.\n\n### Output\nA new type that includes only the properties of `T` which are also present in `U`. If a property in `T` does not exist in `U`, it is excluded from the resulting type.\n\n### Immediate Dependencies\n- **TypeScript**: The language feature used to define conditional types and mapped types.\n\n### Role in Module\nThis utility type serves as a generic helper within the Prisma namespace, facilitating more precise type definitions for generated models or any other use cases where subsetting types is beneficial. It helps maintain type safety by ensuring that only valid properties are included based on another reference type.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Subset|0",
+      "addedAt": "2026-06-13T20:22:52.930Z",
+      "syncedAt": null
     }
   ]
 }
