@@ -1,0 +1,70 @@
+// Juncal — Gestión de Guardias y Reemplazos
+// SQLite no soporta enums en Prisma → `role` y `state` se persisten como String
+// y el enum real se fuerza en la capa de dominio (enum TS + Zod).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  isActive  Boolean  @default(false)
+  role      String   @default("BASE_PROFESSIONAL")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  specialties      UserSpecialty[]
+  requestedShifts  ShiftReplacement[] @relation("Requester")
+  postulatedShifts ShiftReplacement[] @relation("Applicant")
+  resolvedShifts   ShiftReplacement[] @relation("Resolver")
+}
+
+model Specialty {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users    UserSpecialty[]
+  requests ShiftReplacement[]
+}
+
+model UserSpecialty {
+  userId      String
+  specialtyId String
+  assignedAt  DateTime @default(now())
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialty Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+
+  @@id([userId, specialtyId])
+}
+
+model ShiftReplacement {
+  id           String   @id @default(cuid())
+  date         DateTime
+  state        String   @default("OPEN")
+  requesterId  String
+  specialtyId  String
+  applicantId  String?
+  resolvedById String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  requester User      @relation("Requester", fields: [requesterId], references: [id])
+  applicant User?     @relation("Applicant", fields: [applicantId], references: [id])
+  resolver  User?     @relation("Resolver", fields: [resolvedById], references: [id])
+  specialty Specialty @relation(fields: [specialtyId], references: [id])
+
+  @@index([state, specialtyId])
+}
