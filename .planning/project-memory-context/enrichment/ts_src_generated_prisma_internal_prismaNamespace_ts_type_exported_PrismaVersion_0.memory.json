@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `PrismaVersion` type is responsible for defining the structure of version information related to both the Prisma Client and the Prisma Engine. This type encapsulates details about the client library's version and the engine it interacts with, providing a standardized way to access these versions within the application context.\n\n### Primary Inputs\n- **client**: A string representing the version of the Prisma Client library being used.\n- **engine**: A string representing the version of the Prisma Engine that the client is connected to.\n\n### Output\nThe `PrismaVersion` type outputs an object with two properties:\n- `client`: a string indicating the version of the Prisma Client.\n- `engine`: a string indicating the version of the Prisma Engine.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This module provides the runtime functionality for the Prisma Client, including its versioning information which is essential for populating the `PrismaVersion` type.\n\n### Role in Module\nThe `PrismaVersion` type serves as a fundamental part of the Prisma namespace within the application. It ensures that any instance of the Prisma client will have access to this version information, facilitating better error handling and compatibility checks between different versions of the Prisma Client and Engine. This type is used internally within the Prisma module to maintain clear and consistent versioning details across all interactions with the database through Prisma Client.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

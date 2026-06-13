@@ -320,5 +320,33 @@
     "codeHash": "43ad8db5773b2e46",
     "status": "enriched",
     "lastEnrichedAt": "2026-06-13T20:07:49.849Z"
+  },
+  "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Payload|0": {
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Payload_0",
+    "graphNodeId": null,
+    "codeHash": "34977b68f4874f66",
+    "status": "enriched",
+    "lastEnrichedAt": "2026-06-13T20:08:45.566Z"
+  },
+  "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Result|0": {
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Result_0",
+    "graphNodeId": null,
+    "codeHash": "387b25396fc1473f",
+    "status": "enriched",
+    "lastEnrichedAt": "2026-06-13T20:09:50.731Z"
+  },
+  "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Exact|0": {
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Exact_0",
+    "graphNodeId": null,
+    "codeHash": "74799cee33901dfc",
+    "status": "enriched",
+    "lastEnrichedAt": "2026-06-13T20:10:41.342Z"
+  },
+  "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaVersion|0": {
+    "memoryId": "queue-ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaVersion_0",
+    "graphNodeId": null,
+    "codeHash": "6c71fc0675a655b0",
+    "status": "enriched",
+    "lastEnrichedAt": "2026-06-13T20:11:32.059Z"
   }
 }

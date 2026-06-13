@@ -919,6 +919,86 @@
       "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Args|0",
       "addedAt": "2026-06-13T20:07:49.868Z",
       "syncedAt": null
+    },
+    {
+      "id": "1f479cbf-620b-4d61-9de5-5da00f17c8ae",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Payload_0",
+      "content": "## Payload\n\n ### Responsibility\nThe `Payload` type is defined to encapsulate the result of a Prisma operation, providing a generic way to handle different types of payloads from Prisma operations. It allows for customization based on specific fields and includes optional flags (`F`) that can be used to specify additional information about the operation.\n\n### Primary Inputs\n- `T`: A type representing the data structure expected as the result of the Prisma operation. This could be a model or any other complex object defined in your application's schema.\n- `F` (optional): An extension of `runtime.Operation`, allowing for additional flags to be passed, which can be used to specify details about how the payload should be handled or what information it contains.\n\n### Output\nThe output is a generic type that extends `runtime.Types.Public.Payload<T, F>`. This means the resulting type will have properties and methods defined in `runtime.Types.Public.Payload` for handling operations on types like queries, mutations, etc.\n\n### Immediate Dependencies\n- `@prisma/client/runtime/client`: The Prisma runtime library that provides essential types and functionalities for working with Prisma clients.\n- `../models`: A placeholder for the models defined in your application's schema, which might be imported from a different module or file.\n- `./class`: This seems to be a reference to the local PrismaClient class definition, but without more context it's unclear its exact role.\n\n### Role in Module\nThe `Payload` type serves as a fundamental part of the Prisma client API within your application. It abstracts and standardizes how results from various operations (like queries or mutations) are handled, making it easier to work with different types of data across your application's codebase. This type is crucial for maintaining consistency in handling responses from database operations regardless of their complexity or specific requirements.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Payload|0",
+      "addedAt": "2026-06-13T20:08:45.580Z",
+      "syncedAt": null
+    },
+    {
+      "id": "6c75d5e0-b99d-4529-97dc-cd214df40423",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Result_0",
+      "content": "## Result\n\n **Responsibility:**  \nDefines a generic type `Result` that encapsulates the result of a Prisma operation, providing a way to handle success and failure scenarios.\n\n**Primary Inputs:**  \n- `T`: The type of the data on successful completion of the operation.\n- `A`: The type of additional arguments passed to the operation.\n- `F extends runtime.Operation`: A generic constraint that ensures `F` is a subtype of `runtime.Operation`.\n\n**Output:**  \n- A TypeScript type named `Result<T, A, F>`, which represents the result of a Prisma operation with possible success and failure outcomes.\n\n**Immediate Dependencies:**  \n- `@prisma/client/runtime/client`: The runtime module from the Prisma Client library that provides the necessary types for operations.\n\n**Role in Module:**  \nThis type is part of the internal API of the Prisma Client, allowing developers to handle results of various database operations in a standardized way across different operation types (`F`). It helps ensure type safety and clarity when dealing with asynchronous data fetching from the database using Prisma.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Result|0",
+      "addedAt": "2026-06-13T20:09:50.747Z",
+      "syncedAt": null
+    },
+    {
+      "id": "7792cb93-fe7a-427e-8b8c-7621bbd0c4d3",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Exact_0",
+      "content": "## Exact\n\n ### Responsibility\nThe responsibility of the `Exact` type is to ensure that an object conforms exactly to a specified shape defined by its generic parameters. This helps maintain consistency and correctness when interacting with Prisma models, ensuring that only properties matching the expected schema are used.\n\n### Primary Inputs\n- **A**: The TypeScript interface or type representing the structure of the input object.\n- **W**: The TypeScript interface or type representing the allowed fields in the input object. This is typically a partial representation of `A` with only the properties that should be present.\n\n### Output\n- **Exact<A, W>**: A TypeScript type that ensures every property in `A` must also be present in `W`, and no additional properties are allowed.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client** (imported as `runtime`): This module provides the generic `Exact` type which is used to define the shape of objects.\n\n### Role in Module\nIn the provided code, the `Exact` type is exported from the module and can be used to enforce exact matching of object shapes when interacting with Prisma models. It ensures that only the properties defined in both the generic parameters are allowed, making it useful for maintaining a strict schema compliance when working with Prisma's generated types or custom model definitions.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Exact|0",
+      "addedAt": "2026-06-13T20:10:41.358Z",
+      "syncedAt": null
+    },
+    {
+      "id": "c0e1c968-f3cb-4661-90f4-458e3530eea9",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaVersion_0",
+      "content": "## PrismaVersion\n\n ### Responsibility\nThe `PrismaVersion` type is responsible for defining the structure of version information related to both the Prisma Client and the Prisma Engine. This type encapsulates details about the client library's version and the engine it interacts with, providing a standardized way to access these versions within the application context.\n\n### Primary Inputs\n- **client**: A string representing the version of the Prisma Client library being used.\n- **engine**: A string representing the version of the Prisma Engine that the client is connected to.\n\n### Output\nThe `PrismaVersion` type outputs an object with two properties:\n- `client`: a string indicating the version of the Prisma Client.\n- `engine`: a string indicating the version of the Prisma Engine.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This module provides the runtime functionality for the Prisma Client, including its versioning information which is essential for populating the `PrismaVersion` type.\n\n### Role in Module\nThe `PrismaVersion` type serves as a fundamental part of the Prisma namespace within the application. It ensures that any instance of the Prisma client will have access to this version information, facilitating better error handling and compatibility checks between different versions of the Prisma Client and Engine. This type is used internally within the Prisma module to maintain clear and consistent versioning details across all interactions with the database through Prisma Client.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaVersion|0",
+      "addedAt": "2026-06-13T20:11:32.077Z",
+      "syncedAt": null
     }
   ]
 }

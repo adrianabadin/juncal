@@ -2,12 +2,12 @@
   "status": "running",
   "pid": 16212,
   "startedAt": "2026-06-13T19:32:32.687Z",
-  "heartbeatAt": "2026-06-13T20:07:49.875Z",
+  "heartbeatAt": "2026-06-13T20:11:32.084Z",
   "finishedAt": null,
   "lastError": null,
   "summary": {
-    "pending": 505,
-    "enriched": 46,
+    "pending": 501,
+    "enriched": 50,
     "errors": 0
   }
 }

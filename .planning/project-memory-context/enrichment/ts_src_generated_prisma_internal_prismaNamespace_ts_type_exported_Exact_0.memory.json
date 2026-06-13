@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `Exact` type is to ensure that an object conforms exactly to a specified shape defined by its generic parameters. This helps maintain consistency and correctness when interacting with Prisma models, ensuring that only properties matching the expected schema are used.\n\n### Primary Inputs\n- **A**: The TypeScript interface or type representing the structure of the input object.\n- **W**: The TypeScript interface or type representing the allowed fields in the input object. This is typically a partial representation of `A` with only the properties that should be present.\n\n### Output\n- **Exact<A, W>**: A TypeScript type that ensures every property in `A` must also be present in `W`, and no additional properties are allowed.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client** (imported as `runtime`): This module provides the generic `Exact` type which is used to define the shape of objects.\n\n### Role in Module\nIn the provided code, the `Exact` type is exported from the module and can be used to enforce exact matching of object shapes when interacting with Prisma models. It ensures that only the properties defined in both the generic parameters are allowed, making it useful for maintaining a strict schema compliance when working with Prisma's generated types or custom model definitions.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}
