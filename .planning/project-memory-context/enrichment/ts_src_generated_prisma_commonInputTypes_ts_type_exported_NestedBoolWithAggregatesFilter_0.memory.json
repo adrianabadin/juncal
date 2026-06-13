@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedBoolWithAggregatesFilter` type is responsible for defining filters that can be applied to boolean fields within nested structures, including the ability to aggregate counts and perform min/max operations on these fields. This type is designed to work with Prisma's ORM capabilities, allowing for flexible querying and filtering in database interactions.\n\n### Primary Inputs\n- **equals**: A boolean value that filters records where the field equals this value.\n- **not**: An optional filter that excludes records matching the specified boolean value or another nested filter structure.\n- **_count**: Aggregates the count of true/false values for the field, useful for counting occurrences.\n- **_min**: Aggregates the minimum value among all true/false values for the field.\n- **_max**: Aggregates the maximum value among all true/false values for the field.\n\n### Output\nThis type defines a structure that can be used to filter and aggregate data based on boolean fields in a Prisma model, providing flexibility through nested structures and optional filters.\n\n### Immediate Dependencies\n- **Prisma.BooleanFieldRefInput**: A generic input type for boolean fields within Prisma models.\n- **Prisma.NestedIntFilter**: Filters related to integer counts.\n- **Prisma.NestedBoolFilter**: Filters related to individual boolean values.\n\n### Role in Module\nThis type serves as a fundamental building block for constructing more complex query filters and aggregations, particularly useful when dealing with scenarios where boolean fields need to be queried or analyzed statistically within nested structures. It enhances the expressiveness of Prisma queries by providing structured ways to filter and analyze data at multiple levels of abstraction.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

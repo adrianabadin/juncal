@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `LogOptions` type is responsible for defining the structure of logging options within a Prisma Client, ensuring that it can handle and process log configurations specified by the user. This type checks if the provided client options contain a 'log' property, which should be an array of either `Prisma.LogLevel` or `Prisma.LogDefinition`. If such conditions are met, it extracts and returns the events from this configuration.\n\n### Primary Inputs\n- `ClientOptions`: An object that extends `Prisma.PrismaClientOptions`, representing the client options provided to Prisma Client.\n\n### Output\n- A type definition that either matches if the 'log' property exists and is of the correct format, or returns `never` if it does not meet the criteria.\n\n### Immediate Dependencies\n- `@prisma/client/runtime/client`: This module provides the core runtime functionalities for Prisma Client.\n- `./prismaNamespace`: This likely refers to a namespace or interface within your project that corresponds to Prisma's type definitions.\n\n### Role in Module\nThe `LogOptions` type serves as a utility to enforce and validate the structure of logging configurations within the Prisma Client, ensuring compatibility with Prisma's expected input types. It is used internally by Prisma Client to ensure that it can correctly interpret and process user-defined log settings.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/class.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedStringFilter` type is designed to define a flexible filter mechanism for strings within Prisma models. It allows for various comparison and inclusion/exclusion operations, as well as nested filtering through the same type. This enables complex querying and filtering capabilities in applications using Prisma with TypeScript.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter that defaults to `never`. This is used to reference specific fields or models within a Prisma schema.\n- `equals?`: Matches exactly the provided string.\n- `in?`: Matches any of the strings in the given array.\n- `notIn?`: Excludes any of the strings in the given array.\n- `lt?`: Less than the specified string.\n- `lte?`: Less than or equal to the specified string.\n- `gt?`: Greater than the specified string.\n- `gte?`: Greater than or equal to the specified string.\n- `contains?`: Matches strings that contain the specified substring.\n- `startsWith?`: Matches strings that start with the specified substring.\n- `endsWith?`: Matches strings that end with the specified substring.\n- `not?`: Excludes matches based on another filter or directly specifies a string to exclude.\n\n### Output\nThis type defines an object structure for filtering string fields in Prisma models, allowing for precise querying and conditional operations.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: This is used to reference specific string fields within a model, enabling dynamic field referencing based on the model type.\n- `string`: The basic data type for strings in TypeScript/JavaScript.\n\n### Role in Module\nThe `NestedStringFilter` type serves as a fundamental building block for constructing more complex filter conditions in Prisma queries using TypeScript. It enhances the expressiveness of Prisma's query API by providing a rich set of options to match various data querying needs, including nested and conditional filters. This type is crucial for maintaining type safety and facilitating clear communication between the application code and the underlying database schema through Prisma.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

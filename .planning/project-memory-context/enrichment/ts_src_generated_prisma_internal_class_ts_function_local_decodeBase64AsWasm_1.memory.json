@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `decodeBase64AsWasm` function is responsible for decoding a Base64 encoded WebAssembly (WASM) string into a WASM module. This involves converting the Base64 string to a buffer and then constructing a WebAssembly Module from this buffer.\n\n### Primary Inputs\n- **wasmBase64**: A string representing the Base64 encoded WebAssembly code.\n\n### Output\n- **WebAssembly.Module**: The WASM module constructed from the decoded Base64 string.\n\n### Immediate Dependencies\n- `node:buffer`: Imported to use Node.js's Buffer for decoding the Base64 string into a binary array.\n\n### Role in Module\nThis function is part of the internal utilities or helpers within the Prisma client module, facilitating the handling and manipulation of WASM modules during runtime operations.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "function",
+    "project:juncal",
+    "file:src/generated/prisma/internal/class.ts"
+  ]
+}

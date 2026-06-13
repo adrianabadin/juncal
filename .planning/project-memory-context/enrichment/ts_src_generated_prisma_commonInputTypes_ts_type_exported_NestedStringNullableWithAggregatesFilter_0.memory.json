@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedStringNullableWithAggregatesFilter` type is designed to define filters for string fields that can be nullable, and includes aggregations such as count and min/max values. This type is used within Prisma schema definitions to facilitate querying with conditions on string properties, including nested structures and aggregation functions.\n\n### Primary Inputs\n- `equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null`: Exact match for the string value or a reference to a field in a model. Can be null.\n- `in?: string[] | null`: Matches any of the provided strings. Nullable array.\n- `notIn?: string[] | null`: Does not match any of the provided strings. Nullable array.\n- `lt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than a given value or field reference.\n- `lte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than or equal to a given value or field reference.\n- `gt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than a given value or field reference.\n- `gte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than or equal to a given value or field reference.\n- `contains?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Contains a substring anywhere in the string.\n- `startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Starts with a specific substring.\n- `endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Ends with a specific substring.\n- `not?: Prisma.NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null`: Excludes records matching the nested filter, exact match, or null for negation.\n- `_count?: Prisma.NestedIntNullableFilter<$PrismaModel>`: Aggregation count of non-null values.\n- `_min?: Prisma.NestedStringNullableFilter<$PrismaModel>`: Minimum value aggregation.\n- `_max?: Prisma.NestedStringNullableFilter<$PrismaModel>`: Maximum value aggregation.\n\n### Output\nThis type defines a structure for filtering string fields with nullable properties and includes aggregations, which can be used in queries to Prisma models.\n",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

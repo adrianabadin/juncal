@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility:**\nDefines the `Decimal` type to be compatible with Prisma's internal runtime, allowing seamless integration and usage of decimal numbers within the application.\n\n**Primary Inputs:**\n- None explicitly mentioned; it is inferred from context that this definition is based on Prisma's internal runtime definitions.\n\n**Output:**\n- A TypeScript type `Decimal` which maps to Prisma's `runtime.Decimal`.\n\n**Immediate Dependencies:**\n- Importing from \"@prisma/client/runtime/client\" to leverage Prisma's built-in Decimal support.\n\n**Role in Module:**\nThis definition serves as a bridge between the application and Prisma's internal type system, ensuring that decimal numbers are correctly handled according to Prisma's specifications within TypeScript codebase.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

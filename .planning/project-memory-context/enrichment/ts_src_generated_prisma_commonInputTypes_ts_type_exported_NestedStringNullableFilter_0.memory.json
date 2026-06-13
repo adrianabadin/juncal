@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedStringNullableFilter` type is designed to define filters for nullable string fields within a Prisma model. It provides various operators and conditions that can be used to filter strings, including equality checks, range comparisons, pattern matching, and negation.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter representing the Prisma model. This is optional and defaults to `never` if not provided.\n\n### Output\nThe type `NestedStringNullableFilter` can be used as an input for filtering string fields in a Prisma query, allowing for complex conditions including:\n- **equals**: Exact match with a string or a reference to a field within the model.\n- **in**: Match if the value is one of several possible strings.\n- **notIn**: Exclude certain values from matching.\n- **lt**: Less than a specified string or field reference.\n- **lte**: Less than or equal to a specified string or field reference.\n- **gt**: Greater than a specified string or field reference.\n- **gte**: Greater than or equal to a specified string or field reference.\n- **contains**: Match if the string contains a substring.\n- **startsWith**: Match if the string starts with a specific substring.\n- **endsWith**: Match if the string ends with a specific substring.\n- **not**: Negates the filter, allowing for conditions where the result should not match the specified criteria.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: A type that allows referencing string fields within a Prisma model. This is used in various operators to specify field references dynamically.\n\n### Role in Module\nThis type serves as a versatile filter mechanism for handling nullable string fields in Prisma queries, facilitating complex data retrieval and manipulation based on specified conditions. It enhances the expressiveness of Prisma's querying capabilities by providing a rich set of options for filtering strings.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedIntFilter` type is designed to represent filter criteria for integer fields within nested structures, such as those used in Prisma's ORM for database querying. It allows for specifying conditions like equality, range queries (less than, greater than), and exclusion using various combinations of inputs.\n\n### Primary Inputs\n- `equals?`: A single number to match exactly.\n- `in?`: An array of numbers that must be matched.\n- `notIn?`: An array of numbers that must not be matched.\n- `lt?`: A number indicating a value less than the specified number.\n- `lte?`: A number indicating a value less than or equal to the specified number.\n- `gt?`: A number indicating a value greater than the specified number.\n- `gte?`: A number indicating a value greater than or equal to the specified number.\n- `not?`: Another `NestedIntFilter` object or a number that indicates exclusion from the filter criteria.\n\n### Output\nThis type defines an interface for filtering integer fields based on various conditions, providing flexibility in querying databases using Prisma ORM.\n\n### Immediate Dependencies\n- `Prisma.IntFieldRefInput<$PrismaModel>`: This is a generic type that allows referencing or inputting integer fields within the model context, which could be nested depending on the `$PrismaModel`.\n- `number`: Basic numeric type used for comparison in filters.\n\n### Role in Module\nThis type serves as a fundamental building block for constructing complex filter queries in Prisma ORM, allowing developers to specify how integers should be compared and filtered within their data models. It is crucial for maintaining the flexibility and power of Prisma's querying capabilities.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

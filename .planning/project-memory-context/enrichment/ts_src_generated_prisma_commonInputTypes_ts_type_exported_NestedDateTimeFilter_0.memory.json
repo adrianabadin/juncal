@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedDateTimeFilter` type is designed to facilitate the creation of nested filter conditions for date and time fields within Prisma models. It allows for precise querying, comparison, and negation of dates and times.\n\n### Primary Inputs\n- **equals**: Matches exactly with a given Date or string representation of a date.\n- **in**: Matches any value in the provided array of Dates or strings.\n- **notIn**: Excludes values from the provided array of Dates or strings.\n- **lt**: Less than a specified Date or string.\n- **lte**: Less than or equal to a specified Date or string.\n- **gt**: Greater than a specified Date or string.\n- **gte**: Greater than or equal to a specified Date or string.\n- **not**: Negates the filter, allowing for conditions where the field should not match the provided value or another nested filter.\n\n### Output\nThe type defines an object structure that can be used as input for querying date and time fields in Prisma models.\n\n### Immediate Dependencies\n- `Date`: Native JavaScript Date object.\n- `string`: Used to represent dates as strings (e.g., ISO 8601 format).\n- `Prisma.DateTimeFieldRefInput<$PrismaModel>`: A type that references a date or time field within a Prisma model, allowing for dynamic querying based on the model's structure.\n\n### Role in Module\nThis type is part of a larger set of input types designed to support flexible and complex data filtering in Prisma queries. It enables developers to construct intricate filter conditions that can be used with various CRUD operations within Prisma models.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

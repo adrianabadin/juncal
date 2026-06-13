@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `PrismaClient` interface is responsible for defining the structure and methods of a Prisma client, which is used to interact with a database. It provides various methods for executing raw SQL queries, handling transactions, and delegating operations to specific models (like User, Specialty, etc.).\n\n### Primary Inputs\n- `LogOpts`: A type parameter that extends from `Prisma.LogLevel`, representing the logging options for query events.\n- `OmitOpts`: A type parameter that defaults to `undefined` but can be extended with values from `Prisma.PrismaClientOptions['omit']`, specifying which fields should be omitted in certain operations.\n- `ExtArgs`: A type parameter extending from `runtime.Types.Extensions.InternalArgs`, representing the extended arguments for Prisma operations.\n\n### Output\nThe interface defines a set of methods and properties that allow interaction with the database, including:\n- Methods to connect and disconnect from the database (`$connect` and `$disconnect`).\n- Methods to execute raw SQL queries with or without prepared statements (`$executeRaw`, `$executeRawUnsafe`, `$queryRaw`, `$queryRawUnsafe`).\n- A method to run a sequence of transactions (`$transaction`).\n- Delegates for specific models (`user`, `specialty`, `userSpecialty`, `shiftReplacement`) that provide CRUD operations.\n\n### Immediate Dependencies\n- Importing from `@prisma/client/runtime/client` for certain types and methods related to Prisma's runtime capabilities.\n- Importing from the local module (`./prismaNamespace`) for defining the structure of Prisma client within the application context.\n\n### Role in Module\nThe `PrismaClient` interface serves as a central hub for all database operations within an application that uses Prisma. It abstracts away the complexity of interacting with different databases by providing a uniform API, while also allowing specific configurations and logging options to be applied through type parameters. This makes it easier to manage database interactions across various parts of the application without tightly coupling them to low-level SQL or database vendor specifics.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "interface",
+    "project:juncal",
+    "file:src/generated/prisma/internal/class.ts"
+  ]
+}

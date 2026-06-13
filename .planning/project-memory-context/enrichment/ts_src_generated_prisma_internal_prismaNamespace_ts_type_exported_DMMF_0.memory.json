@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `DMMF` type is to represent the Data Model and Mapping Framework (DMMF) as defined by Prisma. This includes types, models, enums, etc., which are part of the Prisma schema definition.\n\n### Primary Inputs\n- **runtime**: The runtime module from `@prisma/client`, specifically its `DMMF` type.\n\n### Output\n- **typeof runtime.DMMF**: A TypeScript type that mirrors the structure and definitions of the DMMF as defined in the Prisma runtime.\n\n### Immediate Dependencies\n- **runtime from \"@prisma/client/runtime/client\"**: This module provides the actual implementation details of the DMMF, which is used to generate the types here.\n- **Prisma from \"../models\"**: Although not directly used in this export, it indicates that there might be some integration or mapping involved with Prisma models.\n- **type PrismaClient from \"./class\"**: This dependency suggests a potential relationship between the DMMF and the Prisma client, implying that understanding the structure of the DMMF is crucial for working with Prisma Client effectively.\n\n### Role in Module\nThe `DMMF` type serves as an interface to the DMMF definitions within the Prisma runtime. It allows TypeScript users to interact with the DMMF types directly, making it easier to work with models and other schema components defined in a Prisma schema file. This integration helps bridge the gap between the generated code (from Prisma Client) and the raw DMMF structure, providing type safety and better developer experience when working with Prisma-related operations.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/internal/prismaNamespace.ts"
+  ]
+}

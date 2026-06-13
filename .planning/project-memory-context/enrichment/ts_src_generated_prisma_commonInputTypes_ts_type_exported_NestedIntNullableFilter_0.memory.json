@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedIntNullableFilter` type is designed to define the structure of filters for nullable integer fields within nested objects. It provides various operators to filter records based on conditions like equality, range, and exclusion.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter that defaults to `never`. This allows flexibility in integrating with different Prisma models.\n  - **Type**: Generic (`$PrismaModel`)\n  - **Usage**: Used within the type definition for potential integration with Prisma model fields.\n\n### Output\nThe output is a TypeScript type, specifically an interface-like structure that defines various filter conditions:\n- `equals`: Matches exactly this value or matches any value in the specified array.\n- `in`: Excludes values listed here.\n- `notIn`: Includes only these values (opposite of `in`).\n- `lt`: Less than this value.\n- `lte`: Less than or equal to this value.\n- `gt`: Greater than this value.\n- `gte`: Greater than or equal to this value.\n- `not`: Excludes the specified condition, value, or nested filter.\n\n### Immediate Dependencies\n- **Prisma.IntFieldRefInput<$PrismaModel>**: A type that references an integer field within a Prisma model, allowing for dynamic integration with different models.\n  - **Type**: Generic (`$PrismaModel`)\n  - **Usage**: Ensures compatibility and flexibility when dealing with various numeric fields in different Prisma models.\n\n### Role in Module\nThis type is crucial for constructing complex filter queries within the Prisma ecosystem, enabling flexible and robust data querying capabilities. It supports both direct value checks and nested filters that can be dynamically adjusted based on model specifics. This makes it a fundamental building block for higher-level query abstractions or user interfaces that require dynamic filtering mechanisms.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

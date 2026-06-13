@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `NestedDateTimeWithAggregatesFilter` type is responsible for defining the structure of filters that can be applied to date and time fields within nested objects, including aggregations. This includes specifying conditions like equality, range queries, negation, and aggregation functions such as count and min/max values.\n\n### Primary Inputs\n- `equals?`: A single date or string representing an exact match.\n- `in?`: An array of dates or strings for multiple possible matches.\n- `notIn?`: An array of dates or strings to exclude certain values.\n- `lt?`: A date or string indicating a value less than the specified condition.\n- `lte?`: A date or string indicating a value less than or equal to the specified condition.\n- `gt?`: A date or string indicating a value greater than the specified condition.\n- `gte?`: A date or string indicating a value greater than or equal to the specified condition.\n- `not?`: Another filter object or a specific date/string to exclude matches.\n- `_count?`: An aggregation count of matching records.\n- `_min?`: An aggregation minimum date/time value.\n- `_max?`: An aggregation maximum date/time value.\n\n### Output\nThis type defines the structure for filtering and aggregating date and time data in a Prisma model, allowing for complex queries to be constructed using these filters.\n\n### Immediate Dependencies\n- `Prisma.DateTimeFieldRefInput<$PrismaModel>`: A generic input type for referencing date/time fields within a Prisma model.\n- `Prisma.NestedIntFilter<$PrismaModel>`: A filter type for integer aggregations.\n- `Prisma.NestedDateTimeFilter<$PrismaModel>`: A filter type for date and time aggregations.\n\n### Role in Module\nThis type is part of the Prisma client's input types, facilitating the construction of complex queries with nested date and time filters, which is crucial for data retrieval and manipulation within a Prisma-backed application.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

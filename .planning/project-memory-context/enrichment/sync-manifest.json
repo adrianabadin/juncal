@@ -339,6 +339,526 @@
       "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|StringNullableFilter|0",
       "addedAt": "2026-06-13T19:42:48.382Z",
       "syncedAt": null
+    },
+    {
+      "id": "c1623ebe-287f-4cb0-83d2-c311429497fa",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_SortOrderInput_0",
+      "content": "## SortOrderInput\n\n **Symbol: SortOrderInput**\n\n**Kind: type**\n\n**Language: ts (TypeScript)**\n\n**Location: src/generated/prisma/commonInputTypes.ts:100-103**\n\n### Responsibility\nDefines a structured input type for sorting operations, specifying both the field to sort and an optional order for handling null values (`nulls`).\n\n### Primary Inputs\n- `sort`: A member of the `Prisma.SortOrder` enum, indicating the direction or method of sorting (e.g., ascending or descending).\n- `nulls`: An optional member that is a member of the `Prisma.NullsOrder` enum, specifying how null values should be ordered relative to non-null values.\n\n### Output\nAn object with properties:\n- `sort`: A value from the `Prisma.SortOrder` enum indicating the sort order.\n- `nulls`: An optional value from the `Prisma.NullsOrder` enum, defaulting to unspecified (i.e., not ordering by nulls).\n\n### Immediate Dependencies\n- **Imports**:\n  - `@prisma/client/runtime/client` as `runtime`: Provides the base types for Prisma operations.\n  - `./enums` as `$Enums`: Contains custom enums used in the application, likely including `Prisma.SortOrder` and `Prisma.NullsOrder`.\n  - `./internal/prismaNamespace` as `Prisma`: Indicates that this module interacts with Prisma's internal namespace for database operations.\n\n### Role in Module\nThis type serves as a standardized input format for sorting configurations within the application, ensuring consistency and correctness when integrating with Prisma's data manipulation capabilities. It helps maintain clarity and coherence in how data is ordered across different parts of the application that interact with databases using Prisma.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|SortOrderInput|0",
+      "addedAt": "2026-06-13T19:43:26.805Z",
+      "syncedAt": null
+    },
+    {
+      "id": "7ed41f28-cc78-4979-a24d-151755352fb8",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_StringNullableWithAggregatesFilter_0",
+      "content": "## StringNullableWithAggregatesFilter\n\n ### Responsibility\nThe `StringNullableWithAggregatesFilter` type is responsible for defining the structure of filter input parameters used in aggregate queries related to nullable string fields within Prisma models. This includes various comparison operators and nested filters for more complex query scenarios.\n\n### Primary Inputs\n- **equals**: A single string or a reference to a string field, optionally null.\n- **in**: An array of strings, optionally null.\n- **notIn**: An array of strings, optionally null.\n- **lt**: A string representing a value less than the specified condition.\n- **lte**: A string representing a value less than or equal to the specified condition.\n- **gt**: A string representing a value greater than the specified condition.\n- **gte**: A string representing a value greater than or equal to the specified condition.\n- **contains**: A string indicating a substring match.\n- **startsWith**: A string indicating a prefix match.\n- **endsWith**: A string indicating a suffix match.\n- **not**: A nested filter for negation, either another `StringNullableWithAggregatesFilter` or null.\n- **_count**: A count aggregate result.\n- **_min**: The minimum value of the field as a string, optionally null.\n- **_max**: The maximum value of the field as a string, optionally null.\n\n### Output\nThis type defines the structure for filtering and aggregating nullable string fields in Prisma queries. It is used to build complex query structures where each property can be set according to specific conditions or values.\n\n### Immediate Dependencies\n- **Prisma.StringFieldRefInput**: A generic input type for referencing string fields within a Prisma model, which allows dynamic field references.\n- **Prisma.NestedStringNullableWithAggregatesFilter**: A nested filter type specifically designed for nullable string fields in aggregate queries.\n- **Prisma.NestedIntNullableFilter**: A nested filter type for handling count aggregates on nullable integer fields.\n- **Prisma.NestedStringNullableFilter**: A nested filter type for handling min and max aggregations on nullable string fields.\n\n### Role in Module\nThis type serves as a fundamental building block within the Prisma query module, facilitating the construction of complex queries involving nullable string fields with various aggregate functions. It enhances the expressiveness and flexibility of Prisma's querying capabilities by providing a structured way to define filter conditions for database interactions.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|StringNullableWithAggregatesFilter|0",
+      "addedAt": "2026-06-13T19:44:18.530Z",
+      "syncedAt": null
+    },
+    {
+      "id": "f0428ef7-6d3d-4d99-abad-df803e609e08",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedStringFilter_0",
+      "content": "## NestedStringFilter\n\n ### Responsibility\nThe `NestedStringFilter` type is designed to define a flexible filter mechanism for strings within Prisma models. It allows for various comparison and inclusion/exclusion operations, as well as nested filtering through the same type. This enables complex querying and filtering capabilities in applications using Prisma with TypeScript.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter that defaults to `never`. This is used to reference specific fields or models within a Prisma schema.\n- `equals?`: Matches exactly the provided string.\n- `in?`: Matches any of the strings in the given array.\n- `notIn?`: Excludes any of the strings in the given array.\n- `lt?`: Less than the specified string.\n- `lte?`: Less than or equal to the specified string.\n- `gt?`: Greater than the specified string.\n- `gte?`: Greater than or equal to the specified string.\n- `contains?`: Matches strings that contain the specified substring.\n- `startsWith?`: Matches strings that start with the specified substring.\n- `endsWith?`: Matches strings that end with the specified substring.\n- `not?`: Excludes matches based on another filter or directly specifies a string to exclude.\n\n### Output\nThis type defines an object structure for filtering string fields in Prisma models, allowing for precise querying and conditional operations.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: This is used to reference specific string fields within a model, enabling dynamic field referencing based on the model type.\n- `string`: The basic data type for strings in TypeScript/JavaScript.\n\n### Role in Module\nThe `NestedStringFilter` type serves as a fundamental building block for constructing more complex filter conditions in Prisma queries using TypeScript. It enhances the expressiveness of Prisma's query API by providing a rich set of options to match various data querying needs, including nested and conditional filters. This type is crucial for maintaining type safety and facilitating clear communication between the application code and the underlying database schema through Prisma.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedStringFilter|0",
+      "addedAt": "2026-06-13T19:45:02.391Z",
+      "syncedAt": null
+    },
+    {
+      "id": "817253ab-b2ff-4ec3-a1f3-db388d7917d0",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedBoolFilter_0",
+      "content": "## NestedBoolFilter\n\n ### Responsibility\nThe `NestedBoolFilter` type is designed to facilitate the construction of filter criteria for boolean fields within Prisma models. It allows for defining equality conditions (`equals`) and negation conditions (`not`), which can be either a direct boolean value or another nested filter object. This type supports flexibility in querying based on boolean values, including complex scenarios where negated filters are required.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter that defaults to `never`. This allows the type to be flexible and applicable across different Prisma models.\n  - **Type**: Generic (`$PrismaModel`)\n  - **Description**: Represents the model schema for which this filter is being defined. It's a placeholder for specific model types, allowing the type to adapt dynamically based on usage context.\n- `equals`: An optional boolean or a reference to a Prisma boolean field input. This specifies the exact value that the boolean field should match.\n  - **Type**: Union (`boolean | Prisma.BooleanFieldRefInput<$PrismaModel>`)\n  - **Description**: Allows specifying either a direct boolean value or a structured input for complex filtering scenarios.\n- `not`: An optional filter object or boolean. This allows excluding specific values from the results based on another nested filter criteria or directly providing a boolean to negate the condition.\n  - **Type**: Union (`Prisma.NestedBoolFilter<$PrismaModel> | boolean`)\n  - **Description**: Provides flexibility in defining conditions that should not be met by the boolean field, either through nested filters or direct negation.\n\n### Output\n- A type definition that can be used to define filter criteria for boolean fields within Prisma models. This includes optional properties for exact matches and negated conditions, supporting both simple and complex filtering logic.\n\n### Immediate Dependencies\n- `Prisma.BooleanFieldRefInput<$PrismaModel>`: A type imported from the internal Prisma module, representing a reference to an input object specifically for boolean fields within a given model. This is used in the definition of the `equals` property to ensure that complex filtering inputs are correctly typed according to the specific schema being modeled.\n- `boolean`: The native JavaScript/TypeScript type representing literal true or false values. It's used both directly and through its union with `Prisma.BooleanFieldRefInput<$PrismaModel>` to allow for flexible input types in the filter definition.\n\n### Role in",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedBoolFilter|0",
+      "addedAt": "2026-06-13T19:45:49.070Z",
+      "syncedAt": null
+    },
+    {
+      "id": "c0166cba-06ee-4626-b085-3d26ac528208",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedDateTimeFilter_0",
+      "content": "## NestedDateTimeFilter\n\n ### Responsibility\nThe `NestedDateTimeFilter` type is designed to facilitate the creation of nested filter conditions for date and time fields within Prisma models. It allows for precise querying, comparison, and negation of dates and times.\n\n### Primary Inputs\n- **equals**: Matches exactly with a given Date or string representation of a date.\n- **in**: Matches any value in the provided array of Dates or strings.\n- **notIn**: Excludes values from the provided array of Dates or strings.\n- **lt**: Less than a specified Date or string.\n- **lte**: Less than or equal to a specified Date or string.\n- **gt**: Greater than a specified Date or string.\n- **gte**: Greater than or equal to a specified Date or string.\n- **not**: Negates the filter, allowing for conditions where the field should not match the provided value or another nested filter.\n\n### Output\nThe type defines an object structure that can be used as input for querying date and time fields in Prisma models.\n\n### Immediate Dependencies\n- `Date`: Native JavaScript Date object.\n- `string`: Used to represent dates as strings (e.g., ISO 8601 format).\n- `Prisma.DateTimeFieldRefInput<$PrismaModel>`: A type that references a date or time field within a Prisma model, allowing for dynamic querying based on the model's structure.\n\n### Role in Module\nThis type is part of a larger set of input types designed to support flexible and complex data filtering in Prisma queries. It enables developers to construct intricate filter conditions that can be used with various CRUD operations within Prisma models.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedDateTimeFilter|0",
+      "addedAt": "2026-06-13T19:46:25.688Z",
+      "syncedAt": null
+    },
+    {
+      "id": "ba07334a-526e-4590-be66-31d2440e86c7",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedStringWithAggregatesFilter_0",
+      "content": "## NestedStringWithAggregatesFilter\n\n ### Responsibility\nThe `NestedStringWithAggregatesFilter` type is designed to represent filter criteria for querying string fields within nested objects, including aggregation capabilities. It allows for precise filtering and aggregating based on various conditions such as equality, range comparisons, substring matches, and negation. This type is particularly useful in complex query scenarios where detailed data manipulation and retrieval are required.\n\n### Primary Inputs\n- `equals?`: Exact match of a string or a reference to a string field within the model.\n- `in?`: Array of strings indicating multiple possible values for filtering.\n- `notIn?`: Array of strings indicating values that should be excluded from results.\n- `lt?`: Less than comparison with an optional field reference.\n- `lte?`: Less than or equal to comparison with an optional field reference.\n- `gt?`: Greater than comparison with an optional field reference.\n- `gte?`: Greater than or equal to comparison with an optional field reference.\n- `contains?`: Filter for strings that contain a specific substring, optionally within a referenced field.\n- `startsWith?`: Filter for strings that start with a specific substring, optionally within a referenced field.\n- `endsWith?`: Filter for strings that end with a specific substring, optionally within a referenced field.\n- `not?`: A nested filter or direct string indicating exclusion of certain criteria.\n- `_count?`: Aggregation count filter.\n- `_min?`: Aggregation minimum value filter for strings.\n- `_max?`: Aggregation maximum value filter for strings.\n\n### Output\nThis type defines a structure that can be used to specify conditions for querying string fields in a Prisma model, supporting both direct values and complex nested structures involving aggregation queries.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: A generic input type for referencing string fields within the Prisma model, allowing dynamic field access based on runtime context.\n- `Prisma.NestedIntFilter<$PrismaModel>`: A filter type specifically for integer aggregations.\n- `Prisma.NestedStringFilter<$PrismaModel>`: A filter type specifically for string aggregations.\n\n### Role in Module\nThis type serves as a versatile and extensible template for constructing complex filters that can be used across various parts of the application to query data from Prisma models, especially when precise control over filtering criteria is necessary.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedStringWithAggregatesFilter|0",
+      "addedAt": "2026-06-13T19:47:23.126Z",
+      "syncedAt": null
+    },
+    {
+      "id": "5517372e-ccf3-463b-9b0d-749813524c03",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedIntFilter_0",
+      "content": "## NestedIntFilter\n\n ### Responsibility\nThe `NestedIntFilter` type is designed to represent filter criteria for integer fields within nested structures, such as those used in Prisma's ORM for database querying. It allows for specifying conditions like equality, range queries (less than, greater than), and exclusion using various combinations of inputs.\n\n### Primary Inputs\n- `equals?`: A single number to match exactly.\n- `in?`: An array of numbers that must be matched.\n- `notIn?`: An array of numbers that must not be matched.\n- `lt?`: A number indicating a value less than the specified number.\n- `lte?`: A number indicating a value less than or equal to the specified number.\n- `gt?`: A number indicating a value greater than the specified number.\n- `gte?`: A number indicating a value greater than or equal to the specified number.\n- `not?`: Another `NestedIntFilter` object or a number that indicates exclusion from the filter criteria.\n\n### Output\nThis type defines an interface for filtering integer fields based on various conditions, providing flexibility in querying databases using Prisma ORM.\n\n### Immediate Dependencies\n- `Prisma.IntFieldRefInput<$PrismaModel>`: This is a generic type that allows referencing or inputting integer fields within the model context, which could be nested depending on the `$PrismaModel`.\n- `number`: Basic numeric type used for comparison in filters.\n\n### Role in Module\nThis type serves as a fundamental building block for constructing complex filter queries in Prisma ORM, allowing developers to specify how integers should be compared and filtered within their data models. It is crucial for maintaining the flexibility and power of Prisma's querying capabilities.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedIntFilter|0",
+      "addedAt": "2026-06-13T19:48:02.110Z",
+      "syncedAt": null
+    },
+    {
+      "id": "2a0a4ecd-4a77-4954-90cc-032df0e9837f",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedBoolWithAggregatesFilter_0",
+      "content": "## NestedBoolWithAggregatesFilter\n\n ### Responsibility\nThe `NestedBoolWithAggregatesFilter` type is responsible for defining filters that can be applied to boolean fields within nested structures, including the ability to aggregate counts and perform min/max operations on these fields. This type is designed to work with Prisma's ORM capabilities, allowing for flexible querying and filtering in database interactions.\n\n### Primary Inputs\n- **equals**: A boolean value that filters records where the field equals this value.\n- **not**: An optional filter that excludes records matching the specified boolean value or another nested filter structure.\n- **_count**: Aggregates the count of true/false values for the field, useful for counting occurrences.\n- **_min**: Aggregates the minimum value among all true/false values for the field.\n- **_max**: Aggregates the maximum value among all true/false values for the field.\n\n### Output\nThis type defines a structure that can be used to filter and aggregate data based on boolean fields in a Prisma model, providing flexibility through nested structures and optional filters.\n\n### Immediate Dependencies\n- **Prisma.BooleanFieldRefInput**: A generic input type for boolean fields within Prisma models.\n- **Prisma.NestedIntFilter**: Filters related to integer counts.\n- **Prisma.NestedBoolFilter**: Filters related to individual boolean values.\n\n### Role in Module\nThis type serves as a fundamental building block for constructing more complex query filters and aggregations, particularly useful when dealing with scenarios where boolean fields need to be queried or analyzed statistically within nested structures. It enhances the expressiveness of Prisma queries by providing structured ways to filter and analyze data at multiple levels of abstraction.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedBoolWithAggregatesFilter|0",
+      "addedAt": "2026-06-13T19:48:47.704Z",
+      "syncedAt": null
+    },
+    {
+      "id": "146ca536-eb02-4ae2-a213-5a9bc1168b58",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedDateTimeWithAggregatesFilter_0",
+      "content": "## NestedDateTimeWithAggregatesFilter\n\n ### Responsibility\nThe `NestedDateTimeWithAggregatesFilter` type is responsible for defining the structure of filters that can be applied to date and time fields within nested objects, including aggregations. This includes specifying conditions like equality, range queries, negation, and aggregation functions such as count and min/max values.\n\n### Primary Inputs\n- `equals?`: A single date or string representing an exact match.\n- `in?`: An array of dates or strings for multiple possible matches.\n- `notIn?`: An array of dates or strings to exclude certain values.\n- `lt?`: A date or string indicating a value less than the specified condition.\n- `lte?`: A date or string indicating a value less than or equal to the specified condition.\n- `gt?`: A date or string indicating a value greater than the specified condition.\n- `gte?`: A date or string indicating a value greater than or equal to the specified condition.\n- `not?`: Another filter object or a specific date/string to exclude matches.\n- `_count?`: An aggregation count of matching records.\n- `_min?`: An aggregation minimum date/time value.\n- `_max?`: An aggregation maximum date/time value.\n\n### Output\nThis type defines the structure for filtering and aggregating date and time data in a Prisma model, allowing for complex queries to be constructed using these filters.\n\n### Immediate Dependencies\n- `Prisma.DateTimeFieldRefInput<$PrismaModel>`: A generic input type for referencing date/time fields within a Prisma model.\n- `Prisma.NestedIntFilter<$PrismaModel>`: A filter type for integer aggregations.\n- `Prisma.NestedDateTimeFilter<$PrismaModel>`: A filter type for date and time aggregations.\n\n### Role in Module\nThis type is part of the Prisma client's input types, facilitating the construction of complex queries with nested date and time filters, which is crucial for data retrieval and manipulation within a Prisma-backed application.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedDateTimeWithAggregatesFilter|0",
+      "addedAt": "2026-06-13T19:50:28.886Z",
+      "syncedAt": null
+    },
+    {
+      "id": "1e133fff-5021-402c-a704-ce35a7390388",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedStringNullableFilter_0",
+      "content": "## NestedStringNullableFilter\n\n ### Responsibility\nThe `NestedStringNullableFilter` type is designed to define filters for nullable string fields within a Prisma model. It provides various operators and conditions that can be used to filter strings, including equality checks, range comparisons, pattern matching, and negation.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter representing the Prisma model. This is optional and defaults to `never` if not provided.\n\n### Output\nThe type `NestedStringNullableFilter` can be used as an input for filtering string fields in a Prisma query, allowing for complex conditions including:\n- **equals**: Exact match with a string or a reference to a field within the model.\n- **in**: Match if the value is one of several possible strings.\n- **notIn**: Exclude certain values from matching.\n- **lt**: Less than a specified string or field reference.\n- **lte**: Less than or equal to a specified string or field reference.\n- **gt**: Greater than a specified string or field reference.\n- **gte**: Greater than or equal to a specified string or field reference.\n- **contains**: Match if the string contains a substring.\n- **startsWith**: Match if the string starts with a specific substring.\n- **endsWith**: Match if the string ends with a specific substring.\n- **not**: Negates the filter, allowing for conditions where the result should not match the specified criteria.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: A type that allows referencing string fields within a Prisma model. This is used in various operators to specify field references dynamically.\n\n### Role in Module\nThis type serves as a versatile filter mechanism for handling nullable string fields in Prisma queries, facilitating complex data retrieval and manipulation based on specified conditions. It enhances the expressiveness of Prisma's querying capabilities by providing a rich set of options for filtering strings.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedStringNullableFilter|0",
+      "addedAt": "2026-06-13T19:51:09.509Z",
+      "syncedAt": null
+    },
+    {
+      "id": "1709bfd7-b715-4393-80ee-fc53ddfcc12f",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedStringNullableWithAggregatesFilter_0",
+      "content": "## NestedStringNullableWithAggregatesFilter\n\n ### Responsibility\nThe `NestedStringNullableWithAggregatesFilter` type is designed to define filters for string fields that can be nullable, and includes aggregations such as count and min/max values. This type is used within Prisma schema definitions to facilitate querying with conditions on string properties, including nested structures and aggregation functions.\n\n### Primary Inputs\n- `equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null`: Exact match for the string value or a reference to a field in a model. Can be null.\n- `in?: string[] | null`: Matches any of the provided strings. Nullable array.\n- `notIn?: string[] | null`: Does not match any of the provided strings. Nullable array.\n- `lt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than a given value or field reference.\n- `lte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than or equal to a given value or field reference.\n- `gt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than a given value or field reference.\n- `gte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than or equal to a given value or field reference.\n- `contains?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Contains a substring anywhere in the string.\n- `startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Starts with a specific substring.\n- `endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Ends with a specific substring.\n- `not?: Prisma.NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null`: Excludes records matching the nested filter, exact match, or null for negation.\n- `_count?: Prisma.NestedIntNullableFilter<$PrismaModel>`: Aggregation count of non-null values.\n- `_min?: Prisma.NestedStringNullableFilter<$PrismaModel>`: Minimum value aggregation.\n- `_max?: Prisma.NestedStringNullableFilter<$PrismaModel>`: Maximum value aggregation.\n\n### Output\nThis type defines a structure for filtering string fields with nullable properties and includes aggregations, which can be used in queries to Prisma models.\n",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedStringNullableWithAggregatesFilter|0",
+      "addedAt": "2026-06-13T19:52:00.387Z",
+      "syncedAt": null
+    },
+    {
+      "id": "92174afa-31aa-44fc-b501-b7e36dae8099",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_commonInputTypes_ts_type_exported_NestedIntNullableFilter_0",
+      "content": "## NestedIntNullableFilter\n\n ### Responsibility\nThe `NestedIntNullableFilter` type is designed to define the structure of filters for nullable integer fields within nested objects. It provides various operators to filter records based on conditions like equality, range, and exclusion.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter that defaults to `never`. This allows flexibility in integrating with different Prisma models.\n  - **Type**: Generic (`$PrismaModel`)\n  - **Usage**: Used within the type definition for potential integration with Prisma model fields.\n\n### Output\nThe output is a TypeScript type, specifically an interface-like structure that defines various filter conditions:\n- `equals`: Matches exactly this value or matches any value in the specified array.\n- `in`: Excludes values listed here.\n- `notIn`: Includes only these values (opposite of `in`).\n- `lt`: Less than this value.\n- `lte`: Less than or equal to this value.\n- `gt`: Greater than this value.\n- `gte`: Greater than or equal to this value.\n- `not`: Excludes the specified condition, value, or nested filter.\n\n### Immediate Dependencies\n- **Prisma.IntFieldRefInput<$PrismaModel>**: A type that references an integer field within a Prisma model, allowing for dynamic integration with different models.\n  - **Type**: Generic (`$PrismaModel`)\n  - **Usage**: Ensures compatibility and flexibility when dealing with various numeric fields in different Prisma models.\n\n### Role in Module\nThis type is crucial for constructing complex filter queries within the Prisma ecosystem, enabling flexible and robust data querying capabilities. It supports both direct value checks and nested filters that can be dynamically adjusted based on model specifics. This makes it a fundamental building block for higher-level query abstractions or user interfaces that require dynamic filtering mechanisms.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/commonInputTypes.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/commonInputTypes.ts|type|exported|NestedIntNullableFilter|0",
+      "addedAt": "2026-06-13T19:52:43.377Z",
+      "syncedAt": null
+    },
+    {
+      "id": "75d217c9-4663-46f8-9ec9-a8c7e152ac7c",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_class_ts_function_local_decodeBase64AsWasm_1",
+      "content": "## decodeBase64AsWasm\n\n ### Responsibility\nThe `decodeBase64AsWasm` function is responsible for decoding a Base64 encoded WebAssembly (WASM) string into a WASM module. This involves converting the Base64 string to a buffer and then constructing a WebAssembly Module from this buffer.\n\n### Primary Inputs\n- **wasmBase64**: A string representing the Base64 encoded WebAssembly code.\n\n### Output\n- **WebAssembly.Module**: The WASM module constructed from the decoded Base64 string.\n\n### Immediate Dependencies\n- `node:buffer`: Imported to use Node.js's Buffer for decoding the Base64 string into a binary array.\n\n### Role in Module\nThis function is part of the internal utilities or helpers within the Prisma client module, facilitating the handling and manipulation of WASM modules during runtime operations.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "function",
+        "project:juncal",
+        "file:src/generated/prisma/internal/class.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/class.ts|function|local|decodeBase64AsWasm|1",
+      "addedAt": "2026-06-13T19:53:03.182Z",
+      "syncedAt": null
+    },
+    {
+      "id": "efca4122-42ff-4ff5-a299-426c29b33eff",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_class_ts_type_exported_LogOptions_0",
+      "content": "## LogOptions\n\n ### Responsibility\nThe `LogOptions` type is responsible for defining the structure of logging options within a Prisma Client, ensuring that it can handle and process log configurations specified by the user. This type checks if the provided client options contain a 'log' property, which should be an array of either `Prisma.LogLevel` or `Prisma.LogDefinition`. If such conditions are met, it extracts and returns the events from this configuration.\n\n### Primary Inputs\n- `ClientOptions`: An object that extends `Prisma.PrismaClientOptions`, representing the client options provided to Prisma Client.\n\n### Output\n- A type definition that either matches if the 'log' property exists and is of the correct format, or returns `never` if it does not meet the criteria.\n\n### Immediate Dependencies\n- `@prisma/client/runtime/client`: This module provides the core runtime functionalities for Prisma Client.\n- `./prismaNamespace`: This likely refers to a namespace or interface within your project that corresponds to Prisma's type definitions.\n\n### Role in Module\nThe `LogOptions` type serves as a utility to enforce and validate the structure of logging configurations within the Prisma Client, ensuring compatibility with Prisma's expected input types. It is used internally by Prisma Client to ensure that it can correctly interpret and process user-defined log settings.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/class.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/class.ts|type|exported|LogOptions|0",
+      "addedAt": "2026-06-13T19:53:31.705Z",
+      "syncedAt": null
+    },
+    {
+      "id": "a88cc92d-8e29-4693-8c14-0e177a33d1c3",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_class_ts_interface_exported_PrismaClientConstructor_0",
+      "content": "## PrismaClientConstructor\n\n ### Responsibility\nThe `PrismaClientConstructor` interface defines the constructor for the Prisma Client in TypeScript. It abstracts away the complexity of interacting with databases, providing a type-safe way to query and manipulate data.\n\n### Primary Inputs\n- **options**: An object that can be any subset of `Prisma.PrismaClientOptions`. This allows flexibility in configuring the client without having to specify all possible options.\n\n### Output\n- A new instance of `PrismaClient` which is a type-safe database client for TypeScript, abstracting away the complexity of interacting with databases and providing methods to query and manipulate data.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This module provides the runtime types and utilities necessary for Prisma Client operations.\n- **./prismaNamespace**: This is likely a namespace or module that exports the `PrismaClientOptions` type, which defines the possible options for configuring the Prisma Client.\n\n### Role in Module\nThis interface serves as a blueprint for creating instances of `PrismaClient`, ensuring that all configurations and interactions with the database are done through a type-safe API. It is used to define the shape of the constructor function within the module, making it easier to use and understand how to instantiate and configure the Prisma Client.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "interface",
+        "project:juncal",
+        "file:src/generated/prisma/internal/class.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/class.ts|interface|exported|PrismaClientConstructor|0",
+      "addedAt": "2026-06-13T19:54:02.807Z",
+      "syncedAt": null
+    },
+    {
+      "id": "7966cc53-f782-490b-a46c-7c1fabda36cf",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_class_ts_interface_exported_PrismaClient_0",
+      "content": "## PrismaClient\n\n ### Responsibility\nThe `PrismaClient` interface is responsible for defining the structure and methods of a Prisma client, which is used to interact with a database. It provides various methods for executing raw SQL queries, handling transactions, and delegating operations to specific models (like User, Specialty, etc.).\n\n### Primary Inputs\n- `LogOpts`: A type parameter that extends from `Prisma.LogLevel`, representing the logging options for query events.\n- `OmitOpts`: A type parameter that defaults to `undefined` but can be extended with values from `Prisma.PrismaClientOptions['omit']`, specifying which fields should be omitted in certain operations.\n- `ExtArgs`: A type parameter extending from `runtime.Types.Extensions.InternalArgs`, representing the extended arguments for Prisma operations.\n\n### Output\nThe interface defines a set of methods and properties that allow interaction with the database, including:\n- Methods to connect and disconnect from the database (`$connect` and `$disconnect`).\n- Methods to execute raw SQL queries with or without prepared statements (`$executeRaw`, `$executeRawUnsafe`, `$queryRaw`, `$queryRawUnsafe`).\n- A method to run a sequence of transactions (`$transaction`).\n- Delegates for specific models (`user`, `specialty`, `userSpecialty`, `shiftReplacement`) that provide CRUD operations.\n\n### Immediate Dependencies\n- Importing from `@prisma/client/runtime/client` for certain types and methods related to Prisma's runtime capabilities.\n- Importing from the local module (`./prismaNamespace`) for defining the structure of Prisma client within the application context.\n\n### Role in Module\nThe `PrismaClient` interface serves as a central hub for all database operations within an application that uses Prisma. It abstracts away the complexity of interacting with different databases by providing a uniform API, while also allowing specific configurations and logging options to be applied through type parameters. This makes it easier to manage database interactions across various parts of the application without tightly coupling them to low-level SQL or database vendor specifics.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "interface",
+        "project:juncal",
+        "file:src/generated/prisma/internal/class.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/class.ts|interface|exported|PrismaClient|0",
+      "addedAt": "2026-06-13T19:55:23.957Z",
+      "syncedAt": null
+    },
+    {
+      "id": "c5285647-17cc-4e3e-b071-08a563506528",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_class_ts_function_exported_getPrismaClientClass_0",
+      "content": "## getPrismaClientClass\n\n ### Responsibility\nThe `getPrismaClientClass` function is responsible for retrieving the Prisma Client class from the internal runtime of the Prisma library. It abstracts the details of how Prisma Client is instantiated and provides a consistent interface to access it across different parts of the application.\n\n### Primary Inputs\n- **config**: This parameter is not explicitly mentioned in the code snippet but implied by the usage of `runtime.getPrismaClient(config)`. Typically, this would be an object containing configuration options for Prisma Client.\n\n### Output\n- **PrismaClientConstructor**: The function returns a type that represents the constructor of the Prisma Client class. This is essential for TypeScript types and ensures that any usage of `getPrismaClientClass` will have proper type inference and safety.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: This module contains the internal implementation details of how Prisma Client works, including its constructor functions.\n- **./prismaNamespace**: This is likely a placeholder for the namespace where the Prisma Client class will be defined or used in your application code.\n\n### Role in Module\nThe `getPrismaClientClass` function serves as an abstraction layer between the external configuration and the internal implementation of Prisma Client. It ensures that any part of the application can obtain a reference to the Prisma Client class without needing to know the details of its instantiation or where it is defined within the library. This modularity allows for flexibility in how Prisma Client is used throughout the application, while also providing type safety and encapsulation of implementation details.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "function",
+        "project:juncal",
+        "file:src/generated/prisma/internal/class.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/class.ts|function|exported|getPrismaClientClass|0",
+      "addedAt": "2026-06-13T19:56:23.850Z",
+      "syncedAt": null
+    },
+    {
+      "id": "1f544043-c6ca-4385-b98b-4057d0a5043e",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_DMMF_0",
+      "content": "## DMMF\n\n ### Responsibility\nThe responsibility of the `DMMF` type is to represent the Data Model and Mapping Framework (DMMF) as defined by Prisma. This includes types, models, enums, etc., which are part of the Prisma schema definition.\n\n### Primary Inputs\n- **runtime**: The runtime module from `@prisma/client`, specifically its `DMMF` type.\n\n### Output\n- **typeof runtime.DMMF**: A TypeScript type that mirrors the structure and definitions of the DMMF as defined in the Prisma runtime.\n\n### Immediate Dependencies\n- **runtime from \"@prisma/client/runtime/client\"**: This module provides the actual implementation details of the DMMF, which is used to generate the types here.\n- **Prisma from \"../models\"**: Although not directly used in this export, it indicates that there might be some integration or mapping involved with Prisma models.\n- **type PrismaClient from \"./class\"**: This dependency suggests a potential relationship between the DMMF and the Prisma client, implying that understanding the structure of the DMMF is crucial for working with Prisma Client effectively.\n\n### Role in Module\nThe `DMMF` type serves as an interface to the DMMF definitions within the Prisma runtime. It allows TypeScript users to interact with the DMMF types directly, making it easier to work with models and other schema components defined in a Prisma schema file. This integration helps bridge the gap between the generated code (from Prisma Client) and the raw DMMF structure, providing type safety and better developer experience when working with Prisma-related operations.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|DMMF|0",
+      "addedAt": "2026-06-13T19:57:12.410Z",
+      "syncedAt": null
+    },
+    {
+      "id": "ba37f738-946b-4358-b85b-1afb4315e162",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaPromise_0",
+      "content": "## PrismaPromise\n\n ### Responsibility\nThe responsibility of the `PrismaPromise` type is to define a type that represents a promise which resolves to a value of type `T`. This type is used within Prisma Client for TypeScript to ensure consistency and type safety when working with database operations.\n\n### Primary Inputs\n- **Type Parameter `T`**: The generic type parameter `T` represents the type of the value that the promise will resolve to. It can be any valid JavaScript/TypeScript type, such as objects or primitive types.\n\n### Output\n- **PrismaPromise<T>**: A TypeScript type that extends from `runtime.Types.Public.PrismaPromise<T>`. This means it inherits all properties and methods defined in `PrismaPromise` from the Prisma runtime library.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: The Prisma runtime library, which contains the definition of `PrismaPromise`.\n- **../models**: Local module or interface definitions that might be used within the context of this type but are not directly imported here.\n- **./class**: Another local module or class definition that might be relevant to understanding the broader usage in Prisma Client for TypeScript.\n\n### Role in Module\nThe `PrismaPromise` type serves as a bridge between the TypeScript compiler and the Prisma runtime library, ensuring that all database operations within Prisma Client are typed correctly according to the schema definitions. This helps prevent errors related to incorrect types and provides a robust way to handle asynchronous data fetching from the database.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaPromise|0",
+      "addedAt": "2026-06-13T19:58:07.576Z",
+      "syncedAt": null
+    },
+    {
+      "id": "52b93a34-5874-484c-ab6d-ee9ccff44cb2",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaClientKnownRequestError_0",
+      "content": "## PrismaClientKnownRequestError\n\n ### Responsibility\nThe `PrismaClientKnownRequestError` type is responsible for representing errors that are known and predictable within the Prisma client, specifically those related to database requests. This type helps in handling specific error scenarios more gracefully by providing detailed information about what went wrong during a database operation.\n\n### Primary Inputs\n- None specified directly as inputs; this type is derived from an external module (`@prisma/client/runtime/client`).\n\n### Output\n- The output is of type `PrismaClientKnownRequestError`, which encapsulates details about the error, such as a message, code, and more.\n\n### Immediate Dependencies\n- Imports from `@prisma/client/runtime/client`: This module provides the actual implementation of the `PrismaClientKnownRequestError` type.\n- Other imports: `* as runtime`, `type * as Prisma`, and `import { type PrismaClient } from \"./class\"` are part of setting up the Prisma client environment in TypeScript.\n\n### Role in Module\nThis type serves a critical role in ensuring that errors resulting from known issues with database requests are properly typed and handled within your application's error management system. It helps maintain consistency and clarity when dealing with potential database-related problems, making it easier to debug and handle these issues effectively.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaClientKnownRequestError|0",
+      "addedAt": "2026-06-13T19:59:00.403Z",
+      "syncedAt": null
+    },
+    {
+      "id": "2e47bd94-911e-4288-96dd-a28e6d6e0010",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaClientUnknownRequestError_0",
+      "content": "## PrismaClientUnknownRequestError\n\n ### Responsibility\nThe responsibility of the `PrismaClientUnknownRequestError` type is to represent an error that occurs when Prisma receives an unknown request. This type acts as a wrapper for the internal PrismaClient error, providing additional context and structure to handle such errors gracefully within your application code.\n\n### Primary Inputs\n- **runtime.PrismaClientUnknownRequestError**: The base error object provided by the Prisma runtime library that encapsulates details about an unknown request error.\n\n### Output\n- **PrismaClientUnknownRequestError**: A TypeScript type definition that mirrors the structure of `runtime.PrismaClientUnknownRequestError`. This allows you to use this error type in your application code, providing better type safety and context when handling errors related to Prisma operations.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: The Prisma runtime library that contains the definition of `PrismaClientUnknownRequestError`.\n- **../models**: Your local module where you import and use the Prisma Client, potentially defining your own error handling mechanisms.\n- **./class**: A custom export from your module, likely representing a Prisma Client class, which is necessary for using Prisma in your application.\n\n### Role in Module\nThe `PrismaClientUnknownRequestError` type serves as a critical part of the module's type definitions and error handling strategy. It ensures that any errors encountered during Prisma operations are properly typed and can be handled according to defined protocols, enhancing the robustness and maintainability of your application code.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaClientUnknownRequestError|0",
+      "addedAt": "2026-06-13T19:59:59.205Z",
+      "syncedAt": null
+    },
+    {
+      "id": "df1606fc-fa5d-4726-8af5-490a9fe2ab13",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaClientRustPanicError_0",
+      "content": "## PrismaClientRustPanicError\n\n ### Responsibility\nThe responsibility of the `PrismaClientRustPanicError` type is to represent an error specific to Prisma Client for Rust, which occurs when there's a panic during database operations. This type acts as a wrapper around the underlying Rust error type (`runtime.PrismaClientRustPanicError`) and ensures that TypeScript can understand and handle this particular error gracefully within the application context.\n\n### Primary Inputs\nThe primary input for `PrismaClientRustPanicError` is not user-provided data but rather an inherent part of using Prisma Client with Rust, where such errors might occur during database interactions.\n\n### Output\nWhen used in TypeScript code, the output will be a type that can be utilized to handle or display information about errors related to Rust panics within Prisma Client operations. This includes details like error codes, messages, and potentially other contextual data depending on how the Rust library surfaces this error.\n\n### Immediate Dependencies\n- `@prisma/client/runtime/client`: This module contains the core runtime logic for Prisma Client, including the definition of various errors that might be encountered during database operations.\n- `../models`: Represents models defined in your application which are likely to interact with this error type if they involve database operations managed by Prisma Client.\n- `./class`: The local module where the `PrismaClient` class is defined, indicating its role within the broader Prisma Client ecosystem.\n\n### Role in Module\nThe `PrismaClientRustPanicError` type serves as a bridge between TypeScript and Rust error handling mechanisms when using Prisma with Rust. It ensures that any errors encountered during database operations are properly typed and can be handled according to application-specific logic, making it an essential component for maintaining robust error management in applications utilizing Prisma Client for Rust.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaClientRustPanicError|0",
+      "addedAt": "2026-06-13T20:01:01.198Z",
+      "syncedAt": null
+    },
+    {
+      "id": "3f31e5c5-b0d5-4083-86b6-707d50a18027",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaClientInitializationError_0",
+      "content": "## PrismaClientInitializationError\n\n ### Responsibility\nThe responsibility of the `PrismaClientInitializationError` type is to define and export a TypeScript type that represents the error structure specific to Prisma Client initialization errors. This type will be used throughout the application to handle or throw these errors appropriately.\n\n### Primary Inputs\n- **runtime**: The module from `@prisma/client/runtime/client` which contains the definition of `PrismaClientInitializationError`.\n\n### Output\n- **TypeScript Type**: A TypeScript type named `PrismaClientInitializationError` that mirrors the structure of `runtime.PrismaClientInitializationError`. This includes all properties and their types defined in the runtime error.\n\n### Immediate Dependencies\n- **@prisma/client/runtime/client**: Provides the definition for `PrismaClientInitializationError`.\n- **../models**: Not directly used here, but part of the broader Prisma Client setup which might include models or other related types.\n- **./class**: Also not directly used here, but part of the Prisma Client module structure.\n\n### Role in Module\nThis type serves as a bridge between the runtime error definitions provided by Prisma and the TypeScript codebase. It ensures that any errors encountered during Prisma Client initialization are typed correctly within the application's context, facilitating better error handling and debugging.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaClientInitializationError|0",
+      "addedAt": "2026-06-13T20:02:10.705Z",
+      "syncedAt": null
+    },
+    {
+      "id": "803164cc-7ae4-4fd4-998a-f4641fb5f99e",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_PrismaClientValidationError_0",
+      "content": "## PrismaClientValidationError\n\n ### Responsibility\nThe responsibility of the `PrismaClientValidationError` type is to define and export a TypeScript type that represents the error structure for validation issues within the Prisma Client. This type encapsulates the details provided by the underlying Prisma runtime, ensuring consistency and type safety when handling validation errors in your application code.\n\n### Primary Inputs\nThe primary input for this responsibility is:\n- The `runtime.PrismaClientValidationError` from the Prisma client runtime library.\n\n### Output\nThe output of this TypeScript definition is a new type named `PrismaClientValidationError`. This type will be used to represent errors that occur during data validation operations in your application, providing detailed information about what went wrong and where it happened.\n\n### Immediate Dependencies\nThe immediate dependencies for defining this type are:\n- The Prisma client runtime library (`@prisma/client/runtime/client`) which exports the `PrismaClientValidationError` type.\n- Local imports from other parts of your project, including types and utilities specific to your application's data model (from `../models`).\n\n### Role in Module\nIn this module, `PrismaClientValidationError` serves as a critical part of the error handling mechanism for Prisma Client operations. It ensures that any validation errors encountered during database interactions are properly typed and can be handled gracefully within your application codebase. This type is used to standardize how validation errors are represented across different parts of your application, promoting consistency and maintainability in error management.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|PrismaClientValidationError|0",
+      "addedAt": "2026-06-13T20:03:05.974Z",
+      "syncedAt": null
+    },
+    {
+      "id": "d9d2d0ea-452c-482b-b759-dbf6d99550ed",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Sql_0",
+      "content": "## Sql\n\n ### Responsibility\nThe `Sql` type is defined to represent the SQL string and parameters structure used by Prisma Client for database operations. This type helps ensure that the SQL queries generated by Prisma are consistent and correctly typed, facilitating better integration with databases and avoiding runtime errors related to invalid SQL syntax or parameter types.\n\n### Primary Inputs\n- `runtime.Sql`: The core implementation of SQL handling in Prisma's internal library.\n\n### Output\n- A TypeScript type named `Sql` which is an alias for `runtime.Sql`. This allows developers to use the same structure across their application code, ensuring that any SQL operations are correctly typed and validated at compile time rather than runtime.\n\n### Immediate Dependencies\n- The dependency on `@prisma/client/runtime/client` ensures access to Prisma's internal SQL handling capabilities.\n- The import from `../models` is likely for other model definitions within the application, but it does not directly impact this type definition.\n- The import from `./class` seems unrelated to this specific type definition, possibly indicating a misunderstanding or misplacement in the code structure.\n\n### Role in Module\nThis type serves as a critical bridge between Prisma's internal SQL handling and TypeScript types used throughout the application. It ensures that any SQL operations are correctly typed, which is crucial for maintaining type safety and consistency across different parts of the application that interact with databases using Prisma.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Sql|0",
+      "addedAt": "2026-06-13T20:03:55.346Z",
+      "syncedAt": null
+    },
+    {
+      "id": "7fd90822-127d-4130-bd8f-71014bb06414",
+      "action": "upsert",
+      "key_tag": "key:symbol:ts_src_generated_prisma_internal_prismaNamespace_ts_type_exported_Decimal_0",
+      "content": "## Decimal\n\n **Responsibility:**\nDefines the `Decimal` type to be compatible with Prisma's internal runtime, allowing seamless integration and usage of decimal numbers within the application.\n\n**Primary Inputs:**\n- None explicitly mentioned; it is inferred from context that this definition is based on Prisma's internal runtime definitions.\n\n**Output:**\n- A TypeScript type `Decimal` which maps to Prisma's `runtime.Decimal`.\n\n**Immediate Dependencies:**\n- Importing from \"@prisma/client/runtime/client\" to leverage Prisma's built-in Decimal support.\n\n**Role in Module:**\nThis definition serves as a bridge between the application and Prisma's internal type system, ensuring that decimal numbers are correctly handled according to Prisma's specifications within TypeScript codebase.",
+      "category": "architecture",
+      "tags": [
+        "symbol",
+        "ts",
+        "type",
+        "project:juncal",
+        "file:src/generated/prisma/internal/prismaNamespace.ts",
+        "enriched-by-queue"
+      ],
+      "status": "pending",
+      "source": "enrich-queue",
+      "symbolKey": "ts|src/generated/prisma/internal/prismaNamespace.ts|type|exported|Decimal|0",
+      "addedAt": "2026-06-13T20:04:43.610Z",
+      "syncedAt": null
     }
   ]
 }

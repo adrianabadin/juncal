@@ -1,0 +1,11 @@
+{
+  "content": " **Symbol: SortOrderInput**\n\n**Kind: type**\n\n**Language: ts (TypeScript)**\n\n**Location: src/generated/prisma/commonInputTypes.ts:100-103**\n\n### Responsibility\nDefines a structured input type for sorting operations, specifying both the field to sort and an optional order for handling null values (`nulls`).\n\n### Primary Inputs\n- `sort`: A member of the `Prisma.SortOrder` enum, indicating the direction or method of sorting (e.g., ascending or descending).\n- `nulls`: An optional member that is a member of the `Prisma.NullsOrder` enum, specifying how null values should be ordered relative to non-null values.\n\n### Output\nAn object with properties:\n- `sort`: A value from the `Prisma.SortOrder` enum indicating the sort order.\n- `nulls`: An optional value from the `Prisma.NullsOrder` enum, defaulting to unspecified (i.e., not ordering by nulls).\n\n### Immediate Dependencies\n- **Imports**:\n  - `@prisma/client/runtime/client` as `runtime`: Provides the base types for Prisma operations.\n  - `./enums` as `$Enums`: Contains custom enums used in the application, likely including `Prisma.SortOrder` and `Prisma.NullsOrder`.\n  - `./internal/prismaNamespace` as `Prisma`: Indicates that this module interacts with Prisma's internal namespace for database operations.\n\n### Role in Module\nThis type serves as a standardized input format for sorting configurations within the application, ensuring consistency and correctness when integrating with Prisma's data manipulation capabilities. It helps maintain clarity and coherence in how data is ordered across different parts of the application that interact with databases using Prisma.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}
