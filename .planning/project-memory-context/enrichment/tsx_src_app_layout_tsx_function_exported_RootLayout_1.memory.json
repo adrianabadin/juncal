@@ -1,0 +1,11 @@
+{
+  "content": " **Symbol: RootLayout**\n\n**Kind:** function (React component)\n\n**Language:** TypeScript + JSX (tsx)\n\n**Location:** src/app/layout.tsx:20-33\n\n**Responsibility:**\nThe `RootLayout` function is responsible for defining the overall layout and structure of the application, including setting up global styles and fonts. It serves as a wrapper component that encapsulates all other components within it.\n\n**Primary Inputs:**\n- `children`: A React node representing the child components to be rendered inside the layout.\n\n**Output:**\n- Returns a JSX element (`<html>`), which is the root HTML element of the application, containing:\n  - `lang=\"en\"`: The language attribute set to English.\n  - `className`: A string combining the variable class names for two custom fonts (`geistSans` and `geistMono`), along with a base class `h-full antialiased` for global styles.\n  - `<body>` element containing the child components passed as `children`.\n\n**Immediate Dependencies:**\n- Import statements at the top of the file:\n  ```typescript\n  import type { Metadata } from \"next\";\n  import { Geist, Geist_Mono } from \"next/font/google\";\n  import \"./globals.css\";\n  ```\n  These imports are used to define metadata and use custom fonts from Google Fonts in the layout.\n\n**Role in Module:**\nThe `RootLayout` function acts as a top-level component that sets up the global styles and structure for all other components within the application, ensuring consistency across different pages or views. It is typically used in Next.js applications under the `app` directory to define the layout configuration globally available to its children.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "tsx",
+    "function",
+    "project:juncal",
+    "file:src/app/layout.tsx"
+  ]
+}

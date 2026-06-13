@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `StringNullableFilter` type is designed to define the structure of filters for nullable string fields within Prisma models. It provides various operators to filter strings based on equality, range, pattern matching, and negation.\n\n### Primary Inputs\n- **equals**: Matches exactly with a given string or a reference to a string field in a Prisma model.\n- **in**: Filters the string to be within a list of provided strings.\n- **notIn**: Excludes strings from a list.\n- **lt**: Less than a specified value.\n- **lte**: Less than or equal to a specified value.\n- **gt**: Greater than a specified value.\n- **gte**: Greater than or equal to a specified value.\n- **contains**: Filters strings that contain a substring.\n- **startsWith**: Filters strings that start with a specific substring.\n- **endsWith**: Filters strings that end with a specific substring.\n- **not**: Negates the filter, allowing for more complex filtering conditions.\n\n### Output\nThe output is an object type where each property corresponds to a filter operator. The values can be either direct string literals or references to other Prisma model fields.\n\n### Immediate Dependencies\n- `Prisma.StringFieldRefInput<$PrismaModel>`: A generic input type for referencing string fields within a Prisma model, used in operators like `lt`, `lte`, `gt`, `gte`, and potentially others that might be added in future versions or custom implementations.\n- `Prisma.NestedStringNullableFilter<$PrismaModel>`: Another filter type specifically designed to handle nested nullable string filters, allowing for more intricate querying structures.\n\n### Role in Module\nThis type serves as a fundamental building block within the Prisma schema and data manipulation layer of an application. It is used extensively in queries and mutations involving string fields to ensure precise and flexible filtering capabilities. This type helps maintain consistency and correctness in how strings are queried, updated, or deleted across different parts of the application codebase.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

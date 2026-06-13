@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `StringWithAggregatesFilter` type is designed to represent filter criteria for string fields, including the ability to perform aggregations on these fields. It supports various comparison operators and aggregation methods such as count and min/max operations. This type is useful for querying databases using Prisma's ORM where you need flexible filtering options along with aggregate functions.\n\n### Primary Inputs\n- `equals?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Exact match of a string value.\n- `in?: string[]`: Matches any of the provided strings.\n- `notIn?: string[]`: Does not match any of the provided strings.\n- `lt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than comparison.\n- `lte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Less than or equal to comparison.\n- `gt?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than comparison.\n- `gte?: string | Prisma.StringFieldRefInput<$PrismaModel>`: Greater than or equal to comparison.\n- `contains?: string | Prisma.StringFieldRefInput<$PrismaModel>`: String contains a substring.\n- `startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: String starts with a specific substring.\n- `endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>`: String ends with a specific substring.\n- `not?: Prisma.NestedStringWithAggregatesFilter<$PrismaModel> | string`: Excludes specific values or nested filters.\n- `_count?: Prisma.NestedIntFilter<$PrismaModel>`: Aggregation count of matching records.\n- `_min?: Prisma.NestedStringFilter<$PrismaModel>`: Minimum value aggregation.\n- `_max?: Prisma.NestedStringFilter<$PrismaModel>`: Maximum value aggregation.\n\n### Output\nThis type defines a structure for filtering string fields in database queries, allowing complex conditions and aggregations to be specified.\n\n### Immediate Dependencies\n- `@prisma/client/runtime/client`: Provides the core Prisma runtime functionalities.\n- `./enums`: Contains enumerated types used within the module.\n- `./internal/prismaNamespace`: Namespace for internal Prisma types and",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

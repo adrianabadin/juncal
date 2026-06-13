@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility:** Defines the `User` type based on the `Prisma.UserModel`.\n\n**Primary Inputs:** None explicitly mentioned, but it's derived from `Prisma.UserModel`.\n\n**Output:** A TypeScript type named `User`.\n\n**Immediate Dependencies:** \n- Import from `./internal/prismaNamespaceBrowser` which exports `Prisma.UserModel`.\n\n**Role in Module:** This code defines a custom TypeScript type that maps to the Prisma model for user data, making it easier to work with user-related data throughout the application using TypeScript's static typing capabilities.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/browser.ts"
+  ]
+}

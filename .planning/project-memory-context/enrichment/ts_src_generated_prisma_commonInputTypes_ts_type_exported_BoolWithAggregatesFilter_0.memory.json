@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `BoolWithAggregatesFilter` type is responsible for defining the structure of filters that can be applied to boolean fields, including methods for aggregating counts and min/max values. This type is used to facilitate querying and filtering data based on boolean conditions within a Prisma model.\n\n### Primary Inputs\n- **equals**: A boolean or `Prisma.BooleanFieldRefInput` which specifies an exact match for the boolean value.\n- **not**: An optional filter that can either be a nested filter (`Prisma.NestedBoolWithAggregatesFilter`) or a direct boolean value to exclude certain conditions.\n- **_count**: Optional aggregation count of boolean values matching specific criteria.\n- **_min**: Optional minimum value among boolean values matching specific criteria.\n- **_max**: Optional maximum value among boolean values matching specific criteria.\n\n### Output\nThis type defines the structure for filtering and aggregating boolean data, providing flexibility in querying conditions.\n\n### Immediate Dependencies\n- `Prisma.BooleanFieldRefInput<$PrismaModel>`: A reference to a boolean field within a Prisma model.\n- `Prisma.NestedBoolWithAggregatesFilter<$PrismaModel>`: A nested filter structure for boolean fields, used in the `not` property.\n- `Prisma.NestedIntFilter<$PrismaModel>`: Filters for integer aggregations.\n- `Prisma.NestedBoolFilter<$PrismaModel>`: Filters for boolean aggregations.\n\n### Role in Module\nThe `BoolWithAggregatesFilter` type serves as a fundamental building block within the Prisma query and filter system, enabling complex queries involving boolean fields with aggregation capabilities. It is part of the Prisma client's type definitions, facilitating seamless integration between TypeScript code and database interactions defined by Prisma schema.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

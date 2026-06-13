@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `DateTimeWithAggregatesFilter` type is designed to define filters for date and time fields, including the ability to filter based on aggregations (count, minimum, maximum). This type is used within Prisma models to specify conditions when querying or filtering data.\n\n### Primary Inputs\n- **equals**: A single Date or string that should match exactly.\n- **in**: An array of Dates or strings specifying a range where the value must be one of the provided dates/strings.\n- **notIn**: An array of Dates or strings specifying a range where the value must not be any of the provided dates/strings.\n- **lt**: A Date or string indicating values less than the specified date/string.\n- **lte**: A Date or string indicating values less than or equal to the specified date/string.\n- **gt**: A Date or string indicating values greater than the specified date/string.\n- **gte**: A Date or string indicating values greater than or equal to the specified date/string.\n- **not**: Specifies conditions that should not be met, including nested filters and direct date/string comparisons.\n- **_count**: Filter for counting aggregations.\n- **_min**: Filter for minimum aggregation of dates.\n- **_max**: Filter for maximum aggregation of dates.\n\n### Output\nThis type defines a structure for filtering Date or string fields in queries, supporting complex conditions and aggregations.\n\n### Immediate Dependencies\n- `Prisma.DateTimeFieldRefInput<$PrismaModel>`: A generic input type used to reference date/time fields within the Prisma model.\n- `Prisma.NestedDateTimeWithAggregatesFilter<$PrismaModel>`: A nested filter for more complex aggregation scenarios.\n- `Prisma.NestedIntFilter<$PrismaModel>`: Filter for integer aggregations.\n- `Prisma.NestedDateTimeFilter<$PrismaModel>`: Filter for date/time aggregations.\n\n### Role in Module\nThis type is a crucial part of the Prisma data filtering and querying capabilities, allowing developers to specify precise conditions when interacting with database records. It enhances the flexibility and power of Prisma's query API by providing robust support for date and time-based filters.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

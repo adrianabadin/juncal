@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `UserSpecialty` symbol is to define a TypeScript type that corresponds to the `UserSpecialtyModel` from Prisma. This type will be used to represent the specialty field for users within your application, ensuring consistency and type safety when working with this data.\n\n### Primary Inputs\nThe primary input for defining `UserSpecialty` is:\n- **Prisma Model**: The specific model in Prisma that represents user specialties (`UserSpecialtyModel`). This includes all the fields and their types defined within this model.\n\n### Output\nThe output of defining `UserSpecialty` as a TypeScript type is:\n- A TypeScript type named `UserSpecialty` which mirrors the structure and constraints defined in the Prisma schema for the `UserSpecialtyModel`. This includes all possible values, default values, and any other metadata associated with this field.\n\n### Immediate Dependencies\nThe immediate dependencies of defining `UserSpecialty` include:\n- **Prisma Client Runtime**: Specifically from the \"@prisma/client/runtime/client\" module, which provides the necessary types and utilities to interact with Prisma models.\n- **Internal Modules**: From within your application's codebase, specifically those modules that interface with Prisma (like `./internal/prismaNamespace`).\n\n### Role in Module\nThe role of `UserSpecialty` in the module is primarily as a type definition for user specialty data. It ensures that any place in your application where user specialties are referenced or manipulated uses consistent and correctly typed data, which helps maintain code integrity and reduces errors related to incorrect data types. This type plays a crucial role in maintaining the type safety and consistency of your application's data models.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/client.ts"
+  ]
+}

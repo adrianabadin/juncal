@@ -1,0 +1,27 @@
+{
+  "hashVersion": "xxh3-1",
+  "hashes": {
+    "eslint.config.mjs": "a98e9f0416aa2f2b",
+    "next-env.d.ts": "57be83e010c61e22",
+    "next.config.ts": "8c4b7c9b0f35cfa1",
+    "postcss.config.mjs": "83d0fdba12eb40ba",
+    "prisma.config.ts": "b835683b9f85a0bf",
+    "src/app/layout.tsx": "dd81631a91679e97",
+    "src/app/page.tsx": "c4c15a53e9eb5266",
+    "src/generated/prisma/browser.ts": "9806e651c8f850a2",
+    "src/generated/prisma/client.ts": "9e0af5f5feb05770",
+    "src/generated/prisma/commonInputTypes.ts": "e482370b7ffdaaec",
+    "src/generated/prisma/enums.ts": "382c1ed5ef6a662f",
+    "src/generated/prisma/internal/class.ts": "019822b95575cd3a",
+    "src/generated/prisma/internal/prismaNamespace.ts": "e7562b94b55f231f",
+    "src/generated/prisma/internal/prismaNamespaceBrowser.ts": "e278f217aa5e4cf0",
+    "src/generated/prisma/models/ShiftReplacement.ts": "aa1b59aa84dc769a",
+    "src/generated/prisma/models/Specialty.ts": "d6dc00bc84f584a9",
+    "src/generated/prisma/models/User.ts": "26fd4fef202e6d79",
+    "src/generated/prisma/models/UserSpecialty.ts": "71a9cfb244ced923",
+    "src/generated/prisma/models.ts": "3d425c928e64ce81",
+    "src/shared/infrastructure/prisma/client.ts": "ed079dfdda8cfe33",
+    "vitest.config.ts": "c72956d1c3f097c9"
+  },
+  "updatedAt": "2026-06-13T19:32:32.558Z"
+}

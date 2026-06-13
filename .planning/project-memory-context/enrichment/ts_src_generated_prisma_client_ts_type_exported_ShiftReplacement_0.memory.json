@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `ShiftReplacement` type is responsible for defining the structure of a shift replacement within the application, specifically as it relates to Prisma models. It encapsulates the schema and constraints defined for a shift replacement event or assignment.\n\n### Primary Inputs\nThere are no inputs directly specified in this context since it's purely about defining a TypeScript type based on Prisma model definitions.\n\n### Output\nThe output is a TypeScript type named `ShiftReplacement`. This type will be used to define the structure of shift replacement records, including properties such as date, time slots, and related entities like employees or shifts.\n\n### Immediate Dependencies\n- **Prisma**: The type `ShiftReplacement` is directly derived from `Prisma.ShiftReplacementModel`, which means it relies on Prisma's model definitions to function correctly. This implies that any changes in how shift replacements are modeled in Prisma will need to be reflected here, requiring updates to the TypeScript code.\n- **$Enums**: Although not directly used within this type definition itself, `$Enums` might include enums that could be referenced indirectly if they pertain to the nature of a shift replacement (e.g., statuses like \"approved\", \"pending\").\n\n### Role in Module\nThe `ShiftReplacement` type serves as a fundamental building block for any application logic or data handling related to shift replacements, ensuring consistency and correctness when interacting with databases or other components that interface with this model. It acts as a contract between the application code and the Prisma layer, facilitating clear communication about what constitutes valid shift replacement records.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/client.ts"
+  ]
+}

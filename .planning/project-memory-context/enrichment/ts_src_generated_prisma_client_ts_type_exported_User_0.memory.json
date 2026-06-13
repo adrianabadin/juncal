@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility:** Defines the `User` type based on the `Prisma.UserModel`.\n\n**Primary Inputs:** None explicitly listed, but it's inferred from the context that this is related to Prisma model definitions.\n\n**Output:** A TypeScript type named `User` which represents the structure of a user as defined by the `Prisma.UserModel`.\n\n**Immediate Dependencies:** \n- `@prisma/client/runtime/client`: This module provides the runtime client for interacting with Prisma.\n- `./enums`: Contains enums used in the application.\n- `./internal/class`: Contains internal class definitions.\n- `./internal/prismaNamespace`: Contains the Prisma namespace which includes models like `UserModel`.\n\n**Role in Module:** This code exports a TypeScript type that maps to the Prisma model definition for a user, facilitating interactions with the database using Prisma's generated types and methods.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/client.ts"
+  ]
+}

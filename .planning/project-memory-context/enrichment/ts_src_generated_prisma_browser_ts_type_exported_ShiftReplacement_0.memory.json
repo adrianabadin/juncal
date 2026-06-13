@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility:** Defines a TypeScript type `ShiftReplacement` that represents the structure of a shift replacement model, based on the internal Prisma model.\n\n**Primary Inputs:** None specified directly; it is derived from an imported Prisma model.\n\n**Output:** A TypeScript type named `ShiftReplacement`.\n\n**Immediate Dependencies:** \n- Import from './internal/prismaNamespaceBrowser' which exports a `Prisma` object containing the `ShiftReplacementModel`.\n\n**Role in Module:** This type definition is used to standardize and enforce data structures within the application, ensuring consistency when interacting with Prisma models.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/browser.ts"
+  ]
+}

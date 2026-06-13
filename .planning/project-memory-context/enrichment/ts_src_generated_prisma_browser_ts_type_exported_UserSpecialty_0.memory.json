@@ -1,0 +1,11 @@
+{
+  "content": " **Responsibility**: Defines the `UserSpecialty` type based on the `Prisma.UserSpecialtyModel`.\n\n**Primary Inputs**: None specified directly, but it is derived from the Prisma model.\n\n**Output**: A TypeScript type named `UserSpecialty`.\n\n**Immediate Dependencies**: \n- Import from `./internal/prismaNamespaceBrowser` to get access to `Prisma.UserSpecialtyModel`.\n\n**Role in Module**: This code exports a TypeScript type that mirrors the structure of the Prisma model, allowing for type safety and consistency when interacting with user specialty data within the application.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/browser.ts"
+  ]
+}

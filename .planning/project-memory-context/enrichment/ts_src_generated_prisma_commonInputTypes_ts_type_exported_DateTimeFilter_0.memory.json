@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `DateTimeFilter` type is designed to define the structure for filtering date and time related data within Prisma models. It provides various operators to filter dates, including equality checks, range comparisons, and negation filters.\n\n### Primary Inputs\n- **equals**: A single Date or string that represents an exact match.\n- **in**: An array of Dates or strings representing a set of possible values.\n- **notIn**: An array of Dates or strings representing a set of excluded values.\n- **lt**: A Date or string representing a value less than the specified date.\n- **lte**: A Date or string representing a value less than or equal to the specified date.\n- **gt**: A Date or string representing a value greater than the specified date.\n- **gte**: A Date or string representing a value greater than or equal to the specified date.\n- **not**: Allows for filtering out specific values using another `DateTimeFilter` or directly specifying a Date or string.\n\n### Output\nThe type defines an object with properties that can be used in queries to filter dates based on various conditions.\n\n### Immediate Dependencies\n- **Date**: Native JavaScript Date object.\n- **string**: Primitive data type representing text.\n- **Prisma.DateTimeFieldRefInput<$PrismaModel>**: A specialized input type for date and time fields within a Prisma model, which can be used to reference specific fields dynamically.\n\n### Role in Module\nThis type is part of the Prisma client's filtering capabilities, allowing developers to precisely query and manipulate date-related data in their applications using TypeScript definitions. It enhances the flexibility and safety of interacting with databases through Prisma by providing a strongly typed interface for date filters.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

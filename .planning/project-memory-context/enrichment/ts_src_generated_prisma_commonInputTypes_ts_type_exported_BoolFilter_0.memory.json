@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe `BoolFilter` type is responsible for defining filters that can be applied to boolean fields in Prisma models. It provides options to match exactly, exclude specific values, or apply complex conditions using nested filters.\n\n### Primary Inputs\n- `$PrismaModel`: A generic parameter representing the Prisma model to which this filter applies. This is optional and defaults to `never` if not provided.\n  - **Example**: When filtering a boolean field in a user model (`$PrismaModel` would be `User`), you might use `BoolFilter<User>`.\n\n### Output\n- An object with the following properties:\n  - `equals`: A boolean or a reference to a boolean field input. This allows for an exact match of a boolean value.\n    - **Example**: `{ equals: true }` or `{ equals: Prisma.BooleanFieldRefInput<User> }`.\n  - `not`: A nested filter object or a boolean that negates the condition. This allows for excluding specific values or applying complex conditions.\n    - **Example**: `{ not: { equals: false } }` or `{ not: true }`.\n\n### Immediate Dependencies\n- `Prisma.BooleanFieldRefInput<$PrismaModel>`: A type that represents a reference to a boolean field in the Prisma model, used for exact matches and complex conditions.\n  - **Example**: When `$PrismaModel` is `User`, this could be `Prisma.BooleanFieldRefInput<User>`.\n- `Prisma.NestedBoolFilter<$PrismaModel>`: A type that represents nested filters for boolean fields, allowing for more intricate filtering scenarios.\n  - **Example**: When `$PrismaModel` is `User`, this could be `Prisma.NestedBoolFilter<User>`.\n\n### Role in Module\nThe `BoolFilter` type serves as a utility to facilitate the creation and manipulation of filter conditions specifically tailored for boolean fields within Prisma models, enhancing query flexibility and maintainability.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/commonInputTypes.ts"
+  ]
+}

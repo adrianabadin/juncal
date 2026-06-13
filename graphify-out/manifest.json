@@ -1,0 +1,117 @@
+{
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\eslint.config.mjs": {
+    "mtime": 1781372941.1426373,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\next.config.ts": {
+    "mtime": 1781372941.4395013,
+    "ast_hash": "9b77af189a21a7a64e4bd7a426f64176",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\package.json": {
+    "mtime": 1781378332.6245632,
+    "ast_hash": "4af01cb51adeda06bee896fdd77b331c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\postcss.config.mjs": {
+    "mtime": 1781372941.207115,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\prisma.config.ts": {
+    "mtime": 1781378098.3709714,
+    "ast_hash": "f6143a6083213d512c0beaa8d98daf63",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\tsconfig.json": {
+    "mtime": 1781374564.3181427,
+    "ast_hash": "71fe5b52d7185a5a32130def78d7e12f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\vitest.config.ts": {
+    "mtime": 1781374577.637742,
+    "ast_hash": "9b4c561ffb2eb5eacc397ee69f776857",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\.claude\\settings.local.json": {
+    "mtime": 1781378853.9759207,
+    "ast_hash": "d468f2f955d04924b7975f9e87c92407",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\.planning\\project-memory-context\\install.json": {
+    "mtime": 1781379069.966529,
+    "ast_hash": "e1c476f1739f32a605225945c25391c8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\prisma\\migrations\\20260613191818_init\\migration.sql": {
+    "mtime": 1781378298.6854327,
+    "ast_hash": "bf13d840db6f349d38e024fe2f9d8f2d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\src\\app\\layout.tsx": {
+    "mtime": 1781372941.512272,
+    "ast_hash": "94c34ef68b3949a75807a0211ec2273c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\src\\app\\page.tsx": {
+    "mtime": 1781372941.9781694,
+    "ast_hash": "1e489b26bb597dc97f8d44954dd042da",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\src\\shared\\infrastructure\\prisma\\client.ts": {
+    "mtime": 1781378361.170507,
+    "ast_hash": "b9327ae1353b70d52194817ce8c7ff34",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\AGENTS.md": {
+    "mtime": 1781373634.6512177,
+    "ast_hash": "9e09241799026ac05be315a2f0b50055",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\CLAUDE.md": {
+    "mtime": 1781379069.9738617,
+    "ast_hash": "0a0277370735903542f8cc55d4b4e957",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\README.md": {
+    "mtime": 1781372941.080444,
+    "ast_hash": "f15aaa42d5d299d091b1171097ea56ad",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\docs\\superpowers\\plans\\2026-06-13-juncal-shift-management.md": {
+    "mtime": 1781372663.2042978,
+    "ast_hash": "5eae6c6f775bf021ce422d8997fd2b39",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\docs\\superpowers\\specs\\2026-06-13-juncal-shift-management.md": {
+    "mtime": 1781372438.0356102,
+    "ast_hash": "7645cdc41c1d15f83a1c3dc4ce90b972",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\public\\file.svg": {
+    "mtime": 1781372941.2222652,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\public\\globe.svg": {
+    "mtime": 1781372941.2474597,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\public\\next.svg": {
+    "mtime": 1781372941.2966392,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\public\\vercel.svg": {
+    "mtime": 1781372941.3332388,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\aabad\\Documents\\CODE\\juncal\\public\\window.svg": {
+    "mtime": 1781372941.3599799,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": ""
+  }
+}

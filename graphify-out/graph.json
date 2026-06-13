@@ -1,0 +1,2740 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L1",
+      "id": "eslint_config_mjs",
+      "community": 17,
+      "norm_label": "eslint.config.mjs"
+    },
+    {
+      "label": "eslintConfig",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L5",
+      "id": "juncal_eslint_config_eslintconfig",
+      "community": 17,
+      "norm_label": "eslintconfig"
+    },
+    {
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "id": "next_config_ts",
+      "community": 18,
+      "norm_label": "next.config.ts"
+    },
+    {
+      "label": "nextConfig",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L3",
+      "id": "juncal_next_config_nextconfig",
+      "community": 18,
+      "norm_label": "nextconfig"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "id": "package_json",
+      "community": 5,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "id": "juncal_package_name",
+      "community": 5,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "id": "juncal_package_version",
+      "community": 5,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "id": "juncal_package_private",
+      "community": 5,
+      "norm_label": "private"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "id": "juncal_package_scripts",
+      "community": 5,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "id": "juncal_package_scripts_dev",
+      "community": 5,
+      "norm_label": "dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "id": "juncal_package_scripts_build",
+      "community": 5,
+      "norm_label": "build"
+    },
+    {
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "id": "juncal_package_scripts_start",
+      "community": 5,
+      "norm_label": "start"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "id": "juncal_package_scripts_lint",
+      "community": 5,
+      "norm_label": "lint"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "id": "juncal_package_scripts_test",
+      "community": 5,
+      "norm_label": "test"
+    },
+    {
+      "label": "test:watch",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "id": "juncal_package_scripts_test_watch",
+      "community": 5,
+      "norm_label": "test:watch"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "id": "juncal_package_dependencies",
+      "community": 4,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@hookform/resolvers",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "id": "juncal_package_dependencies_hookform_resolvers",
+      "community": 4,
+      "norm_label": "@hookform/resolvers"
+    },
+    {
+      "label": "@prisma/adapter-better-sqlite3",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "id": "juncal_package_dependencies_prisma_adapter_better_sqlite3",
+      "community": 4,
+      "norm_label": "@prisma/adapter-better-sqlite3"
+    },
+    {
+      "label": "@prisma/client",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "id": "juncal_package_dependencies_prisma_client",
+      "community": 4,
+      "norm_label": "@prisma/client"
+    },
+    {
+      "label": "@reduxjs/toolkit",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "id": "juncal_package_dependencies_reduxjs_toolkit",
+      "community": 4,
+      "norm_label": "@reduxjs/toolkit"
+    },
+    {
+      "label": "argon2",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "id": "juncal_package_dependencies_argon2",
+      "community": 4,
+      "norm_label": "argon2"
+    },
+    {
+      "label": "better-sqlite3",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "id": "juncal_package_dependencies_better_sqlite3",
+      "community": 4,
+      "norm_label": "better-sqlite3"
+    },
+    {
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "id": "juncal_package_dependencies_next",
+      "community": 4,
+      "norm_label": "next"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "id": "juncal_package_dependencies_react",
+      "community": 4,
+      "norm_label": "react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "id": "juncal_package_dependencies_react_dom",
+      "community": 4,
+      "norm_label": "react-dom"
+    },
+    {
+      "label": "react-hook-form",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "id": "juncal_package_dependencies_react_hook_form",
+      "community": 4,
+      "norm_label": "react-hook-form"
+    },
+    {
+      "label": "react-redux",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "id": "juncal_package_dependencies_react_redux",
+      "community": 4,
+      "norm_label": "react-redux"
+    },
+    {
+      "label": "zod",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "id": "juncal_package_dependencies_zod",
+      "community": 4,
+      "norm_label": "zod"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "id": "juncal_package_devdependencies",
+      "community": 3,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@tailwindcss/postcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "id": "juncal_package_devdependencies_tailwindcss_postcss",
+      "community": 3,
+      "norm_label": "@tailwindcss/postcss"
+    },
+    {
+      "label": "@types/node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "id": "juncal_package_devdependencies_types_node",
+      "community": 3,
+      "norm_label": "@types/node"
+    },
+    {
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "id": "juncal_package_devdependencies_types_react",
+      "community": 3,
+      "norm_label": "@types/react"
+    },
+    {
+      "label": "@types/react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "id": "juncal_package_devdependencies_types_react_dom",
+      "community": 3,
+      "norm_label": "@types/react-dom"
+    },
+    {
+      "label": "@vitejs/plugin-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "id": "juncal_package_devdependencies_vitejs_plugin_react",
+      "community": 3,
+      "norm_label": "@vitejs/plugin-react"
+    },
+    {
+      "label": "dotenv",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "id": "juncal_package_devdependencies_dotenv",
+      "community": 3,
+      "norm_label": "dotenv"
+    },
+    {
+      "label": "eslint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "id": "juncal_package_devdependencies_eslint",
+      "community": 3,
+      "norm_label": "eslint"
+    },
+    {
+      "label": "eslint-config-next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "id": "juncal_package_devdependencies_eslint_config_next",
+      "community": 3,
+      "norm_label": "eslint-config-next"
+    },
+    {
+      "label": "prisma",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "id": "juncal_package_devdependencies_prisma",
+      "community": 3,
+      "norm_label": "prisma"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "id": "juncal_package_devdependencies_tailwindcss",
+      "community": 3,
+      "norm_label": "tailwindcss"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "id": "juncal_package_devdependencies_typescript",
+      "community": 3,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "vite-tsconfig-paths",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "id": "juncal_package_devdependencies_vite_tsconfig_paths",
+      "community": 3,
+      "norm_label": "vite-tsconfig-paths"
+    },
+    {
+      "label": "vitest",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "id": "juncal_package_devdependencies_vitest",
+      "community": 3,
+      "norm_label": "vitest"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "postcss_config_mjs",
+      "community": 19,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "juncal_postcss_config_config",
+      "community": 19,
+      "norm_label": "config"
+    },
+    {
+      "label": "prisma.config.ts",
+      "file_type": "code",
+      "source_file": "prisma.config.ts",
+      "source_location": "L1",
+      "id": "prisma_config_ts",
+      "community": 21,
+      "norm_label": "prisma.config.ts"
+    },
+    {
+      "label": "tsconfig.json",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L1",
+      "id": "tsconfig_json",
+      "community": 1,
+      "norm_label": "tsconfig.json"
+    },
+    {
+      "label": "compilerOptions",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "id": "juncal_tsconfig_compileroptions",
+      "community": 1,
+      "norm_label": "compileroptions"
+    },
+    {
+      "label": "target",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "id": "juncal_tsconfig_compileroptions_target",
+      "community": 1,
+      "norm_label": "target"
+    },
+    {
+      "label": "lib",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "id": "juncal_tsconfig_compileroptions_lib",
+      "community": 1,
+      "norm_label": "lib"
+    },
+    {
+      "label": "allowJs",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "id": "juncal_tsconfig_compileroptions_allowjs",
+      "community": 1,
+      "norm_label": "allowjs"
+    },
+    {
+      "label": "skipLibCheck",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "id": "juncal_tsconfig_compileroptions_skiplibcheck",
+      "community": 1,
+      "norm_label": "skiplibcheck"
+    },
+    {
+      "label": "strict",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "id": "juncal_tsconfig_compileroptions_strict",
+      "community": 1,
+      "norm_label": "strict"
+    },
+    {
+      "label": "noEmit",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "id": "juncal_tsconfig_compileroptions_noemit",
+      "community": 1,
+      "norm_label": "noemit"
+    },
+    {
+      "label": "esModuleInterop",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L9",
+      "id": "juncal_tsconfig_compileroptions_esmoduleinterop",
+      "community": 1,
+      "norm_label": "esmoduleinterop"
+    },
+    {
+      "label": "module",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L10",
+      "id": "juncal_tsconfig_compileroptions_module",
+      "community": 1,
+      "norm_label": "module"
+    },
+    {
+      "label": "moduleResolution",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L11",
+      "id": "juncal_tsconfig_compileroptions_moduleresolution",
+      "community": 1,
+      "norm_label": "moduleresolution"
+    },
+    {
+      "label": "resolveJsonModule",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L12",
+      "id": "juncal_tsconfig_compileroptions_resolvejsonmodule",
+      "community": 1,
+      "norm_label": "resolvejsonmodule"
+    },
+    {
+      "label": "isolatedModules",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L13",
+      "id": "juncal_tsconfig_compileroptions_isolatedmodules",
+      "community": 1,
+      "norm_label": "isolatedmodules"
+    },
+    {
+      "label": "jsx",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L14",
+      "id": "juncal_tsconfig_compileroptions_jsx",
+      "community": 1,
+      "norm_label": "jsx"
+    },
+    {
+      "label": "incremental",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L15",
+      "id": "juncal_tsconfig_compileroptions_incremental",
+      "community": 1,
+      "norm_label": "incremental"
+    },
+    {
+      "label": "plugins",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L16",
+      "id": "juncal_tsconfig_compileroptions_plugins",
+      "community": 1,
+      "norm_label": "plugins"
+    },
+    {
+      "label": "paths",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L21",
+      "id": "juncal_tsconfig_compileroptions_paths",
+      "community": 7,
+      "norm_label": "paths"
+    },
+    {
+      "label": "@/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L22",
+      "id": "juncal_tsconfig_paths",
+      "community": 7,
+      "norm_label": "@/*"
+    },
+    {
+      "label": "@shared/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L23",
+      "id": "juncal_tsconfig_paths_shared",
+      "community": 7,
+      "norm_label": "@shared/*"
+    },
+    {
+      "label": "@users/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L24",
+      "id": "juncal_tsconfig_paths_users",
+      "community": 7,
+      "norm_label": "@users/*"
+    },
+    {
+      "label": "@specialties/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L25",
+      "id": "juncal_tsconfig_paths_specialties",
+      "community": 7,
+      "norm_label": "@specialties/*"
+    },
+    {
+      "label": "@shift-replacements/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L26",
+      "id": "juncal_tsconfig_paths_shift_replacements",
+      "community": 7,
+      "norm_label": "@shift-replacements/*"
+    },
+    {
+      "label": "include",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L29",
+      "id": "juncal_tsconfig_include",
+      "community": 1,
+      "norm_label": "include"
+    },
+    {
+      "label": "exclude",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L37",
+      "id": "juncal_tsconfig_exclude",
+      "community": 1,
+      "norm_label": "exclude"
+    },
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
+      "source_location": "L1",
+      "id": "vitest_config_ts",
+      "community": 22,
+      "norm_label": "vitest.config.ts"
+    },
+    {
+      "label": "settings.local.json",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L1",
+      "id": "claude_settings_local_json",
+      "community": 14,
+      "norm_label": "settings.local.json"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "id": "claude_settings_local_permissions",
+      "community": 14,
+      "norm_label": "permissions"
+    },
+    {
+      "label": "allow",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "id": "claude_settings_local_permissions_allow",
+      "community": 14,
+      "norm_label": "allow"
+    },
+    {
+      "label": "install.json",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L1",
+      "id": "planning_project_memory_context_install_json",
+      "community": 8,
+      "norm_label": "install.json"
+    },
+    {
+      "label": "installedAt",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L2",
+      "id": "project_memory_context_install_installedat",
+      "community": 8,
+      "norm_label": "installedat"
+    },
+    {
+      "label": "memoryDbPath",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L3",
+      "id": "project_memory_context_install_memorydbpath",
+      "community": 8,
+      "norm_label": "memorydbpath"
+    },
+    {
+      "label": "projectRoot",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L4",
+      "id": "project_memory_context_install_projectroot",
+      "community": 8,
+      "norm_label": "projectroot"
+    },
+    {
+      "label": "sourceRoot",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L5",
+      "id": "project_memory_context_install_sourceroot",
+      "community": 8,
+      "norm_label": "sourceroot"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L6",
+      "id": "project_memory_context_install_version",
+      "community": 8,
+      "norm_label": "version"
+    },
+    {
+      "label": "migration.sql",
+      "file_type": "code",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": null,
+      "id": "prisma_migrations_20260613191818_init_migration_sql",
+      "community": 9,
+      "norm_label": "migration.sql"
+    },
+    {
+      "label": "\"User\"",
+      "file_type": "code",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L2",
+      "id": "20260613191818_init_migration_user",
+      "community": 9,
+      "norm_label": "\"user\""
+    },
+    {
+      "label": "\"Specialty\"",
+      "file_type": "code",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L14",
+      "id": "20260613191818_init_migration_specialty",
+      "community": 9,
+      "norm_label": "\"specialty\""
+    },
+    {
+      "label": "\"UserSpecialty\"",
+      "file_type": "code",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L24",
+      "id": "20260613191818_init_migration_userspecialty",
+      "community": 9,
+      "norm_label": "\"userspecialty\""
+    },
+    {
+      "label": "\"ShiftReplacement\"",
+      "file_type": "code",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L35",
+      "id": "20260613191818_init_migration_shiftreplacement",
+      "community": 9,
+      "norm_label": "\"shiftreplacement\""
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_layout_tsx",
+      "community": 10,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "geistSans",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L5",
+      "id": "app_layout_geistsans",
+      "community": 10,
+      "norm_label": "geistsans"
+    },
+    {
+      "label": "geistMono",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L10",
+      "id": "app_layout_geistmono",
+      "community": 10,
+      "norm_label": "geistmono"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L15",
+      "id": "app_layout_metadata",
+      "community": 10,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L20",
+      "id": "app_layout_rootlayout",
+      "community": 10,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L1",
+      "id": "src_app_page_tsx",
+      "community": 20,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L3",
+      "id": "app_page_home",
+      "community": 20,
+      "norm_label": "home()"
+    },
+    {
+      "label": "client.ts",
+      "file_type": "code",
+      "source_file": "src/shared/infrastructure/prisma/client.ts",
+      "source_location": "L1",
+      "id": "src_shared_infrastructure_prisma_client_ts",
+      "community": 15,
+      "norm_label": "client.ts"
+    },
+    {
+      "label": "globalForPrisma",
+      "file_type": "code",
+      "source_file": "src/shared/infrastructure/prisma/client.ts",
+      "source_location": "L8",
+      "id": "prisma_client_globalforprisma",
+      "community": 15,
+      "norm_label": "globalforprisma"
+    },
+    {
+      "label": "createPrismaClient()",
+      "file_type": "code",
+      "source_file": "src/shared/infrastructure/prisma/client.ts",
+      "source_location": "L10",
+      "id": "prisma_client_createprismaclient",
+      "community": 15,
+      "norm_label": "createprismaclient()"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "agents_md",
+      "community": 16,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "This is NOT the Next.js you know",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L2",
+      "id": "juncal_agents_this_is_not_the_next_js_you_know",
+      "community": 16,
+      "norm_label": "this is not the next.js you know"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "id": "claude_md",
+      "community": 12,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "PMC Commands",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "id": "juncal_claude_pmc_commands",
+      "community": 12,
+      "norm_label": "pmc commands"
+    },
+    {
+      "label": "Session Autostart",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L65",
+      "id": "juncal_claude_session_autostart",
+      "community": 12,
+      "norm_label": "session autostart"
+    },
+    {
+      "label": "Mandatory Workflow (ENFORCED)",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L88",
+      "id": "juncal_claude_mandatory_workflow_enforced",
+      "community": 12,
+      "norm_label": "mandatory workflow (enforced)"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 13,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Getting Started",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L3",
+      "id": "juncal_readme_getting_started",
+      "community": 13,
+      "norm_label": "getting started"
+    },
+    {
+      "label": "Learn More",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "id": "juncal_readme_learn_more",
+      "community": 13,
+      "norm_label": "learn more"
+    },
+    {
+      "label": "Deploy on Vercel",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "id": "juncal_readme_deploy_on_vercel",
+      "community": 13,
+      "norm_label": "deploy on vercel"
+    },
+    {
+      "label": "2026-06-13-juncal-shift-management.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "id": "docs_superpowers_plans_2026_06_13_juncal_shift_management_md",
+      "community": 0,
+      "norm_label": "2026-06-13-juncal-shift-management.md"
+    },
+    {
+      "label": "Juncal \u2014 Gesti\u00f3n de Guardias \u2014 Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "id": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "community": 0,
+      "norm_label": "juncal \u2014 gestion de guardias \u2014 implementation plan"
+    },
+    {
+      "label": "File Structure",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L13",
+      "id": "plans_2026_06_13_juncal_shift_management_file_structure",
+      "community": 0,
+      "norm_label": "file structure"
+    },
+    {
+      "label": "FASE 1 \u2014 Scaffolding, Arquitectura y Base de Datos",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L37",
+      "id": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "community": 6,
+      "norm_label": "fase 1 \u2014 scaffolding, arquitectura y base de datos"
+    },
+    {
+      "label": "Task 1: Scaffold del proyecto Next.js",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L39",
+      "id": "plans_2026_06_13_juncal_shift_management_task_1_scaffold_del_proyecto_next_js",
+      "community": 6,
+      "norm_label": "task 1: scaffold del proyecto next.js"
+    },
+    {
+      "label": "Task 2: Dependencias del stack",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L61",
+      "id": "plans_2026_06_13_juncal_shift_management_task_2_dependencias_del_stack",
+      "community": 6,
+      "norm_label": "task 2: dependencias del stack"
+    },
+    {
+      "label": "Task 3: Configurar Vitest",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L83",
+      "id": "plans_2026_06_13_juncal_shift_management_task_3_configurar_vitest",
+      "community": 6,
+      "norm_label": "task 3: configurar vitest"
+    },
+    {
+      "label": "Task 4: Path aliases por m\u00f3dulo",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L125",
+      "id": "plans_2026_06_13_juncal_shift_management_task_4_path_aliases_por_m\u00f3dulo",
+      "community": 6,
+      "norm_label": "task 4: path aliases por modulo"
+    },
+    {
+      "label": "Task 5: Prisma + schema + migraci\u00f3n",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L147",
+      "id": "plans_2026_06_13_juncal_shift_management_task_5_prisma_schema_migraci\u00f3n",
+      "community": 6,
+      "norm_label": "task 5: prisma + schema + migracion"
+    },
+    {
+      "label": "Schema (`prisma/schema.prisma`)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L191",
+      "id": "plans_2026_06_13_juncal_shift_management_schema_prisma_schema_prisma",
+      "community": 6,
+      "norm_label": "schema (`prisma/schema.prisma`)"
+    },
+    {
+      "label": "FASE 2 \u2014 Dominio y Casos de Uso (Core)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L260",
+      "id": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "community": 0,
+      "norm_label": "fase 2 \u2014 dominio y casos de uso (core)"
+    },
+    {
+      "label": "Task 6: Tipo Result y DomainError compartidos",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L262",
+      "id": "plans_2026_06_13_juncal_shift_management_task_6_tipo_result_y_domainerror_compartidos",
+      "community": 0,
+      "norm_label": "task 6: tipo result y domainerror compartidos"
+    },
+    {
+      "label": "Task 7: Enum Role y Value Object Email",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L318",
+      "id": "plans_2026_06_13_juncal_shift_management_task_7_enum_role_y_value_object_email",
+      "community": 0,
+      "norm_label": "task 7: enum role y value object email"
+    },
+    {
+      "label": "Task 8: Entidad User con invariante de activaci\u00f3n",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L385",
+      "id": "plans_2026_06_13_juncal_shift_management_task_8_entidad_user_con_invariante_de_activaci\u00f3n",
+      "community": 0,
+      "norm_label": "task 8: entidad user con invariante de activacion"
+    },
+    {
+      "label": "Task 9: Schemas Zod de usuario",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L462",
+      "id": "plans_2026_06_13_juncal_shift_management_task_9_schemas_zod_de_usuario",
+      "community": 0,
+      "norm_label": "task 9: schemas zod de usuario"
+    },
+    {
+      "label": "Task 10: Puerto UserRepository",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L523",
+      "id": "plans_2026_06_13_juncal_shift_management_task_10_puerto_userrepository",
+      "community": 0,
+      "norm_label": "task 10: puerto userrepository"
+    },
+    {
+      "label": "Task 11: Caso de uso RegisterUser",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L555",
+      "id": "plans_2026_06_13_juncal_shift_management_task_11_caso_de_uso_registeruser",
+      "community": 0,
+      "norm_label": "task 11: caso de uso registeruser"
+    },
+    {
+      "label": "Task 12: Caso de uso ActivateUserWithSpecialties",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L672",
+      "id": "plans_2026_06_13_juncal_shift_management_task_12_caso_de_uso_activateuserwithspecialties",
+      "community": 0,
+      "norm_label": "task 12: caso de uso activateuserwithspecialties"
+    },
+    {
+      "label": "Task 13: Enum RequestState y entidad ShiftReplacement (m\u00e1quina de estados)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L742",
+      "id": "plans_2026_06_13_juncal_shift_management_task_13_enum_requeststate_y_entidad_shiftreplacement_m\u00e1quina_de_estados",
+      "community": 0,
+      "norm_label": "task 13: enum requeststate y entidad shiftreplacement (maquina de estados)"
+    },
+    {
+      "label": "Task 14: Puerto ShiftReplacementRepository + casos de uso del ciclo",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L912",
+      "id": "plans_2026_06_13_juncal_shift_management_task_14_puerto_shiftreplacementrepository_casos_de_uso_del_ciclo",
+      "community": 0,
+      "norm_label": "task 14: puerto shiftreplacementrepository + casos de uso del ciclo"
+    },
+    {
+      "label": "Task 15: Especialidades \u2014 entidad, puerto, schema y ABM",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1222",
+      "id": "plans_2026_06_13_juncal_shift_management_task_15_especialidades_entidad_puerto_schema_y_abm",
+      "community": 0,
+      "norm_label": "task 15: especialidades \u2014 entidad, puerto, schema y abm"
+    },
+    {
+      "label": "FASE 3 \u2014 Infraestructura y Adaptadores",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1456",
+      "id": "plans_2026_06_13_juncal_shift_management_fase_3_infraestructura_y_adaptadores",
+      "community": 0,
+      "norm_label": "fase 3 \u2014 infraestructura y adaptadores"
+    },
+    {
+      "label": "Task 16: Mappers y repositorios Prisma",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1458",
+      "id": "plans_2026_06_13_juncal_shift_management_task_16_mappers_y_repositorios_prisma",
+      "community": 0,
+      "norm_label": "task 16: mappers y repositorios prisma"
+    },
+    {
+      "label": "Task 17: Server Actions (adaptadores de entrada)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1544",
+      "id": "plans_2026_06_13_juncal_shift_management_task_17_server_actions_adaptadores_de_entrada",
+      "community": 0,
+      "norm_label": "task 17: server actions (adaptadores de entrada)"
+    },
+    {
+      "label": "FASE 4 \u2014 Presentaci\u00f3n y UI",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1586",
+      "id": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "community": 11,
+      "norm_label": "fase 4 \u2014 presentacion y ui"
+    },
+    {
+      "label": "Task 18: Configurar Redux Toolkit",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1588",
+      "id": "plans_2026_06_13_juncal_shift_management_task_18_configurar_redux_toolkit",
+      "community": 11,
+      "norm_label": "task 18: configurar redux toolkit"
+    },
+    {
+      "label": "Task 19: Componentes de design system (Tailwind)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1659",
+      "id": "plans_2026_06_13_juncal_shift_management_task_19_componentes_de_design_system_tailwind",
+      "community": 11,
+      "norm_label": "task 19: componentes de design system (tailwind)"
+    },
+    {
+      "label": "Task 20: Formularios con React Hook Form + Zod",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1671",
+      "id": "plans_2026_06_13_juncal_shift_management_task_20_formularios_con_react_hook_form_zod",
+      "community": 11,
+      "norm_label": "task 20: formularios con react hook form + zod"
+    },
+    {
+      "label": "Task 21: P\u00e1ginas y worklists",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1732",
+      "id": "plans_2026_06_13_juncal_shift_management_task_21_p\u00e1ginas_y_worklists",
+      "community": 11,
+      "norm_label": "task 21: paginas y worklists"
+    },
+    {
+      "label": "Self-Review",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1745",
+      "id": "plans_2026_06_13_juncal_shift_management_self_review",
+      "community": 0,
+      "norm_label": "self-review"
+    },
+    {
+      "label": "Execution Handoff",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1764",
+      "id": "plans_2026_06_13_juncal_shift_management_execution_handoff",
+      "community": 0,
+      "norm_label": "execution handoff"
+    },
+    {
+      "label": "2026-06-13-juncal-shift-management.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "id": "docs_superpowers_specs_2026_06_13_juncal_shift_management_md",
+      "community": 2,
+      "norm_label": "2026-06-13-juncal-shift-management.md"
+    },
+    {
+      "label": "Juncal \u2014 Gesti\u00f3n de Guardias y Reemplazos \u2014 Especificaci\u00f3n Funcional",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "id": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "community": 2,
+      "norm_label": "juncal \u2014 gestion de guardias y reemplazos \u2014 especificacion funcional"
+    },
+    {
+      "label": "1. Objetivo",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L6",
+      "id": "specs_2026_06_13_juncal_shift_management_1_objetivo",
+      "community": 2,
+      "norm_label": "1. objetivo"
+    },
+    {
+      "label": "2. Stack tecnol\u00f3gico (obligatorio)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L12",
+      "id": "specs_2026_06_13_juncal_shift_management_2_stack_tecnol\u00f3gico_obligatorio",
+      "community": 2,
+      "norm_label": "2. stack tecnologico (obligatorio)"
+    },
+    {
+      "label": "3. Entidades",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L28",
+      "id": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "community": 2,
+      "norm_label": "3. entidades"
+    },
+    {
+      "label": "User (Aggregate Root)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L30",
+      "id": "specs_2026_06_13_juncal_shift_management_user_aggregate_root",
+      "community": 2,
+      "norm_label": "user (aggregate root)"
+    },
+    {
+      "label": "Role (enum de dominio)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L42",
+      "id": "specs_2026_06_13_juncal_shift_management_role_enum_de_dominio",
+      "community": 2,
+      "norm_label": "role (enum de dominio)"
+    },
+    {
+      "label": "Specialty (Aggregate Root / ABM)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L45",
+      "id": "specs_2026_06_13_juncal_shift_management_specialty_aggregate_root_abm",
+      "community": 2,
+      "norm_label": "specialty (aggregate root / abm)"
+    },
+    {
+      "label": "UserSpecialty (relaci\u00f3n N:M)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L53",
+      "id": "specs_2026_06_13_juncal_shift_management_userspecialty_relaci\u00f3n_n_m",
+      "community": 2,
+      "norm_label": "userspecialty (relacion n:m)"
+    },
+    {
+      "label": "ShiftReplacement (Aggregate Root)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L56",
+      "id": "specs_2026_06_13_juncal_shift_management_shiftreplacement_aggregate_root",
+      "community": 2,
+      "norm_label": "shiftreplacement (aggregate root)"
+    },
+    {
+      "label": "RequestState (enum de dominio)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L67",
+      "id": "specs_2026_06_13_juncal_shift_management_requeststate_enum_de_dominio",
+      "community": 2,
+      "norm_label": "requeststate (enum de dominio)"
+    },
+    {
+      "label": "4. M\u00e1quina de estados de ShiftReplacement",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L73",
+      "id": "specs_2026_06_13_juncal_shift_management_4_m\u00e1quina_de_estados_de_shiftreplacement",
+      "community": 2,
+      "norm_label": "4. maquina de estados de shiftreplacement"
+    },
+    {
+      "label": "5. Flujos de trabajo",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L87",
+      "id": "specs_2026_06_13_juncal_shift_management_5_flujos_de_trabajo",
+      "community": 2,
+      "norm_label": "5. flujos de trabajo"
+    },
+    {
+      "label": "6. Reglas de autorizaci\u00f3n",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L100",
+      "id": "specs_2026_06_13_juncal_shift_management_6_reglas_de_autorizaci\u00f3n",
+      "community": 2,
+      "norm_label": "6. reglas de autorizacion"
+    },
+    {
+      "label": "7. Vistas (Presentation)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L112",
+      "id": "specs_2026_06_13_juncal_shift_management_7_vistas_presentation",
+      "community": 2,
+      "norm_label": "7. vistas (presentation)"
+    },
+    {
+      "label": "8. Out of scope (esta iteraci\u00f3n)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L120",
+      "id": "specs_2026_06_13_juncal_shift_management_8_out_of_scope_esta_iteraci\u00f3n",
+      "community": 2,
+      "norm_label": "8. out of scope (esta iteracion)"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "eslint_config_mjs",
+      "target": "juncal_eslint_config_eslintconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "next_config_ts",
+      "target": "juncal_next_config_nextconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "juncal_package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "juncal_package_scripts",
+      "target": "juncal_package_scripts_test_watch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_argon2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_better_sqlite3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_hookform_resolvers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_next",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_prisma_adapter_better_sqlite3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_prisma_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_react_hook_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_react_redux",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_reduxjs_toolkit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "juncal_package_dependencies",
+      "target": "juncal_package_dependencies_zod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_dotenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_eslint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_eslint_config_next",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_tailwindcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_tailwindcss_postcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_types_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_types_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_types_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_typescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_vite_tsconfig_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_vitejs_plugin_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "juncal_package_devdependencies",
+      "target": "juncal_package_devdependencies_vitest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "postcss_config_mjs",
+      "target": "juncal_postcss_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "tsconfig_json",
+      "target": "juncal_tsconfig_compileroptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "tsconfig_json",
+      "target": "juncal_tsconfig_exclude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tsconfig_json",
+      "target": "juncal_tsconfig_include",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_allowjs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_esmoduleinterop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_incremental",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_isolatedmodules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_lib",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_moduleresolution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_noemit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_plugins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_resolvejsonmodule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_skiplibcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_strict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions",
+      "target": "juncal_tsconfig_compileroptions_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions_paths",
+      "target": "juncal_tsconfig_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions_paths",
+      "target": "juncal_tsconfig_paths_shared",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions_paths",
+      "target": "juncal_tsconfig_paths_shift_replacements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions_paths",
+      "target": "juncal_tsconfig_paths_specialties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "juncal_tsconfig_compileroptions_paths",
+      "target": "juncal_tsconfig_paths_users",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "claude_settings_local_json",
+      "target": "claude_settings_local_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_settings_local_permissions",
+      "target": "claude_settings_local_permissions_allow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "planning_project_memory_context_install_json",
+      "target": "project_memory_context_install_installedat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "planning_project_memory_context_install_json",
+      "target": "project_memory_context_install_memorydbpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "planning_project_memory_context_install_json",
+      "target": "project_memory_context_install_projectroot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "planning_project_memory_context_install_json",
+      "target": "project_memory_context_install_sourceroot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".planning/project-memory-context/install.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "planning_project_memory_context_install_json",
+      "target": "project_memory_context_install_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "prisma_migrations_20260613191818_init_migration_sql",
+      "target": "20260613191818_init_migration_shiftreplacement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "prisma_migrations_20260613191818_init_migration_sql",
+      "target": "20260613191818_init_migration_specialty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "prisma_migrations_20260613191818_init_migration_sql",
+      "target": "20260613191818_init_migration_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "prisma_migrations_20260613191818_init_migration_sql",
+      "target": "20260613191818_init_migration_userspecialty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "20260613191818_init_migration_shiftreplacement",
+      "target": "20260613191818_init_migration_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "20260613191818_init_migration_userspecialty",
+      "target": "20260613191818_init_migration_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "20260613191818_init_migration_shiftreplacement",
+      "target": "20260613191818_init_migration_specialty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "prisma/migrations/20260613191818_init/migration.sql",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "20260613191818_init_migration_userspecialty",
+      "target": "20260613191818_init_migration_specialty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_geistmono",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_geistsans",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/layout.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_app_page_tsx",
+      "target": "app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/infrastructure/prisma/client.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_shared_infrastructure_prisma_client_ts",
+      "target": "prisma_client_createprismaclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/infrastructure/prisma/client.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_shared_infrastructure_prisma_client_ts",
+      "target": "prisma_client_globalforprisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "agents_md",
+      "target": "juncal_agents_this_is_not_the_next_js_you_know",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "juncal_claude_pmc_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "juncal_claude_pmc_commands",
+      "target": "juncal_claude_mandatory_workflow_enforced",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "juncal_claude_pmc_commands",
+      "target": "juncal_claude_session_autostart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "juncal_readme_deploy_on_vercel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "juncal_readme_getting_started",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "juncal_readme_learn_more",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_06_13_juncal_shift_management_md",
+      "target": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1764",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_execution_handoff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L260",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1456",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_fase_3_infraestructura_y_adaptadores",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1586",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_file_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1745",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_implementation_plan",
+      "target": "plans_2026_06_13_juncal_shift_management_self_review",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "target": "plans_2026_06_13_juncal_shift_management_task_1_scaffold_del_proyecto_next_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "target": "plans_2026_06_13_juncal_shift_management_task_2_dependencias_del_stack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "target": "plans_2026_06_13_juncal_shift_management_task_3_configurar_vitest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "target": "plans_2026_06_13_juncal_shift_management_task_4_path_aliases_por_m\u00f3dulo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_1_scaffolding_arquitectura_y_base_de_datos",
+      "target": "plans_2026_06_13_juncal_shift_management_task_5_prisma_schema_migraci\u00f3n",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L191",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_task_5_prisma_schema_migraci\u00f3n",
+      "target": "plans_2026_06_13_juncal_shift_management_schema_prisma_schema_prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L523",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_10_puerto_userrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L555",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_11_caso_de_uso_registeruser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L672",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_12_caso_de_uso_activateuserwithspecialties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L742",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_13_enum_requeststate_y_entidad_shiftreplacement_m\u00e1quina_de_estados",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L912",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_14_puerto_shiftreplacementrepository_casos_de_uso_del_ciclo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1222",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_15_especialidades_entidad_puerto_schema_y_abm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L262",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_6_tipo_result_y_domainerror_compartidos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L318",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_7_enum_role_y_value_object_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L385",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_8_entidad_user_con_invariante_de_activaci\u00f3n",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L462",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_2_dominio_y_casos_de_uso_core",
+      "target": "plans_2026_06_13_juncal_shift_management_task_9_schemas_zod_de_usuario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1458",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_3_infraestructura_y_adaptadores",
+      "target": "plans_2026_06_13_juncal_shift_management_task_16_mappers_y_repositorios_prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1544",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_3_infraestructura_y_adaptadores",
+      "target": "plans_2026_06_13_juncal_shift_management_task_17_server_actions_adaptadores_de_entrada",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1588",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "target": "plans_2026_06_13_juncal_shift_management_task_18_configurar_redux_toolkit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1659",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "target": "plans_2026_06_13_juncal_shift_management_task_19_componentes_de_design_system_tailwind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1671",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "target": "plans_2026_06_13_juncal_shift_management_task_20_formularios_con_react_hook_form_zod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1732",
+      "weight": 1.0,
+      "source": "plans_2026_06_13_juncal_shift_management_fase_4_presentaci\u00f3n_y_ui",
+      "target": "plans_2026_06_13_juncal_shift_management_task_21_p\u00e1ginas_y_worklists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_superpowers_specs_2026_06_13_juncal_shift_management_md",
+      "target": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_1_objetivo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_2_stack_tecnol\u00f3gico_obligatorio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_4_m\u00e1quina_de_estados_de_shiftreplacement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_5_flujos_de_trabajo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_6_reglas_de_autorizaci\u00f3n",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_7_vistas_presentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_juncal_gesti\u00f3n_de_guardias_y_reemplazos_especificaci\u00f3n_funcional",
+      "target": "specs_2026_06_13_juncal_shift_management_8_out_of_scope_esta_iteraci\u00f3n",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_requeststate_enum_de_dominio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_role_enum_de_dominio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_shiftreplacement_aggregate_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_specialty_aggregate_root_abm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_user_aggregate_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-06-13-juncal-shift-management.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "specs_2026_06_13_juncal_shift_management_3_entidades",
+      "target": "specs_2026_06_13_juncal_shift_management_userspecialty_relaci\u00f3n_n_m",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "066da27e7e6044a1522785bc4cae36a3f31d8042"
+}

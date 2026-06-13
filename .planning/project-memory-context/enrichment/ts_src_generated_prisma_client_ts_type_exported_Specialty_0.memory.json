@@ -1,0 +1,11 @@
+{
+  "content": " ### Responsibility\nThe responsibility of the `Specialty` type is to define and export a TypeScript type that corresponds to the `SpecialtyModel` from Prisma. This type will be used throughout the application to ensure consistency and type safety when interacting with specialty data stored in the database.\n\n### Primary Inputs\n- **Prisma Model**: The primary input is the `SpecialtyModel` defined within the Prisma schema, which includes all necessary fields and relationships for a specialty record.\n\n### Output\nThe output of this TypeScript type definition is:\n- A TypeScript interface or type that mirrors the structure of the `SpecialtyModel` as defined in Prisma. This allows developers to use this type safely when querying, mutating, or referencing specialty data within their application code.\n\n### Immediate Dependencies\n- **Prisma**: The immediate dependency is on the `@prisma/client` library, which provides the generated types and methods for interacting with the database according to the Prisma schema.\n- **TypeScript**: TypeScript itself is used to define the type `Specialty` that maps directly to the Prisma model.\n\n### Role in Module\nThe role of this definition within the module is to provide a strongly-typed interface for handling specialty data, ensuring that any operations involving specialties are performed with correct and predictable types. This helps maintain code quality, readability, and reduces runtime errors by catching type mismatches at compile time.",
+  "category": "architecture",
+  "tags": [
+    "symbol",
+    "ts",
+    "type",
+    "project:juncal",
+    "file:src/generated/prisma/client.ts"
+  ]
+}
