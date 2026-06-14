@@ -23,16 +23,21 @@ export default async function UsersPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-900">
-          Validación de cuentas
-        </h1>
-        <Link href="/dashboard" className="text-sm text-blue-600 hover:underline">
+        <div>
+          <h1 className="text-2xl font-semibold text-brand-800">
+            Validación de cuentas
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Activá usuarios nuevos y asigná sus especialidades.
+          </p>
+        </div>
+        <Link href="/dashboard" className="text-sm text-link hover:underline">
           Volver al inicio
         </Link>
       </div>
 
       {inactiveUsers.length === 0 ? (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-muted-foreground">
           No hay usuarios pendientes de activación.
         </p>
       ) : (
@@ -42,7 +47,7 @@ export default async function UsersPage() {
               <div className="flex flex-col gap-4">
                 <div>
                   <p className="font-medium text-slate-900">{user.name}</p>
-                  <p className="text-sm text-slate-500">{user.email}</p>
+                  <p className="text-sm text-muted-foreground">{user.email}</p>
                 </div>
                 <ActivateUserForm userId={user.id} specialties={specialties} />
               </div>

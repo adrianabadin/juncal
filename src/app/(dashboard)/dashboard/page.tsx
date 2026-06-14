@@ -2,68 +2,76 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentActor } from "@users/presentation/session";
 import { Role } from "@users/domain/enums/Role";
-import LogoutButton from "@users/presentation/components/LogoutButton";
+import Card from "@shared/presentation/ui/Card";
+
+interface SectionCard {
+  href: string;
+  title: string;
+  description: string;
+}
 
 export default async function DashboardPage() {
   const actor = await getCurrentActor();
   if (!actor) redirect("/login");
 
-  const roleLabel =
-    actor.role === Role.COORDINATOR ? "Coordinador" : "Profesional de base";
+  const isCoordinator = actor.role === Role.COORDINATOR;
+  const roleLabel = isCoordinator ? "Coordinador" : "Profesional de base";
+
+  const sections: SectionCard[] = [
+    {
+      href: "/worklist",
+      title: "Worklist de especialidad",
+      description: "Solicitá una ausencia o postulate a un reemplazo abierto.",
+    },
+    ...(isCoordinator
+      ? [
+          {
+            href: "/coordinator",
+            title: "Worklist general",
+            description:
+              "Resolvé los reemplazos postulados y asigná compulsivos.",
+          },
+          {
+            href: "/specialties",
+            title: "Especialidades",
+            description: "Alta, baja y modificación de especialidades.",
+          },
+          {
+            href: "/users",
+            title: "Validación de cuentas",
+            description: "Activá usuarios nuevos y asigná sus especialidades.",
+          },
+        ]
+      : []),
+  ];
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-start justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900">
-            Bienvenido/a, {actor.name}
-          </h1>
-          <p className="mt-1 text-sm text-slate-500">Rol: {roleLabel}</p>
-        </div>
-        <LogoutButton />
+      <div>
+        <h1 className="text-2xl font-semibold text-brand-800">
+          Hola, {actor.name}
+        </h1>
+        <p className="mt-1 text-sm text-muted-foreground">Rol: {roleLabel}</p>
       </div>
 
-      <nav className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold text-slate-700">Secciones</h2>
-        <ul className="flex flex-col gap-2">
-          <li>
-            <Link
-              href="/worklist"
-              className="block rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-blue-600 shadow-sm hover:bg-slate-50"
-            >
-              Worklist de especialidad — solicitar ausencia y postularse
-            </Link>
-          </li>
-          {actor.role === Role.COORDINATOR && (
-            <>
-              <li>
-                <Link
-                  href="/coordinator"
-                  className="block rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-blue-600 shadow-sm hover:bg-slate-50"
-                >
-                  Worklist general — gestionar reemplazos postulados
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/specialties"
-                  className="block rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-blue-600 shadow-sm hover:bg-slate-50"
-                >
-                  Especialidades — ABM
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/users"
-                  className="block rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-blue-600 shadow-sm hover:bg-slate-50"
-                >
-                  Validación de cuentas — activar usuarios
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {sections.map((section) => (
+          <Link
+            key={section.href}
+            href={section.href}
+            className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+          >
+            <Card className="h-full transition-colors hover:border-brand-300">
+              <h2 className="text-base font-semibold text-brand-700">
+                {section.title}
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {section.description}
+              </p>
+            </Card>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

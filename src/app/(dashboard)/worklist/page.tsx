@@ -29,14 +29,21 @@ export default async function WorklistPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-900">Worklist de Especialidad</h1>
-        <Link href="/dashboard" className="text-sm text-blue-600 hover:underline">
+        <div>
+          <h1 className="text-2xl font-semibold text-brand-800">
+            Worklist de especialidad
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Solicitá una ausencia o postulate a un reemplazo abierto.
+          </p>
+        </div>
+        <Link href="/dashboard" className="text-sm text-link hover:underline">
           Volver al inicio
         </Link>
       </div>
 
       <section>
-        <h2 className="text-lg font-semibold text-slate-700 mb-4">
+        <h2 className="mb-4 text-lg font-semibold text-brand-700">
           Solicitar ausencia
         </h2>
         <Card className="max-w-md">
@@ -45,7 +52,7 @@ export default async function WorklistPage() {
       </section>
 
       <section>
-        <h2 className="text-lg font-semibold text-slate-700 mb-4">
+        <h2 className="mb-4 text-lg font-semibold text-brand-700">
           Turnos abiertos disponibles
         </h2>
         <OpenShiftsList

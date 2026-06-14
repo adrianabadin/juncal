@@ -12,19 +12,19 @@ const stateConfig: Record<
 > = {
   [RequestState.OPEN]: {
     label: "Abierta",
-    className: "bg-blue-100 text-blue-800",
+    className: "bg-brand-100 text-brand-800 ring-1 ring-brand-200",
   },
   [RequestState.POSTULATED]: {
     label: "Postulada",
-    className: "bg-amber-100 text-amber-800",
+    className: "bg-amber-100 text-amber-800 ring-1 ring-amber-200",
   },
   [RequestState.CONFIRMED]: {
     label: "Confirmada",
-    className: "bg-green-100 text-green-800",
+    className: "bg-sage-100 text-sage-800 ring-1 ring-sage-300",
   },
   [RequestState.REJECTED]: {
     label: "Rechazada",
-    className: "bg-red-100 text-red-800",
+    className: "bg-red-100 text-red-800 ring-1 ring-red-200",
   },
 };
 

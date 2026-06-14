@@ -58,7 +58,7 @@ export default function RequestAbsenceForm({
       <div className="flex flex-col gap-1">
         <label
           htmlFor="specialtyId"
-          className="text-sm font-medium text-slate-700"
+          className="text-sm font-medium text-brand-800"
         >
           Especialidad
         </label>
@@ -67,7 +67,7 @@ export default function RequestAbsenceForm({
           aria-invalid={errors.specialtyId ? true : undefined}
           className={[
             "w-full rounded-md border px-3 py-2 text-base text-slate-900 min-h-11 transition-colors",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500",
             errors.specialtyId
               ? "border-red-500"
               : "border-slate-300",

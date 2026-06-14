@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Sanatorio Juncal — Design tokens
+  Paleta derivada de la identidad de marca (sjuncal.com.ar):
+    teal/petróleo  #045572 (header)  ·  #427f94 (títulos)  ·  #0080bb (links)
+    verde salvia   #7f9976
+    crema          #e4e1cd
+  Estilo "Accessible & Ethical": alto contraste, focus visible, 44px touch.
+*/
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Marca — teal / petróleo */
+  --color-brand-50: #eef6f9;
+  --color-brand-100: #d6e9f0;
+  --color-brand-200: #b0d3e0;
+  --color-brand-300: #7fb3c9;
+  --color-brand-400: #4a8da9;
+  --color-brand-500: #16708f;
+  --color-brand-600: #045572;
+  --color-brand-700: #06485f;
+  --color-brand-800: #073a4d;
+  --color-brand-900: #0a2f3e;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Acento — verde salvia */
+  --color-sage-50: #f1f4ef;
+  --color-sage-100: #e0e7da;
+  --color-sage-200: #c6d3bc;
+  --color-sage-300: #a6b899;
+  --color-sage-400: #8ba37b;
+  --color-sage-500: #7f9976;
+  --color-sage-600: #6a8262;
+  --color-sage-700: #55694f;
+  --color-sage-800: #44533f;
+  --color-sage-900: #38452f;
+
+  /* Link / CTA brillante de marca */
+  --color-link: #0080bb;
+
+  /* Crema cálida (fondos sutiles) */
+  --color-cream: #e4e1cd;
+  --color-cream-soft: #f3f1e8;
+
+  /* Superficies y texto */
+  --color-background: #f5f6f4;
+  --color-surface: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted-foreground: #51606b;
+
+  /* Tipografía */
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Respetar reduce-motion globalmente */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

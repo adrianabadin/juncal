@@ -49,7 +49,7 @@ export default function ActivateUserForm({
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
       <input type="hidden" value={userId} {...register("userId")} />
       <fieldset>
-        <legend className="text-sm font-medium text-slate-700 mb-2">
+        <legend className="text-sm font-medium text-brand-800 mb-2">
           Especialidades
         </legend>
         <div className="flex flex-col gap-1">
@@ -59,7 +59,7 @@ export default function ActivateUserForm({
                 type="checkbox"
                 value={s.id}
                 {...register("specialtyIds")}
-                className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
               />
               {s.name}
             </label>

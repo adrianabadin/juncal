@@ -49,7 +49,7 @@ export default function OpenShiftsList({
       <div className="flex items-center gap-3">
         <label
           htmlFor="specialty-filter"
-          className="text-sm font-medium text-slate-700"
+          className="text-sm font-medium text-brand-800"
         >
           Filtrar por especialidad
         </label>
@@ -59,7 +59,7 @@ export default function OpenShiftsList({
           onChange={(e) =>
             dispatch(setSelectedSpecialty(e.target.value || null))
           }
-          className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500"
         >
           <option value="">Todas las especialidades</option>
           {specialties.map((sp) => (

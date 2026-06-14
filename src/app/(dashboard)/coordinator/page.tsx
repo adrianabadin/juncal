@@ -30,18 +30,25 @@ export default async function CoordinatorPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-900">Worklist General</h1>
-        <Link href="/dashboard" className="text-sm text-blue-600 hover:underline">
+        <div>
+          <h1 className="text-2xl font-semibold text-brand-800">
+            Worklist general
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Resolvé los reemplazos postulados y asigná compulsivos.
+          </p>
+        </div>
+        <Link href="/dashboard" className="text-sm text-link hover:underline">
           Volver al inicio
         </Link>
       </div>
 
       <section>
-        <h2 className="text-lg font-semibold text-slate-700 mb-4">
+        <h2 className="mb-4 text-lg font-semibold text-brand-700">
           Reemplazos postulados
         </h2>
         {postulatedShifts.length === 0 ? (
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-muted-foreground">
             No hay reemplazos postulados en este momento.
           </p>
         ) : (
@@ -54,11 +61,11 @@ export default async function CoordinatorPage() {
                       <p className="text-sm font-medium text-slate-900">
                         Fecha: {new Date(shift.date).toLocaleDateString("es-AR")}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-muted-foreground">
                         Solicitante: {shift.requesterName}
                       </p>
                       {shift.applicantId && (
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-muted-foreground">
                           Postulante: {shift.applicantName ?? "—"}
                         </p>
                       )}
@@ -74,7 +81,7 @@ export default async function CoordinatorPage() {
       </section>
 
       <section>
-        <h2 className="text-lg font-semibold text-slate-700 mb-4">
+        <h2 className="mb-4 text-lg font-semibold text-brand-700">
           Asignar reemplazo compulsivo
         </h2>
         <Card className="max-w-lg">
