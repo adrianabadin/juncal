@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentActor } from "@users/presentation/session";
 import { Role } from "@users/domain/enums/Role";
-import { listPostulatedAction } from "@shift-replacements/presentation/actions/shiftActions";
+import { listPostulatedAction, PostulatedShiftDto } from "@shift-replacements/presentation/actions/shiftActions";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
 import ResolveActions from "@shift-replacements/presentation/components/ResolveActions";
 import AssignCompulsoryForm from "@shift-replacements/presentation/components/AssignCompulsoryForm";
@@ -20,7 +20,7 @@ export default async function CoordinatorPage() {
     listSpecialtiesAction(),
   ]);
 
-  const postulatedShifts = postulatedResult.ok
+  const postulatedShifts: PostulatedShiftDto[] = postulatedResult.ok
     ? (postulatedResult.data ?? [])
     : [];
   const specialties = specialtiesResult.ok
@@ -55,11 +55,11 @@ export default async function CoordinatorPage() {
                         Fecha: {new Date(shift.date).toLocaleDateString("es-AR")}
                       </p>
                       <p className="text-xs text-slate-500">
-                        Solicitante: {shift.requesterId}
+                        Solicitante: {shift.requesterName}
                       </p>
                       {shift.applicantId && (
                         <p className="text-xs text-slate-500">
-                          Postulante: {shift.applicantId}
+                          Postulante: {shift.applicantName ?? "—"}
                         </p>
                       )}
                     </div>

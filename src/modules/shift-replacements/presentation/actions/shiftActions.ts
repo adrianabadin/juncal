@@ -16,6 +16,7 @@ import { AssignCompulsoryReplacement } from "@shift-replacements/application/use
 import { PrismaShiftReplacementRepository } from "@shift-replacements/infrastructure/persistence/PrismaShiftReplacementRepository";
 import { prismaHasSpecialty } from "@users/infrastructure/persistence/prismaHasSpecialty";
 import { getCurrentActor } from "@users/presentation/session";
+import { prisma } from "@shared/infrastructure/prisma/client";
 
 export interface ShiftDto {
   id: string;
@@ -24,6 +25,11 @@ export interface ShiftDto {
   specialtyId: string;
   requesterId: string;
   applicantId: string | null;
+}
+
+export interface PostulatedShiftDto extends ShiftDto {
+  requesterName: string;
+  applicantName: string | null;
 }
 
 function mapShiftToDto(s: { id: string; date: Date; state: string; specialtyId: string; requesterId: string; applicantId: string | null }): ShiftDto {
@@ -148,7 +154,7 @@ export async function listOpenBySpecialtyAction(specialtyId: string): Promise<Ac
   return { ok: true, data: shifts.map(mapShiftToDto) };
 }
 
-export async function listPostulatedAction(): Promise<ActionResult<ShiftDto[]>> {
+export async function listPostulatedAction(): Promise<ActionResult<PostulatedShiftDto[]>> {
   const actor = await getCurrentActor();
   if (!actor) return { ok: false, error: "No autenticado" };
   if (actor.role !== Role.COORDINATOR) return { ok: false, error: "No autorizado" };
@@ -156,5 +162,30 @@ export async function listPostulatedAction(): Promise<ActionResult<ShiftDto[]>> 
   const repo = new PrismaShiftReplacementRepository();
   const shifts = await repo.listByState(RequestState.POSTULATED);
 
-  return { ok: true, data: shifts.map(mapShiftToDto) };
+  // Batch-fetch all relevant user names in a single query
+  const userIds = [
+    ...new Set([
+      ...shifts.map((s) => s.requesterId),
+      ...shifts.flatMap((s) => (s.applicantId ? [s.applicantId] : [])),
+    ]),
+  ];
+
+  const users =
+    userIds.length > 0
+      ? await prisma.user.findMany({
+          where: { id: { in: userIds } },
+          select: { id: true, name: true },
+        })
+      : [];
+
+  const nameById = new Map(users.map((u) => [u.id, u.name]));
+
+  return {
+    ok: true,
+    data: shifts.map((s) => ({
+      ...mapShiftToDto(s),
+      requesterName: nameById.get(s.requesterId) ?? s.requesterId,
+      applicantName: s.applicantId ? (nameById.get(s.applicantId) ?? s.applicantId) : null,
+    })),
+  };
 }
