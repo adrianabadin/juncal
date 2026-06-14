@@ -4,10 +4,8 @@ import { getCurrentActor } from "@users/presentation/session";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
 import { listOpenBySpecialtyAction } from "@shift-replacements/presentation/actions/shiftActions";
 import RequestAbsenceForm from "@shift-replacements/presentation/components/RequestAbsenceForm";
-import PostulateButton from "@shift-replacements/presentation/components/PostulateButton";
+import OpenShiftsList from "@shift-replacements/presentation/components/OpenShiftsList";
 import Card from "@shared/presentation/ui/Card";
-import Badge from "@shared/presentation/ui/Badge";
-import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 
 export default async function WorklistPage() {
   const actor = await getCurrentActor();
@@ -50,32 +48,11 @@ export default async function WorklistPage() {
         <h2 className="text-lg font-semibold text-slate-700 mb-4">
           Turnos abiertos disponibles
         </h2>
-        {allOpenShifts.length === 0 ? (
-          <p className="text-sm text-slate-500">
-            No hay turnos abiertos disponibles en este momento.
-          </p>
-        ) : (
-          <div className="grid gap-4 sm:grid-cols-2">
-            {allOpenShifts.map((shift) => (
-              <Card key={shift.id}>
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <p className="text-sm font-medium text-slate-900">
-                        {new Date(shift.date).toLocaleDateString("es-AR")}
-                      </p>
-                      <p className="text-xs text-slate-500">{shift.specialtyName}</p>
-                    </div>
-                    <Badge state={shift.state as RequestState} />
-                  </div>
-                  {shift.requesterId !== actor.userId && (
-                    <PostulateButton shiftId={shift.id} />
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
+        <OpenShiftsList
+          initialShifts={allOpenShifts}
+          specialties={specialties}
+          currentUserId={actor.userId}
+        />
       </section>
     </div>
   );
