@@ -13,6 +13,12 @@ export interface InactiveUserDto {
   name: string;
 }
 
+export interface UserOptionDto {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export async function activateUserAction(input: unknown): Promise<ActionResult> {
   const actor = await getCurrentActor();
   if (!actor) return { ok: false, error: "No autenticado" };
@@ -48,6 +54,28 @@ export async function listInactiveUsersAction(): Promise<ActionResult<InactiveUs
     id: u.id,
     email: u.email,
     name: u.name,
+  }));
+
+  return { ok: true, data };
+}
+
+export async function listUsersBySpecialtyAction(
+  specialtyId: unknown,
+): Promise<ActionResult<UserOptionDto[]>> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+  if (actor.role !== Role.COORDINATOR)
+    return { ok: false, error: "Acceso denegado" };
+  if (typeof specialtyId !== "string" || specialtyId.length === 0)
+    return { ok: false, error: "Especialidad inválida" };
+
+  const repo = new PrismaUserRepository();
+  const users = await repo.listActiveBySpecialty(specialtyId);
+
+  const data: UserOptionDto[] = users.map((u) => ({
+    id: u.id,
+    name: u.name,
+    email: u.email,
   }));
 
   return { ok: true, data };

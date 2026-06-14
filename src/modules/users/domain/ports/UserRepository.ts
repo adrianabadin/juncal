@@ -14,4 +14,5 @@ export interface UserRepository {
   create(data: CreateUserData): Promise<User>;
   activateWithSpecialties(userId: string, specialtyIds: string[]): Promise<User>;
   listInactive(): Promise<User[]>;
+  listActiveBySpecialty(specialtyId: string): Promise<User[]>;
 }

@@ -4,6 +4,7 @@ import { CreateUserData, UserRepository } from "@users/domain/ports/UserReposito
 
 export class InMemoryUserRepository implements UserRepository {
   private users: User[] = [];
+  private specialtiesByUser = new Map<string, string[]>();
   private seq = 0;
 
   async findById(id: string): Promise<User | null> {
@@ -20,13 +21,21 @@ export class InMemoryUserRepository implements UserRepository {
     this.users.push(user);
     return user;
   }
-  async activateWithSpecialties(userId: string, _specialtyIds: string[]): Promise<User> {
+  async activateWithSpecialties(userId: string, specialtyIds: string[]): Promise<User> {
     const u = await this.findById(userId);
     if (!u) throw new Error("not found");
     u.activate();
+    this.specialtiesByUser.set(userId, [...specialtyIds]);
     return u;
   }
   async listInactive(): Promise<User[]> {
     return this.users.filter((u) => !u.isActive);
+  }
+  async listActiveBySpecialty(specialtyId: string): Promise<User[]> {
+    return this.users.filter(
+      (u) =>
+        u.isActive &&
+        (this.specialtiesByUser.get(u.id)?.includes(specialtyId) ?? false),
+    );
   }
 }

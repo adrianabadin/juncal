@@ -50,4 +50,15 @@ export class PrismaUserRepository implements UserRepository {
     const rows = await prisma.user.findMany({ where: { isActive: false } });
     return rows.map(UserMapper.toDomain);
   }
+
+  async listActiveBySpecialty(specialtyId: string): Promise<User[]> {
+    const rows = await prisma.user.findMany({
+      where: {
+        isActive: true,
+        specialties: { some: { specialtyId } },
+      },
+      orderBy: { name: "asc" },
+    });
+    return rows.map(UserMapper.toDomain);
+  }
 }

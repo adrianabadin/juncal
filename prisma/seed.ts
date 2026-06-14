@@ -38,6 +38,41 @@ async function main(): Promise<void> {
     });
   }
   console.log(`✓ Especialidades base aseguradas: ${specialties.join(", ")}`);
+
+  // Profesionales demo (activos, con especialidades asignadas) para poder probar
+  // postulaciones y reemplazos compulsivos sin tener que dar de alta a mano.
+  const demoDoctors: { email: string; name: string; specialties: string[] }[] = [
+    { email: "ana.perez@juncal.local", name: "Dra. Ana Pérez", specialties: ["Pediatría", "Clínica Médica"] },
+    { email: "luis.gomez@juncal.local", name: "Dr. Luis Gómez", specialties: ["Pediatría"] },
+    { email: "marta.ruiz@juncal.local", name: "Dra. Marta Ruiz", specialties: ["Emergentología"] },
+    { email: "juan.diaz@juncal.local", name: "Dr. Juan Díaz", specialties: ["Emergentología", "Cirugía"] },
+  ];
+
+  const demoPasswordHash = await argon2.hash("profesional123");
+  for (const doc of demoDoctors) {
+    const user = await prisma.user.upsert({
+      where: { email: doc.email },
+      update: { isActive: true },
+      create: {
+        email: doc.email,
+        password: demoPasswordHash,
+        name: doc.name,
+        isActive: true,
+        role: Role.BASE_PROFESSIONAL,
+      },
+    });
+
+    for (const specialtyName of doc.specialties) {
+      const specialty = await prisma.specialty.findUnique({ where: { name: specialtyName } });
+      if (!specialty) continue;
+      await prisma.userSpecialty.upsert({
+        where: { userId_specialtyId: { userId: user.id, specialtyId: specialty.id } },
+        update: {},
+        create: { userId: user.id, specialtyId: specialty.id },
+      });
+    }
+  }
+  console.log(`✓ ${demoDoctors.length} profesionales demo asegurados (clave: profesional123)`);
 }
 
 main()
