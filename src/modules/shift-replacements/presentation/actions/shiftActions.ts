@@ -7,12 +7,14 @@ import {
   resolveRequestSchema,
   assignCompulsoryCoverageSchema,
   removeCoverageSchema,
+  createCompulsorySchema,
 } from "@shift-replacements/domain/schemas/shift-replacement.schema";
 import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 import { Role } from "@users/domain/enums/Role";
 import { RequestAbsence } from "@shift-replacements/application/use-cases/RequestAbsence";
 import { PostulateForReplacement } from "@shift-replacements/application/use-cases/PostulateForReplacement";
 import { ResolveRequest } from "@shift-replacements/application/use-cases/ResolveRequest";
+import { CreateCompulsoryReplacement } from "@shift-replacements/application/use-cases/CreateCompulsoryReplacement";
 import { AssignCompulsoryCoverage } from "@shift-replacements/application/use-cases/AssignCompulsoryCoverage";
 import { RemoveCoverage } from "@shift-replacements/application/use-cases/RemoveCoverage";
 import { PrismaShiftReplacementRepository } from "@shift-replacements/infrastructure/persistence/PrismaShiftReplacementRepository";
@@ -315,4 +317,40 @@ export async function listPostulatedAction(): Promise<
   }
 
   return { ok: true, data: shiftsNeedingResolution };
+}
+
+export async function createCompulsoryAction(
+  input: unknown,
+): Promise<ActionResult<ShiftDto>> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+
+  const parsed = createCompulsorySchema.safeParse(input);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      error: parsed.error.issues[0]?.message ?? "Datos inválidos",
+    };
+  }
+
+  const repo = new PrismaShiftReplacementRepository();
+  const uc = new CreateCompulsoryReplacement(repo);
+  const result = await uc.execute({
+    actorIsCoordinator: actor.role === Role.COORDINATOR,
+    coordinatorId: actor.userId,
+    specialtyId: parsed.data.specialtyId,
+    moduleHours: parsed.data.moduleHours,
+    requesterStart: parsed.data.requesterStart,
+    requesterEnd: parsed.data.requesterEnd,
+    requesterId: parsed.data.requesterId,
+    applicantId: parsed.data.applicantId,
+    coverageStart: parsed.data.coverageStart,
+    coverageEnd: parsed.data.coverageEnd,
+  });
+
+  if (!result.isOk) {
+    return { ok: false, error: result.error.message };
+  }
+
+  return { ok: true, data: mapShiftToDto(result.value) };
 }

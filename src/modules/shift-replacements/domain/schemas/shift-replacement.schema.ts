@@ -59,3 +59,24 @@ export const removeCoverageSchema = z.object({
   coverageId: z.string().min(1),
 });
 export type RemoveCoverageInput = z.infer<typeof removeCoverageSchema>;
+
+export const createCompulsorySchema = z
+  .object({
+    specialtyId: z.string().min(1),
+    moduleHours,
+    requesterStart: z.coerce.date(),
+    requesterEnd: z.coerce.date(),
+    requesterId: z.string().min(1),
+    applicantId: z.string().min(1),
+    coverageStart: z.coerce.date(),
+    coverageEnd: z.coerce.date(),
+  })
+  .refine((d) => d.requesterEnd > d.requesterStart, {
+    message: "La salida del turno debe ser posterior a la entrada",
+    path: ["requesterEnd"],
+  })
+  .refine((d) => d.coverageEnd > d.coverageStart, {
+    message: "La salida de la cobertura debe ser posterior a la entrada",
+    path: ["coverageEnd"],
+  });
+export type CreateCompulsoryInput = z.infer<typeof createCompulsorySchema>;
