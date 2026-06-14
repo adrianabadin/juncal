@@ -24,6 +24,7 @@ export class User {
   get passwordHash(): string { return this.props.passwordHash; }
 
   activate(): void { this.props.isActive = true; }
+  changeRole(role: Role): void { this.props.role = role; }
   isCoordinator(): boolean { return this.props.role === Role.COORDINATOR; }
   canParticipate(): boolean { return this.props.isActive; }
 }

@@ -18,3 +18,9 @@ export const activateUserSchema = z.object({
   specialtyIds: z.array(z.string().min(1)).min(1, "Asigná al menos una especialidad"),
 });
 export type ActivateUserInput = z.infer<typeof activateUserSchema>;
+
+export const changeUserRoleSchema = z.object({
+  userId: z.string().min(1),
+  role: z.enum(["BASE_PROFESSIONAL", "COORDINATOR"]),
+});
+export type ChangeUserRoleInput = z.infer<typeof changeUserRoleSchema>;

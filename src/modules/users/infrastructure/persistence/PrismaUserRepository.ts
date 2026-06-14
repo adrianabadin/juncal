@@ -1,5 +1,6 @@
 import { prisma } from "@shared/infrastructure/prisma/client";
 import { User } from "@users/domain/entities/User";
+import { Role } from "@users/domain/enums/Role";
 import { CreateUserData, UserRepository } from "@users/domain/ports/UserRepository";
 import { UserMapper } from "@users/infrastructure/mappers/UserMapper";
 
@@ -49,6 +50,22 @@ export class PrismaUserRepository implements UserRepository {
   async listInactive(): Promise<User[]> {
     const rows = await prisma.user.findMany({ where: { isActive: false } });
     return rows.map(UserMapper.toDomain);
+  }
+
+  async listActive(): Promise<User[]> {
+    const rows = await prisma.user.findMany({
+      where: { isActive: true },
+      orderBy: { name: "asc" },
+    });
+    return rows.map(UserMapper.toDomain);
+  }
+
+  async setRole(userId: string, role: Role): Promise<User> {
+    const row = await prisma.user.update({
+      where: { id: userId },
+      data: { role },
+    });
+    return UserMapper.toDomain(row);
   }
 
   async listActiveBySpecialty(specialtyId: string): Promise<User[]> {

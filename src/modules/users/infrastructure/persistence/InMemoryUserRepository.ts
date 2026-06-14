@@ -31,11 +31,20 @@ export class InMemoryUserRepository implements UserRepository {
   async listInactive(): Promise<User[]> {
     return this.users.filter((u) => !u.isActive);
   }
+  async listActive(): Promise<User[]> {
+    return this.users.filter((u) => u.isActive);
+  }
   async listActiveBySpecialty(specialtyId: string): Promise<User[]> {
     return this.users.filter(
       (u) =>
         u.isActive &&
         (this.specialtiesByUser.get(u.id)?.includes(specialtyId) ?? false),
     );
+  }
+  async setRole(userId: string, role: Role): Promise<User> {
+    const u = await this.findById(userId);
+    if (!u) throw new Error("not found");
+    u.changeRole(role);
+    return u;
   }
 }
