@@ -78,4 +78,23 @@ export class PrismaUserRepository implements UserRepository {
     });
     return rows.map(UserMapper.toDomain);
   }
+
+  async updateSpecialties(userId: string, specialtyIds: string[]): Promise<void> {
+    await prisma.$transaction(async (tx) => {
+      await tx.userSpecialty.deleteMany({ where: { userId } });
+      if (specialtyIds.length > 0) {
+        await tx.userSpecialty.createMany({
+          data: specialtyIds.map((specialtyId) => ({ userId, specialtyId })),
+        });
+      }
+    });
+  }
+
+  async getUserSpecialtyIds(userId: string): Promise<string[]> {
+    const rows = await prisma.userSpecialty.findMany({
+      where: { userId },
+      select: { specialtyId: true },
+    });
+    return rows.map((r) => r.specialtyId);
+  }
 }

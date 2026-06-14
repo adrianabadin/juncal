@@ -8,6 +8,7 @@ import {
 } from "@users/presentation/actions/userAdminActions";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
 import ActivateUserForm from "@users/presentation/components/ActivateUserForm";
+import EditSpecialtiesForm from "@users/presentation/components/EditSpecialtiesForm";
 import RoleManager from "@users/presentation/components/RoleManager";
 import Card from "@shared/presentation/ui/Card";
 
@@ -34,7 +35,7 @@ export default async function UsersPage() {
             Validación de cuentas
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Activá usuarios nuevos y asigná sus especialidades.
+            Activá usuarios nuevos, asigná especialidades y gestioná roles.
           </p>
         </div>
         <Link href="/dashboard" className="text-sm text-link hover:underline">
@@ -63,6 +64,40 @@ export default async function UsersPage() {
                   </div>
                   <ActivateUserForm
                     userId={user.id}
+                    specialties={specialties}
+                  />
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <h2 className="mb-1 text-lg font-semibold text-brand-700">
+          Profesionales activos
+        </h2>
+        <p className="mb-4 text-sm text-muted-foreground">
+          Editá las especialidades asignadas a cada profesional.
+        </p>
+        {activeUsers.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            No hay profesionales activos.
+          </p>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {activeUsers.map((user) => (
+              <Card key={user.id}>
+                <div className="flex flex-col gap-3">
+                  <div>
+                    <p className="font-medium text-slate-900">{user.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {user.email}
+                    </p>
+                  </div>
+                  <EditSpecialtiesForm
+                    userId={user.id}
+                    userName={user.name}
                     specialties={specialties}
                   />
                 </div>

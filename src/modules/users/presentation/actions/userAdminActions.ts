@@ -4,10 +4,12 @@ import { ActionResult } from "@shared/presentation/ActionResult";
 import {
   activateUserSchema,
   changeUserRoleSchema,
+  updateSpecialtiesSchema,
 } from "@users/domain/schemas/user.schema";
 import { Role } from "@users/domain/enums/Role";
 import { ActivateUserWithSpecialties } from "@users/application/use-cases/ActivateUserWithSpecialties";
 import { ChangeUserRole } from "@users/application/use-cases/ChangeUserRole";
+import { UpdateUserSpecialties } from "@users/application/use-cases/UpdateUserSpecialties";
 import { PrismaUserRepository } from "@users/infrastructure/persistence/PrismaUserRepository";
 import { getCurrentActor } from "@users/presentation/session";
 
@@ -145,4 +147,47 @@ export async function listUsersBySpecialtyAction(
   }));
 
   return { ok: true, data };
+}
+
+export async function updateUserSpecialtiesAction(
+  input: unknown,
+): Promise<ActionResult<void>> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+
+  const parsed = updateSpecialtiesSchema.safeParse(input);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      error: parsed.error.issues[0]?.message ?? "Datos inválidos",
+    };
+  }
+
+  const repo = new PrismaUserRepository();
+  const uc = new UpdateUserSpecialties(repo);
+  const result = await uc.execute({
+    actorIsCoordinator: actor.role === Role.COORDINATOR,
+    userId: parsed.data.userId,
+    specialtyIds: parsed.data.specialtyIds,
+  });
+
+  if (!result.isOk) {
+    return { ok: false, error: result.error.message };
+  }
+  return { ok: true };
+}
+
+export async function getUserSpecialtyIdsAction(
+  userId: unknown,
+): Promise<ActionResult<string[]>> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+  if (actor.role !== Role.COORDINATOR)
+    return { ok: false, error: "Acceso denegado" };
+  if (typeof userId !== "string" || userId.length === 0)
+    return { ok: false, error: "Usuario inválido" };
+
+  const repo = new PrismaUserRepository();
+  const ids = await repo.getUserSpecialtyIds(userId);
+  return { ok: true, data: ids };
 }

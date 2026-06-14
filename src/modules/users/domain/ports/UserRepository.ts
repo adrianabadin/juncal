@@ -17,4 +17,6 @@ export interface UserRepository {
   listActive(): Promise<User[]>;
   listActiveBySpecialty(specialtyId: string): Promise<User[]>;
   setRole(userId: string, role: Role): Promise<User>;
+  updateSpecialties(userId: string, specialtyIds: string[]): Promise<void>;
+  getUserSpecialtyIds(userId: string): Promise<string[]>;
 }

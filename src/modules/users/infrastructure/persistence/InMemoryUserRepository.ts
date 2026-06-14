@@ -47,4 +47,10 @@ export class InMemoryUserRepository implements UserRepository {
     u.changeRole(role);
     return u;
   }
+  async updateSpecialties(userId: string, specialtyIds: string[]): Promise<void> {
+    this.specialtiesByUser.set(userId, [...specialtyIds]);
+  }
+  async getUserSpecialtyIds(userId: string): Promise<string[]> {
+    return this.specialtiesByUser.get(userId) ?? [];
+  }
 }

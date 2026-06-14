@@ -24,3 +24,9 @@ export const changeUserRoleSchema = z.object({
   role: z.enum(["BASE_PROFESSIONAL", "COORDINATOR"]),
 });
 export type ChangeUserRoleInput = z.infer<typeof changeUserRoleSchema>;
+
+export const updateSpecialtiesSchema = z.object({
+  userId: z.string().min(1),
+  specialtyIds: z.array(z.string().min(1)),
+});
+export type UpdateSpecialtiesInput = z.infer<typeof updateSpecialtiesSchema>;
