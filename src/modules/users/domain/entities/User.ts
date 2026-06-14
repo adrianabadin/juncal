@@ -18,6 +18,7 @@ export class User {
 
   get id(): string { return this.props.id; }
   get email(): string { return this.props.email; }
+  get name(): string { return this.props.name; }
   get role(): Role { return this.props.role; }
   get isActive(): boolean { return this.props.isActive; }
   get passwordHash(): string { return this.props.passwordHash; }
