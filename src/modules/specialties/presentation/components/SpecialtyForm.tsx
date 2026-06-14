@@ -6,15 +6,22 @@ import {
   createSpecialtySchema,
   CreateSpecialtyInput,
 } from "@specialties/domain/schemas/specialty.schema";
-import { createSpecialtyAction } from "@specialties/presentation/actions/specialtyActions";
+import {
+  createSpecialtyAction,
+  SpecialtyDto,
+} from "@specialties/presentation/actions/specialtyActions";
+import { ActionResult } from "@shared/presentation/ActionResult";
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";
 
 interface SpecialtyFormProps {
-  onCreated?: () => void;
+  // Permite inyectar un handler optimista; por defecto llama a la server action.
+  onSubmitCreate?: (
+    data: CreateSpecialtyInput,
+  ) => Promise<ActionResult<SpecialtyDto>>;
 }
 
-export default function SpecialtyForm({ onCreated }: SpecialtyFormProps) {
+export default function SpecialtyForm({ onSubmitCreate }: SpecialtyFormProps) {
   const {
     register,
     handleSubmit,
@@ -26,13 +33,13 @@ export default function SpecialtyForm({ onCreated }: SpecialtyFormProps) {
   });
 
   async function onSubmit(data: CreateSpecialtyInput) {
-    const result = await createSpecialtyAction(data);
+    const submit = onSubmitCreate ?? createSpecialtyAction;
+    const result = await submit(data);
     if (!result.ok) {
       setError("root", { message: result.error });
       return;
     }
     reset();
-    onCreated?.();
   }
 
   return (

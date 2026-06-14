@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -11,6 +10,7 @@ import {
 import {
   updateSpecialtyAction,
   deleteSpecialtyAction,
+  SpecialtyDto,
 } from "@specialties/presentation/actions/specialtyActions";
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";
@@ -19,14 +19,17 @@ interface SpecialtyActionsProps {
   id: string;
   name: string;
   description: string | null;
+  onUpdated: (dto: SpecialtyDto) => void;
+  onDeleted: (id: string) => void;
 }
 
 export default function SpecialtyActions({
   id,
   name,
   description,
+  onUpdated,
+  onDeleted,
 }: SpecialtyActionsProps) {
-  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -48,7 +51,7 @@ export default function SpecialtyActions({
       return;
     }
     setIsEditing(false);
-    router.refresh();
+    if (result.data) onUpdated(result.data);
   }
 
   async function handleDelete() {
@@ -60,7 +63,7 @@ export default function SpecialtyActions({
       setDeleteError(result.error);
       return;
     }
-    router.refresh();
+    onDeleted(id);
   }
 
   if (isEditing) {
