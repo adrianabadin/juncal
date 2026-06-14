@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 
 export interface ShiftDto {
   id: string;
   date: string;
-  state: string;
+  state: RequestState;
   specialtyId: string;
   requesterId: string;
   applicantId: string | null;
