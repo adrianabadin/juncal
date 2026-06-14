@@ -8,56 +8,47 @@ interface ShiftProps {
   state: RequestState;
   requesterId: string;
   specialtyId: string;
-  applicantId: string | null;
+  moduleHours: number;
+  requesterStart: Date;
+  requesterEnd: Date;
   resolvedById: string | null;
 }
 
 type Transition = Result<void, DomainError>;
 
+// Aggregate raíz: la SOLICITUD de reemplazo (la guardia a cubrir).
+// La cobertura concreta vive en ShiftCoverage (una guardia puede tener varias).
+// El coordinador confirma o rechaza la solicitud completa; puede confirmar aun
+// cuando queden huecos sin cubrir.
 export class ShiftReplacement {
   private constructor(private props: ShiftProps) {}
 
   static fromPersistence(props: ShiftProps): ShiftReplacement {
-    return new ShiftReplacement(props);
+    return new ShiftReplacement({ ...props });
   }
 
   get id(): string { return this.props.id; }
   get state(): RequestState { return this.props.state; }
-  get applicantId(): string | null { return this.props.applicantId; }
   get resolvedById(): string | null { return this.props.resolvedById; }
   get requesterId(): string { return this.props.requesterId; }
   get specialtyId(): string { return this.props.specialtyId; }
   get date(): Date { return this.props.date; }
+  get moduleHours(): number { return this.props.moduleHours; }
+  get requesterStart(): Date { return this.props.requesterStart; }
+  get requesterEnd(): Date { return this.props.requesterEnd; }
 
-  postulate(applicantId: string): Transition {
-    if (this.props.state !== RequestState.OPEN)
-      return err(new DomainError("INVALID_TRANSITION", "Solo se postula sobre una solicitud OPEN"));
-    if (applicantId === this.props.requesterId)
-      return err(new DomainError("SELF_POSTULATION", "No podés postularte a tu propia solicitud"));
-    this.props.applicantId = applicantId;
-    this.props.state = RequestState.POSTULATED;
-    return ok(undefined);
-  }
-
-  rejectPostulation(coordinatorId: string): Transition {
-    if (this.props.state !== RequestState.POSTULATED)
-      return err(new DomainError("INVALID_TRANSITION", "No hay postulación para rechazar"));
-    this.props.applicantId = null;
-    this.props.resolvedById = coordinatorId;
-    this.props.state = RequestState.OPEN;
-    return ok(undefined);
-  }
+  get isOpen(): boolean { return this.props.state === RequestState.OPEN; }
 
   confirm(coordinatorId: string): Transition {
-    if (this.props.state !== RequestState.POSTULATED)
-      return err(new DomainError("INVALID_TRANSITION", "Solo se confirma una solicitud POSTULATED"));
+    if (this.props.state !== RequestState.OPEN)
+      return err(new DomainError("INVALID_TRANSITION", "Solo se confirma una solicitud abierta"));
     this.props.resolvedById = coordinatorId;
     this.props.state = RequestState.CONFIRMED;
     return ok(undefined);
   }
 
   rejectRequest(coordinatorId: string): Transition {
-    if (this.props.state === RequestState.CONFIRMED || this.props.state === RequestState.REJECTED)
+    if (this.props.state !== RequestState.OPEN)
       return err(new DomainError("INVALID_TRANSITION", "La solicitud ya está cerrada"));
     this.props.resolvedById = coordinatorId;
     this.props.state = RequestState.REJECTED;

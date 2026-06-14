@@ -23,6 +23,17 @@ interface OpenShiftsListProps {
   currentUserId: string;
 }
 
+function formatTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString("es-AR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("es-AR");
+}
+
 export default function OpenShiftsList({
   initialShifts,
   specialties,
@@ -39,7 +50,6 @@ export default function OpenShiftsList({
     ? openShifts.filter((s) => s.specialtyId === selectedSpecialtyId)
     : openShifts;
 
-  // Build a name lookup from the props (initialShifts carries specialtyName per shift)
   const specialtyNameById = new Map<string, string>(
     initialShifts.map((s) => [s.specialtyId, s.specialtyName])
   );
@@ -80,18 +90,25 @@ export default function OpenShiftsList({
             <Card key={shift.id}>
               <div className="flex flex-col gap-3">
                 <div className="flex items-start justify-between gap-2">
-                  <div>
+                  <div className="flex flex-col gap-1">
                     <p className="text-sm font-medium text-slate-900">
-                      {new Date(shift.date).toLocaleDateString("es-AR")}
+                      {formatDate(shift.requesterStart)}
                     </p>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-muted-foreground">
                       {specialtyNameById.get(shift.specialtyId) ?? shift.specialtyId}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {formatTime(shift.requesterStart)} – {formatTime(shift.requesterEnd)} ({shift.moduleHours}h)
                     </p>
                   </div>
                   <Badge state={shift.state} />
                 </div>
                 {shift.requesterId !== currentUserId && (
-                  <PostulateButton shiftId={shift.id} />
+                  <PostulateButton
+                    shiftId={shift.id}
+                    shiftStart={shift.requesterStart}
+                    shiftEnd={shift.requesterEnd}
+                  />
                 )}
               </div>
             </Card>

@@ -7,7 +7,9 @@ export interface ShiftDto {
   state: RequestState;
   specialtyId: string;
   requesterId: string;
-  applicantId: string | null;
+  moduleHours: number;
+  requesterStart: string;
+  requesterEnd: string;
 }
 
 interface WorklistState {

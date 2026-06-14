@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { assignCompulsorySchema } from "@shift-replacements/domain/schemas/shift-replacement.schema";
-import { assignCompulsoryAction } from "@shift-replacements/presentation/actions/shiftActions";
+import { assignCompulsoryCoverageSchema } from "@shift-replacements/domain/schemas/shift-replacement.schema";
+import { assignCompulsoryCoverageAction } from "@shift-replacements/presentation/actions/shiftActions";
 import {
   listUsersBySpecialtyAction,
   UserOptionDto,
@@ -14,9 +14,11 @@ import {
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";
 
-// El form usa string para la fecha; la server action coacciona con z.coerce.date()
-const formSchema = assignCompulsorySchema.extend({
-  date: z.string().min(1, "Requerido"),
+const formSchema = z.object({
+  shiftId: z.string().min(1, "Requerido"),
+  applicantId: z.string().min(1, "Requerido"),
+  start: z.string().min(1, "Requerido"),
+  end: z.string().min(1, "Requerido"),
 });
 type FormInput = z.infer<typeof formSchema>;
 
@@ -25,8 +27,17 @@ interface SpecialtyOption {
   name: string;
 }
 
+interface ShiftOption {
+  id: string;
+  date: string;
+  specialtyId: string;
+  requesterStart: string;
+  requesterEnd: string;
+}
+
 interface AssignCompulsoryFormProps {
   specialties: SpecialtyOption[];
+  openShifts: ShiftOption[];
 }
 
 const selectClass = (hasError: boolean): string =>
@@ -39,6 +50,7 @@ const selectClass = (hasError: boolean): string =>
 
 export default function AssignCompulsoryForm({
   specialties,
+  openShifts,
 }: AssignCompulsoryFormProps) {
   const router = useRouter();
   const [doctors, setDoctors] = useState<UserOptionDto[]>([]);
@@ -53,25 +65,30 @@ export default function AssignCompulsoryForm({
     formState: { errors, isSubmitting },
   } = useForm<FormInput>({
     resolver: zodResolver(formSchema),
-    defaultValues: { specialtyId: "", requesterId: "", applicantId: "" },
+    defaultValues: { shiftId: "", applicantId: "", start: "", end: "" },
   });
 
-  const specialtyId = watch("specialtyId");
-  const requesterId = watch("requesterId");
+  const shiftId = watch("shiftId");
+  const selectedShift = openShifts.find((s) => s.id === shiftId);
 
-  // Al cambiar la especialidad, recargar los médicos y limpiar la selección.
+  // When a shift is selected, load doctors for its specialty and set default times
   useEffect(() => {
     let active = true;
-    setValue("requesterId", "");
     setValue("applicantId", "");
 
-    if (!specialtyId) {
+    if (!selectedShift) {
       setDoctors([]);
+      setValue("start", "");
+      setValue("end", "");
       return;
     }
 
+    // Set default start/end from the shift window
+    setValue("start", selectedShift.requesterStart.slice(0, 16));
+    setValue("end", selectedShift.requesterEnd.slice(0, 16));
+
     setLoadingDoctors(true);
-    listUsersBySpecialtyAction(specialtyId).then((res) => {
+    listUsersBySpecialtyAction(selectedShift.specialtyId).then((res) => {
       if (!active) return;
       setDoctors(res.ok ? (res.data ?? []) : []);
       setLoadingDoctors(false);
@@ -80,17 +97,10 @@ export default function AssignCompulsoryForm({
     return () => {
       active = false;
     };
-  }, [specialtyId, setValue]);
-
-  // El reemplazante no puede ser el mismo que el solicitante.
-  useEffect(() => {
-    if (requesterId && watch("applicantId") === requesterId) {
-      setValue("applicantId", "");
-    }
-  }, [requesterId, setValue, watch]);
+  }, [selectedShift, setValue]);
 
   async function onSubmit(data: FormInput) {
-    const result = await assignCompulsoryAction(data);
+    const result = await assignCompulsoryCoverageAction(data);
     if (!result.ok) {
       setError("root", { message: result.error });
       return;
@@ -98,43 +108,35 @@ export default function AssignCompulsoryForm({
     router.refresh();
   }
 
-  const applicantOptions = doctors.filter((d) => d.id !== requesterId);
-  const specialtyChosen = Boolean(specialtyId);
-  const noDoctors = specialtyChosen && !loadingDoctors && doctors.length === 0;
+  const hasShift = Boolean(selectedShift);
+  const noDoctors = hasShift && !loadingDoctors && doctors.length === 0;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      <Input
-        id="date"
-        label="Fecha"
-        type="date"
-        error={errors.date?.message}
-        {...register("date")}
-      />
-
       <div className="flex flex-col gap-1">
         <label
-          htmlFor="specialtyId"
+          htmlFor="shiftId"
           className="text-sm font-medium text-brand-800"
         >
-          Especialidad
+          Solicitud abierta
         </label>
         <select
-          id="specialtyId"
-          aria-invalid={errors.specialtyId ? true : undefined}
-          className={selectClass(Boolean(errors.specialtyId))}
-          {...register("specialtyId")}
+          id="shiftId"
+          aria-invalid={errors.shiftId ? true : undefined}
+          className={selectClass(Boolean(errors.shiftId))}
+          {...register("shiftId")}
         >
-          <option value="">Seleccioná una especialidad</option>
-          {specialties.map((s) => (
+          <option value="">Seleccioná una solicitud</option>
+          {openShifts.map((s) => (
             <option key={s.id} value={s.id}>
-              {s.name}
+              {new Date(s.requesterStart).toLocaleDateString("es-AR")} —{" "}
+              {specialties.find((sp) => sp.id === s.specialtyId)?.name ?? s.specialtyId}
             </option>
           ))}
         </select>
-        {errors.specialtyId && (
+        {errors.shiftId && (
           <p role="alert" className="mt-1 text-sm text-red-600">
-            {errors.specialtyId.message}
+            {errors.shiftId.message}
           </p>
         )}
       </div>
@@ -147,56 +149,24 @@ export default function AssignCompulsoryForm({
 
       <div className="flex flex-col gap-1">
         <label
-          htmlFor="requesterId"
-          className="text-sm font-medium text-brand-800"
-        >
-          Solicitante (profesional ausente)
-        </label>
-        <select
-          id="requesterId"
-          disabled={!specialtyChosen || loadingDoctors || doctors.length === 0}
-          aria-invalid={errors.requesterId ? true : undefined}
-          className={selectClass(Boolean(errors.requesterId))}
-          {...register("requesterId")}
-        >
-          <option value="">
-            {loadingDoctors
-              ? "Cargando profesionales…"
-              : "Seleccioná al profesional ausente"}
-          </option>
-          {doctors.map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.name} ({d.email})
-            </option>
-          ))}
-        </select>
-        {errors.requesterId && (
-          <p role="alert" className="mt-1 text-sm text-red-600">
-            {errors.requesterId.message}
-          </p>
-        )}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label
           htmlFor="applicantId"
           className="text-sm font-medium text-brand-800"
         >
-          Reemplazante (asignado)
+          Profesional a asignar
         </label>
         <select
           id="applicantId"
-          disabled={!requesterId || applicantOptions.length === 0}
+          disabled={!hasShift || loadingDoctors || doctors.length === 0}
           aria-invalid={errors.applicantId ? true : undefined}
           className={selectClass(Boolean(errors.applicantId))}
           {...register("applicantId")}
         >
           <option value="">
-            {requesterId
-              ? "Seleccioná al reemplazante"
-              : "Elegí primero al solicitante"}
+            {loadingDoctors
+              ? "Cargando profesionales…"
+              : "Seleccioná al profesional"}
           </option>
-          {applicantOptions.map((d) => (
+          {doctors.map((d) => (
             <option key={d.id} value={d.id}>
               {d.name} ({d.email})
             </option>
@@ -209,6 +179,22 @@ export default function AssignCompulsoryForm({
         )}
       </div>
 
+      <Input
+        id="start"
+        label="Entrada"
+        type="datetime-local"
+        error={errors.start?.message}
+        {...register("start")}
+      />
+
+      <Input
+        id="end"
+        label="Salida"
+        type="datetime-local"
+        error={errors.end?.message}
+        {...register("end")}
+      />
+
       {errors.root && (
         <p role="alert" className="text-sm text-red-600">
           {errors.root.message}
@@ -216,7 +202,7 @@ export default function AssignCompulsoryForm({
       )}
 
       <Button type="submit" isLoading={isSubmitting} disabled={noDoctors}>
-        Asignar reemplazo compulsivo
+        Asignar cobertura compulsiva
       </Button>
     </form>
   );

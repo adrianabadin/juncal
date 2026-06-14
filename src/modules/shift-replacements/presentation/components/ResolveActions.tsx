@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { resolveReplacementAction } from "@shift-replacements/presentation/actions/shiftActions";
+import { resolveRequestAction } from "@shift-replacements/presentation/actions/shiftActions";
 import Button from "@shared/presentation/ui/Button";
 
-type ResolveAction = "CONFIRM" | "REJECT_POSTULATION" | "REJECT_REQUEST";
+type ResolveAction = "CONFIRM" | "REJECT_REQUEST";
 
 interface ResolveActionsProps {
   shiftId: string;
@@ -19,7 +19,7 @@ export default function ResolveActions({ shiftId }: ResolveActionsProps) {
   async function handleAction(action: ResolveAction) {
     setLoading(action);
     setError(null);
-    const result = await resolveReplacementAction({ shiftId, action });
+    const result = await resolveRequestAction({ shiftId, action });
     setLoading(null);
     if (!result.ok) {
       setError(result.error);
@@ -38,14 +38,6 @@ export default function ResolveActions({ shiftId }: ResolveActionsProps) {
           onClick={() => handleAction("CONFIRM")}
         >
           Confirmar
-        </Button>
-        <Button
-          variant="secondary"
-          isLoading={loading === "REJECT_POSTULATION"}
-          disabled={loading !== null}
-          onClick={() => handleAction("REJECT_POSTULATION")}
-        >
-          Rechazar postulación
         </Button>
         <Button
           variant="danger"

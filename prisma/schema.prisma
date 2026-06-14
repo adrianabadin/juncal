@@ -21,10 +21,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  specialties      UserSpecialty[]
-  requestedShifts  ShiftReplacement[] @relation("Requester")
-  postulatedShifts ShiftReplacement[] @relation("Applicant")
-  resolvedShifts   ShiftReplacement[] @relation("Resolver")
+  specialties     UserSpecialty[]
+  requestedShifts ShiftReplacement[] @relation("Requester")
+  resolvedShifts  ShiftReplacement[] @relation("Resolver")
+  coverages       ShiftCoverage[]    @relation("CoverageApplicant")
 }
 
 model Specialty {
@@ -51,20 +51,40 @@ model UserSpecialty {
 }
 
 model ShiftReplacement {
-  id           String   @id @default(cuid())
-  date         DateTime
-  state        String   @default("OPEN")
-  requesterId  String
-  specialtyId  String
-  applicantId  String?
-  resolvedById String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            String   @id @default(cuid())
+  date          DateTime
+  state         String   @default("OPEN")
+  requesterId   String
+  specialtyId   String
+  moduleHours   Int
+  requesterStart DateTime
+  requesterEnd  DateTime
+  resolvedById  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   requester User      @relation("Requester", fields: [requesterId], references: [id])
-  applicant User?     @relation("Applicant", fields: [applicantId], references: [id])
   resolver  User?     @relation("Resolver", fields: [resolvedById], references: [id])
   specialty Specialty @relation(fields: [specialtyId], references: [id])
+  coverages ShiftCoverage[]
 
   @@index([state, specialtyId])
+}
+
+// Cada cobertura = un profesional cubriendo un tramo [start, end] de la guardia.
+// Una guardia puede tener varias coberturas (postuladas o compulsivas) y el
+// coordinador puede aprobarla aunque queden huecos sin cubrir.
+model ShiftCoverage {
+  id                 String   @id @default(cuid())
+  shiftReplacementId String
+  applicantId        String
+  start              DateTime
+  end                DateTime
+  origin             String   @default("POSTULATION") // POSTULATION | COMPULSORY
+  createdAt          DateTime @default(now())
+
+  shift     ShiftReplacement @relation(fields: [shiftReplacementId], references: [id], onDelete: Cascade)
+  applicant User             @relation("CoverageApplicant", fields: [applicantId], references: [id])
+
+  @@index([shiftReplacementId])
 }

@@ -2,15 +2,21 @@ import { Result, ok, err } from "@shared/domain/Result";
 import { DomainError } from "@shared/domain/DomainError";
 import { ShiftReplacement } from "@shift-replacements/domain/entities/ShiftReplacement";
 import { RequestState } from "@shift-replacements/domain/enums/RequestState";
+import { isShiftModule } from "@shift-replacements/domain/enums/ShiftModule";
 import { ShiftReplacementRepository } from "@shift-replacements/domain/ports/ShiftReplacementRepository";
 
-export type HasSpecialty = (userId: string, specialtyId: string) => Promise<boolean>;
+export type HasSpecialty = (
+  userId: string,
+  specialtyId: string,
+) => Promise<boolean>;
 
 export interface RequestAbsenceCommand {
   requesterId: string;
   isActive: boolean;
-  date: Date;
   specialtyId: string;
+  moduleHours: number;
+  requesterStart: Date;
+  requesterEnd: Date;
 }
 
 export class RequestAbsence {
@@ -19,15 +25,33 @@ export class RequestAbsence {
     private readonly hasSpecialty: HasSpecialty,
   ) {}
 
-  async execute(cmd: RequestAbsenceCommand): Promise<Result<ShiftReplacement, DomainError>> {
+  async execute(
+    cmd: RequestAbsenceCommand,
+  ): Promise<Result<ShiftReplacement, DomainError>> {
     if (!cmd.isActive)
       return err(new DomainError("INACTIVE_USER", "Tu cuenta no está activa"));
+    if (!isShiftModule(cmd.moduleHours))
+      return err(
+        new DomainError("INVALID_MODULE", "El módulo debe ser de 6, 12 o 24 horas"),
+      );
+    if (cmd.requesterEnd <= cmd.requesterStart)
+      return err(
+        new DomainError("INVALID_WINDOW", "La salida debe ser posterior a la entrada"),
+      );
     if (!(await this.hasSpecialty(cmd.requesterId, cmd.specialtyId)))
-      return err(new DomainError("SPECIALTY_NOT_OWNED", "No tenés esa especialidad asignada"));
+      return err(
+        new DomainError("SPECIALTY_NOT_OWNED", "No tenés esa especialidad asignada"),
+      );
 
     const created = await this.repo.create({
-      date: cmd.date, requesterId: cmd.requesterId, specialtyId: cmd.specialtyId,
-      applicantId: null, state: RequestState.OPEN, resolvedById: null,
+      date: cmd.requesterStart,
+      requesterId: cmd.requesterId,
+      specialtyId: cmd.specialtyId,
+      moduleHours: cmd.moduleHours,
+      requesterStart: cmd.requesterStart,
+      requesterEnd: cmd.requesterEnd,
+      state: RequestState.OPEN,
+      resolvedById: null,
     });
     return ok(created);
   }
