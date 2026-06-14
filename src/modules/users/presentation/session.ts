@@ -21,6 +21,7 @@ export async function createSession(userId: string): Promise<void> {
     sameSite: "lax",
     path: "/",
     secure: process.env.NODE_ENV === "production",
+    maxAge: 60 * 60 * 8, // 8-hour shift
   });
 }
 

@@ -1,7 +1,7 @@
 "use server";
 
 import { ActionResult } from "@shared/presentation/ActionResult";
-import { createSpecialtySchema, updateSpecialtySchema } from "@specialties/domain/schemas/specialty.schema";
+import { createSpecialtySchema, updateSpecialtySchema, deleteSpecialtySchema } from "@specialties/domain/schemas/specialty.schema";
 import { Role } from "@users/domain/enums/Role";
 import { CreateSpecialty } from "@specialties/application/use-cases/CreateSpecialty";
 import { UpdateSpecialty } from "@specialties/application/use-cases/UpdateSpecialty";
@@ -72,7 +72,7 @@ export async function deleteSpecialtyAction(input: unknown): Promise<ActionResul
   const actor = await getCurrentActor();
   if (!actor) return { ok: false, error: "No autenticado" };
 
-  const parsed = updateSpecialtySchema.pick({ id: true }).safeParse(input);
+  const parsed = deleteSpecialtySchema.safeParse(input);
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues[0]?.message ?? "Datos inválidos" };
   }

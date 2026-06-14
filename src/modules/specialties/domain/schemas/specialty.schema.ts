@@ -10,3 +10,8 @@ export const updateSpecialtySchema = createSpecialtySchema.extend({
   id: z.string().min(1),
 });
 export type UpdateSpecialtyInput = z.infer<typeof updateSpecialtySchema>;
+
+export const deleteSpecialtySchema = z.object({
+  id: z.string().min(1),
+});
+export type DeleteSpecialtyInput = z.infer<typeof deleteSpecialtySchema>;

@@ -26,6 +26,17 @@ export interface ShiftDto {
   applicantId: string | null;
 }
 
+function mapShiftToDto(s: { id: string; date: Date; state: string; specialtyId: string; requesterId: string; applicantId: string | null }): ShiftDto {
+  return {
+    id: s.id,
+    date: s.date.toISOString(),
+    state: s.state,
+    specialtyId: s.specialtyId,
+    requesterId: s.requesterId,
+    applicantId: s.applicantId,
+  };
+}
+
 export async function requestAbsenceAction(input: unknown): Promise<ActionResult<ShiftDto>> {
   const actor = await getCurrentActor();
   if (!actor) return { ok: false, error: "No autenticado" };
@@ -48,18 +59,7 @@ export async function requestAbsenceAction(input: unknown): Promise<ActionResult
     return { ok: false, error: result.error.message };
   }
 
-  const s = result.value;
-  return {
-    ok: true,
-    data: {
-      id: s.id,
-      date: s.date.toISOString(),
-      state: s.state,
-      specialtyId: s.specialtyId,
-      requesterId: s.requesterId,
-      applicantId: s.applicantId,
-    },
-  };
+  return { ok: true, data: mapShiftToDto(result.value) };
 }
 
 export async function postulateAction(input: unknown): Promise<ActionResult<ShiftDto>> {
@@ -83,18 +83,7 @@ export async function postulateAction(input: unknown): Promise<ActionResult<Shif
     return { ok: false, error: result.error.message };
   }
 
-  const s = result.value;
-  return {
-    ok: true,
-    data: {
-      id: s.id,
-      date: s.date.toISOString(),
-      state: s.state,
-      specialtyId: s.specialtyId,
-      requesterId: s.requesterId,
-      applicantId: s.applicantId,
-    },
-  };
+  return { ok: true, data: mapShiftToDto(result.value) };
 }
 
 export async function resolveReplacementAction(input: unknown): Promise<ActionResult<ShiftDto>> {
@@ -119,18 +108,7 @@ export async function resolveReplacementAction(input: unknown): Promise<ActionRe
     return { ok: false, error: result.error.message };
   }
 
-  const s = result.value;
-  return {
-    ok: true,
-    data: {
-      id: s.id,
-      date: s.date.toISOString(),
-      state: s.state,
-      specialtyId: s.specialtyId,
-      requesterId: s.requesterId,
-      applicantId: s.applicantId,
-    },
-  };
+  return { ok: true, data: mapShiftToDto(result.value) };
 }
 
 export async function assignCompulsoryAction(input: unknown): Promise<ActionResult<ShiftDto>> {
@@ -157,18 +135,7 @@ export async function assignCompulsoryAction(input: unknown): Promise<ActionResu
     return { ok: false, error: result.error.message };
   }
 
-  const s = result.value;
-  return {
-    ok: true,
-    data: {
-      id: s.id,
-      date: s.date.toISOString(),
-      state: s.state,
-      specialtyId: s.specialtyId,
-      requesterId: s.requesterId,
-      applicantId: s.applicantId,
-    },
-  };
+  return { ok: true, data: mapShiftToDto(result.value) };
 }
 
 export async function listOpenBySpecialtyAction(specialtyId: string): Promise<ActionResult<ShiftDto[]>> {
@@ -178,33 +145,16 @@ export async function listOpenBySpecialtyAction(specialtyId: string): Promise<Ac
   const repo = new PrismaShiftReplacementRepository();
   const shifts = await repo.listOpenBySpecialty(specialtyId);
 
-  const data: ShiftDto[] = shifts.map((s) => ({
-    id: s.id,
-    date: s.date.toISOString(),
-    state: s.state,
-    specialtyId: s.specialtyId,
-    requesterId: s.requesterId,
-    applicantId: s.applicantId,
-  }));
-
-  return { ok: true, data };
+  return { ok: true, data: shifts.map(mapShiftToDto) };
 }
 
 export async function listPostulatedAction(): Promise<ActionResult<ShiftDto[]>> {
   const actor = await getCurrentActor();
   if (!actor) return { ok: false, error: "No autenticado" };
+  if (actor.role !== Role.COORDINATOR) return { ok: false, error: "No autorizado" };
 
   const repo = new PrismaShiftReplacementRepository();
   const shifts = await repo.listByState(RequestState.POSTULATED);
 
-  const data: ShiftDto[] = shifts.map((s) => ({
-    id: s.id,
-    date: s.date.toISOString(),
-    state: s.state,
-    specialtyId: s.specialtyId,
-    requesterId: s.requesterId,
-    applicantId: s.applicantId,
-  }));
-
-  return { ok: true, data };
+  return { ok: true, data: shifts.map(mapShiftToDto) };
 }

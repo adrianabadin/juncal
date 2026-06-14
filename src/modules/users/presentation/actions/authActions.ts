@@ -19,6 +19,9 @@ export async function registerUserAction(input: unknown): Promise<ActionResult> 
   const result = await uc.execute(parsed.data);
 
   if (!result.isOk) {
+    if (result.error.code === "EMAIL_TAKEN") {
+      return { ok: false, error: "No se pudo completar el registro" };
+    }
     return { ok: false, error: result.error.message };
   }
   return { ok: true };

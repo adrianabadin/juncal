@@ -48,4 +48,15 @@ describe("AuthenticateUser", () => {
     const r = await uc.execute({ email: "DOC@HOSPITAL.COM", password: "secret12" });
     expect(r.isOk).toBe(true);
   });
+
+  it("permite autenticar a un usuario inactivo y devuelve isActive=false", async () => {
+    // Users created via InMemoryUserRepository start with isActive=false (pending activation).
+    // AuthenticateUser deliberately does not block them — the UI shows a "pending" state.
+    const uc = new AuthenticateUser(repo, async (plain, hash) => `hash:${plain}` === hash);
+    const r = await uc.execute({ email: "doc@hospital.com", password: "secret12" });
+    expect(r.isOk).toBe(true);
+    if (r.isOk) {
+      expect(r.value.isActive).toBe(false);
+    }
+  });
 });

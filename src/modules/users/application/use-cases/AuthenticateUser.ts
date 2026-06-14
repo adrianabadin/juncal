@@ -27,6 +27,9 @@ export class AuthenticateUser {
       return err(new DomainError("INVALID_CREDENTIALS", "Email o contraseña inválidos"));
     }
 
+    // Inactive users are intentionally allowed to authenticate so they can see
+    // a "pending activation" state in the UI. Use-case guards elsewhere enforce
+    // isActive for any action that requires participation.
     return ok(user);
   }
 }
