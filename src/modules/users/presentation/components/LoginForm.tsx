@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -48,6 +49,11 @@ export default function LoginForm() {
         error={errors.password?.message}
         {...register("password")}
       />
+      <div className="text-right">
+        <Link href="/auth/forgot-password" className="text-xs text-link hover:underline">
+          ¿Olvidaste tu contraseña?
+        </Link>
+      </div>
       {errors.root && (
         <p role="alert" className="text-sm text-red-600">
           {errors.root.message}
