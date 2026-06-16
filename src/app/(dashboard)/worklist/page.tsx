@@ -3,9 +3,8 @@ import Link from "next/link";
 import { getCurrentActor } from "@users/presentation/session";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
 import { listOpenBySpecialtyAction } from "@shift-replacements/presentation/actions/shiftActions";
-import RequestAbsenceForm from "@shift-replacements/presentation/components/RequestAbsenceForm";
 import OpenShiftsList from "@shift-replacements/presentation/components/OpenShiftsList";
-import Card from "@shared/presentation/ui/Card";
+import RequestAbsenceButton from "@shift-replacements/presentation/components/RequestAbsenceButton";
 
 export default async function WorklistPage() {
   const actor = await getCurrentActor();
@@ -14,7 +13,6 @@ export default async function WorklistPage() {
   const specialtiesResult = await listSpecialtiesAction();
   const specialties = specialtiesResult.ok ? (specialtiesResult.data ?? []) : [];
 
-  // Aggregate open shifts for all specialties
   const openShiftsPerSpecialty = await Promise.all(
     specialties.map(async (s) => {
       const res = await listOpenBySpecialtyAction(s.id);
@@ -37,19 +35,13 @@ export default async function WorklistPage() {
             Solicitá una ausencia o postulate a un reemplazo abierto.
           </p>
         </div>
-        <Link href="/dashboard" className="text-sm text-link hover:underline">
-          Volver al inicio
-        </Link>
+        <div className="flex items-center gap-3">
+          <RequestAbsenceButton specialties={specialties} />
+          <Link href="/dashboard" className="text-sm text-link hover:underline">
+            Volver al inicio
+          </Link>
+        </div>
       </div>
-
-      <section>
-        <h2 className="mb-4 text-lg font-semibold text-brand-700">
-          Solicitar ausencia
-        </h2>
-        <Card className="max-w-md">
-          <RequestAbsenceForm specialties={specialties} />
-        </Card>
-      </section>
 
       <section>
         <h2 className="mb-4 text-lg font-semibold text-brand-700">
