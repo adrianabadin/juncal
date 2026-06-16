@@ -319,6 +319,51 @@ export async function listPostulatedAction(): Promise<
   return { ok: true, data: shiftsNeedingResolution };
 }
 
+export async function listConfirmedShiftsAction(): Promise<
+  ActionResult<PostulatedShiftDto[]>
+> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+  if (actor.role !== Role.COORDINATOR)
+    return { ok: false, error: "No autorizado" };
+
+  const repo = new PrismaShiftReplacementRepository();
+  const shifts = await repo.listByState(RequestState.CONFIRMED);
+
+  const result: PostulatedShiftDto[] = [];
+  for (const shift of shifts) {
+    const coverages = await repo.listCoverages(shift.id);
+    const userIds = [
+      shift.requesterId,
+      ...coverages.map((c) => c.applicantId),
+    ];
+    const users =
+      userIds.length > 0
+        ? await prisma.user.findMany({
+            where: { id: { in: [...new Set(userIds)] } },
+            select: { id: true, name: true },
+          })
+        : [];
+    const nameById = new Map(users.map((u) => [u.id, u.name]));
+
+    result.push({
+      ...mapShiftToDto(shift),
+      requesterName: nameById.get(shift.requesterId) ?? shift.requesterId,
+      coverages: coverages.map((c) => ({
+        id: c.id,
+        shiftReplacementId: c.shiftReplacementId,
+        applicantId: c.applicantId,
+        applicantName: nameById.get(c.applicantId) ?? c.applicantId,
+        start: c.start.toISOString(),
+        end: c.end.toISOString(),
+        origin: c.origin,
+      })),
+    });
+  }
+
+  return { ok: true, data: result };
+}
+
 export async function createCompulsoryAction(
   input: unknown,
 ): Promise<ActionResult<ShiftDto>> {
@@ -353,4 +398,60 @@ export async function createCompulsoryAction(
   }
 
   return { ok: true, data: mapShiftToDto(result.value) };
+}
+
+export async function listConfirmedShiftsByDateRangeAction(
+  start: string,
+  end: string,
+): Promise<ActionResult<PostulatedShiftDto[]>> {
+  const actor = await getCurrentActor();
+  if (!actor) return { ok: false, error: "No autenticado" };
+  if (actor.role !== Role.COORDINATOR)
+    return { ok: false, error: "No autorizado" };
+
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime()))
+    return { ok: false, error: "Fechas inválidas" };
+
+  const repo = new PrismaShiftReplacementRepository();
+  const shifts = await repo.listByState(RequestState.CONFIRMED);
+
+  const filtered = shifts.filter((s) => {
+    const shiftStart = s.requesterStart.getTime();
+    return shiftStart >= startDate.getTime() && shiftStart <= endDate.getTime();
+  });
+
+  const result: PostulatedShiftDto[] = [];
+  for (const shift of filtered) {
+    const coverages = await repo.listCoverages(shift.id);
+    const userIds = [
+      shift.requesterId,
+      ...coverages.map((c) => c.applicantId),
+    ];
+    const users =
+      userIds.length > 0
+        ? await prisma.user.findMany({
+            where: { id: { in: [...new Set(userIds)] } },
+            select: { id: true, name: true },
+          })
+        : [];
+    const nameById = new Map(users.map((u) => [u.id, u.name]));
+
+    result.push({
+      ...mapShiftToDto(shift),
+      requesterName: nameById.get(shift.requesterId) ?? shift.requesterId,
+      coverages: coverages.map((c) => ({
+        id: c.id,
+        shiftReplacementId: c.shiftReplacementId,
+        applicantId: c.applicantId,
+        applicantName: nameById.get(c.applicantId) ?? c.applicantId,
+        start: c.start.toISOString(),
+        end: c.end.toISOString(),
+        origin: c.origin,
+      })),
+    });
+  }
+
+  return { ok: true, data: result };
 }
