@@ -53,4 +53,20 @@ export class InMemoryUserRepository implements UserRepository {
   async getUserSpecialtyIds(userId: string): Promise<string[]> {
     return this.specialtiesByUser.get(userId) ?? [];
   }
+
+  async createPasswordResetToken(data: { token: string; userId: string; expiresAt: Date }): Promise<void> {
+    // no-op for in-memory tests
+  }
+
+  async findPasswordResetToken(token: string): Promise<{ userId: string; expiresAt: Date; used: boolean } | null> {
+    return null;
+  }
+
+  async markPasswordResetTokenUsed(token: string): Promise<void> {
+    // no-op for in-memory tests
+  }
+
+  async updatePassword(userId: string, passwordHash: string): Promise<void> {
+    // no-op for in-memory tests
+  }
 }

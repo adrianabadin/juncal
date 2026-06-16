@@ -97,4 +97,21 @@ export class PrismaUserRepository implements UserRepository {
     });
     return rows.map((r) => r.specialtyId);
   }
+
+  async createPasswordResetToken(data: { token: string; userId: string; expiresAt: Date }): Promise<void> {
+    await prisma.passwordResetToken.create({ data });
+  }
+
+  async findPasswordResetToken(token: string): Promise<{ userId: string; expiresAt: Date; used: boolean } | null> {
+    const row = await prisma.passwordResetToken.findUnique({ where: { token } });
+    return row ? { userId: row.userId, expiresAt: row.expiresAt, used: row.used } : null;
+  }
+
+  async markPasswordResetTokenUsed(token: string): Promise<void> {
+    await prisma.passwordResetToken.update({ where: { token }, data: { used: true } });
+  }
+
+  async updatePassword(userId: string, passwordHash: string): Promise<void> {
+    await prisma.user.update({ where: { id: userId }, data: { password: passwordHash } });
+  }
 }

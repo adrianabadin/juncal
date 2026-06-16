@@ -19,4 +19,8 @@ export interface UserRepository {
   setRole(userId: string, role: Role): Promise<User>;
   updateSpecialties(userId: string, specialtyIds: string[]): Promise<void>;
   getUserSpecialtyIds(userId: string): Promise<string[]>;
+  createPasswordResetToken(data: { token: string; userId: string; expiresAt: Date }): Promise<void>;
+  findPasswordResetToken(token: string): Promise<{ userId: string; expiresAt: Date; used: boolean } | null>;
+  markPasswordResetTokenUsed(token: string): Promise<void>;
+  updatePassword(userId: string, passwordHash: string): Promise<void>;
 }
