@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getCurrentActor } from "@users/presentation/session";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
 import { listOpenBySpecialtyAction } from "@shift-replacements/presentation/actions/shiftActions";
+import { listActiveAbsenceReasonsAction } from "@absence-reasons/presentation/actions/absenceReasonActions";
 import OpenShiftsList from "@shift-replacements/presentation/components/OpenShiftsList";
 import RequestAbsenceButton from "@shift-replacements/presentation/components/RequestAbsenceButton";
 
@@ -12,6 +13,9 @@ export default async function WorklistPage() {
 
   const specialtiesResult = await listSpecialtiesAction();
   const specialties = specialtiesResult.ok ? (specialtiesResult.data ?? []) : [];
+
+  const reasonsResult = await listActiveAbsenceReasonsAction();
+  const reasons = reasonsResult.ok ? (reasonsResult.data ?? []) : [];
 
   const openShiftsPerSpecialty = await Promise.all(
     specialties.map(async (s) => {
@@ -36,7 +40,7 @@ export default async function WorklistPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <RequestAbsenceButton specialties={specialties} />
+          <RequestAbsenceButton specialties={specialties} reasons={reasons} />
           <Link href="/dashboard" className="text-sm text-link hover:underline">
             Volver al inicio
           </Link>

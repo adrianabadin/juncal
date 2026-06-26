@@ -21,6 +21,7 @@ export interface CreateCompulsoryCommand {
   coverageEnd: Date;
   absenceReasonId: string;
   observation: string | null;
+  bajoFactura: boolean;
 }
 
 // El coordinador crea una solicitud de ausencia + cobertura compulsiva + la
@@ -74,6 +75,7 @@ export class CreateCompulsoryReplacement {
       resolvedById: cmd.coordinatorId,
       absenceReasonId: motivo.value.absenceReasonId,
       observation: motivo.value.observation,
+      bajoFactura: cmd.bajoFactura,
     });
 
     // Agregar la cobertura compulsiva

@@ -12,6 +12,7 @@ const base = {
   resolvedById: null as string | null,
   absenceReasonId: null as string | null,
   observation: null as string | null,
+  bajoFactura: false,
 };
 
 const open = (overrides?: Partial<typeof base>) =>

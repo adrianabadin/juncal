@@ -14,6 +14,7 @@ interface ShiftProps {
   resolvedById: string | null;
   absenceReasonId: string | null;
   observation: string | null;
+  bajoFactura: boolean;
 }
 
 type Transition = Result<void, DomainError>;
@@ -40,6 +41,7 @@ export class ShiftReplacement {
   get requesterEnd(): Date { return this.props.requesterEnd; }
   get absenceReasonId(): string | null { return this.props.absenceReasonId; }
   get observation(): string | null { return this.props.observation; }
+  get bajoFactura(): boolean { return this.props.bajoFactura; }
 
   get isOpen(): boolean { return this.props.state === RequestState.OPEN; }
 

@@ -86,6 +86,7 @@ export class ResolveRequest {
         resolvedById: null,
         absenceReasonId: confirmed.absenceReasonId,
         observation: confirmed.observation,
+        bajoFactura: confirmed.bajoFactura,
       });
     }
   }

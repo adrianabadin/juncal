@@ -33,6 +33,7 @@ export class PrismaShiftReplacementRepository
         resolvedById: data.resolvedById ?? null,
         absenceReasonId: data.absenceReasonId ?? null,
         observation: data.observation ?? null,
+        bajoFactura: data.bajoFactura,
       },
     });
     return ShiftReplacementMapper.toDomain(row);
@@ -93,6 +94,17 @@ export class PrismaShiftReplacementRepository
     const rows = await prisma.shiftCoverage.findMany({
       where: { shiftReplacementId },
       orderBy: { start: "asc" },
+    });
+    return rows.map(ShiftCoverageMapper.toDomain);
+  }
+
+  async findOverlappingCoverages(applicantId: string, start: Date, end: Date): Promise<ShiftCoverage[]> {
+    const rows = await prisma.shiftCoverage.findMany({
+      where: {
+        applicantId,
+        start: { lt: end },
+        end: { gt: start },
+      },
     });
     return rows.map(ShiftCoverageMapper.toDomain);
   }

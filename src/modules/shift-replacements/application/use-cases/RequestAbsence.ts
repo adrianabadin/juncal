@@ -21,6 +21,7 @@ export interface RequestAbsenceCommand {
   requesterEnd: Date;
   absenceReasonId: string;
   observation: string | null;
+  bajoFactura: boolean;
 }
 
 export class RequestAbsence {
@@ -66,6 +67,7 @@ export class RequestAbsence {
       resolvedById: null,
       absenceReasonId: motivo.value.absenceReasonId,
       observation: motivo.value.observation,
+      bajoFactura: cmd.bajoFactura,
     });
     return ok(created);
   }
