@@ -6,10 +6,8 @@ import {
   createAbsenceReasonSchema,
   CreateAbsenceReasonInput,
 } from "@absence-reasons/domain/schemas/absence-reason.schema";
-import {
-  createAbsenceReasonAction,
-  AbsenceReasonDto,
-} from "@absence-reasons/presentation/actions/absenceReasonActions";
+import { createAbsenceReasonAction } from "@absence-reasons/presentation/actions/absenceReasonActions";
+import { AbsenceReasonDto } from "@absence-reasons/presentation/actions/absenceReasonDto";
 import { ActionResult } from "@shared/presentation/ActionResult";
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";

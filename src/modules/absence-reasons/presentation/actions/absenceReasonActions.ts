@@ -19,8 +19,6 @@ import {
 } from "@absence-reasons/presentation/actions/absenceReasonDto";
 import { getCurrentActor } from "@users/presentation/session";
 
-export type { AbsenceReasonDto };
-
 export async function createAbsenceReasonAction(
   input: unknown,
 ): Promise<ActionResult<AbsenceReasonDto>> {

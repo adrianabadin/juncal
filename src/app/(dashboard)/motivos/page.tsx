@@ -1,5 +1,3 @@
-"use client";
-
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentActor } from "@users/presentation/session";

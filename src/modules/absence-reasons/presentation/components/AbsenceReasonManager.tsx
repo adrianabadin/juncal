@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-  createAbsenceReasonAction,
-  AbsenceReasonDto,
-} from "@absence-reasons/presentation/actions/absenceReasonActions";
+import { createAbsenceReasonAction } from "@absence-reasons/presentation/actions/absenceReasonActions";
+import { AbsenceReasonDto } from "@absence-reasons/presentation/actions/absenceReasonDto";
 import { CreateAbsenceReasonInput } from "@absence-reasons/domain/schemas/absence-reason.schema";
 import { ActionResult } from "@shared/presentation/ActionResult";
 import Card from "@shared/presentation/ui/Card";
