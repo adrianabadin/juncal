@@ -9,7 +9,7 @@ interface ToastMessage {
 }
 
 let toastId = 0;
-let listeners: Array<(msg: ToastMessage) => void> = [];
+const listeners: Array<(msg: ToastMessage) => void> = [];
 
 export function toast(message: string, type: "success" | "error" = "success") {
   const msg: ToastMessage = { id: ++toastId, message, type };

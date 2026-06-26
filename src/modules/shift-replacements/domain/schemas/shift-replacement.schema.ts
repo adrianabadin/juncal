@@ -23,13 +23,25 @@ const observation = z
   .nullable()
   .transform((v) => v ?? null);
 const absenceReasonName = z.string().optional();
+const isDefault = z.boolean().optional();
+const bajoFactura = z.boolean().default(false);
 
-// Require an observation only when the selected reason is "Otros".
-function requireObservationForOtros(
-  d: { absenceReasonName?: string; observation: string | null },
+// Require an observation for custom (non-default) reasons. The authoritative
+// rule lives in `resolveMotivo` (via the repository's `isDefault` flag); this
+// client-side mirror accepts `isDefault` directly. The legacy
+// `absenceReasonName === "Otros"` check is kept as a fallback so older callers
+// that only send the reason name keep working.
+function requireObservationForCustomReason(
+  d: {
+    absenceReasonName?: string;
+    isDefault?: boolean;
+    observation: string | null;
+  },
   ctx: z.RefinementCtx,
 ): void {
-  if (d.absenceReasonName === OTROS_REASON_NAME && !d.observation?.trim()) {
+  const isCustom =
+    d.isDefault === false || d.absenceReasonName === OTROS_REASON_NAME;
+  if (isCustom && !d.observation?.trim()) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: "Ingrese una observación",
@@ -46,13 +58,15 @@ export const requestAbsenceSchema = z
     requesterEnd: z.coerce.date(),
     absenceReasonId,
     absenceReasonName,
+    isDefault,
     observation,
+    bajoFactura,
   })
   .refine((d) => d.requesterEnd > d.requesterStart, {
     message: "La salida debe ser posterior a la entrada",
     path: ["requesterEnd"],
   })
-  .superRefine(requireObservationForOtros);
+  .superRefine(requireObservationForCustomReason);
 export type RequestAbsenceInput = z.infer<typeof requestAbsenceSchema>;
 
 export const postulateSchema = z
@@ -105,7 +119,9 @@ export const createCompulsorySchema = z
     coverageEnd: z.coerce.date(),
     absenceReasonId,
     absenceReasonName,
+    isDefault,
     observation,
+    bajoFactura,
   })
   .refine((d) => d.requesterEnd > d.requesterStart, {
     message: "La salida del turno debe ser posterior a la entrada",
@@ -115,5 +131,5 @@ export const createCompulsorySchema = z
     message: "La salida de la cobertura debe ser posterior a la entrada",
     path: ["coverageEnd"],
   })
-  .superRefine(requireObservationForOtros);
+  .superRefine(requireObservationForCustomReason);
 export type CreateCompulsoryInput = z.infer<typeof createCompulsorySchema>;

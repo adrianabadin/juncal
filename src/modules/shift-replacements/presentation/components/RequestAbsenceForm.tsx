@@ -119,6 +119,10 @@ export default function RequestAbsenceForm({
   }
 
   return (
+    // react-hooks/refs false positive: RHF's `handleSubmit` reads its internal
+    // refs at event time, not during render. The rule cannot see through the
+    // library boundary. Scoped disable for this single line only.
+    // eslint-disable-next-line react-hooks/refs
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <label

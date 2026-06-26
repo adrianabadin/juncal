@@ -100,7 +100,7 @@ export async function requestAbsenceAction(
     requesterEnd: parsed.data.requesterEnd,
     absenceReasonId: parsed.data.absenceReasonId,
     observation: parsed.data.observation,
-    bajoFactura: false,
+    bajoFactura: parsed.data.bajoFactura,
   });
 
   if (!result.isOk) {
@@ -399,7 +399,7 @@ export async function createCompulsoryAction(
     coverageEnd: parsed.data.coverageEnd,
     absenceReasonId: parsed.data.absenceReasonId,
     observation: parsed.data.observation,
-    bajoFactura: false,
+    bajoFactura: parsed.data.bajoFactura,
   });
 
   if (!result.isOk) {

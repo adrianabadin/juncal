@@ -71,6 +71,63 @@ describe("requestAbsenceSchema — motivo", () => {
     });
     expect(r.success).toBe(false);
   });
+
+  it("requires observation when isDefault is false", () => {
+    const r = requestAbsenceSchema.safeParse({
+      ...base,
+      absenceReasonId: "ar-otros",
+      isDefault: false,
+    });
+    expect(r.success).toBe(false);
+    if (!r.success) {
+      const issue = r.error.issues.find((i) => i.path.includes("observation"));
+      expect(issue?.message).toBe("Ingrese una observación");
+    }
+  });
+
+  it("accepts a non-default reason with observation", () => {
+    const r = requestAbsenceSchema.safeParse({
+      ...base,
+      absenceReasonId: "ar-otros",
+      isDefault: false,
+      observation: "Trámite personal urgente",
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.observation).toBe("Trámite personal urgente");
+  });
+
+  it("accepts a default reason without observation", () => {
+    const r = requestAbsenceSchema.safeParse({
+      ...base,
+      absenceReasonId: "ar-enfermedad",
+      isDefault: true,
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.observation).toBeNull();
+  });
+});
+
+describe("requestAbsenceSchema — bajoFactura", () => {
+  it("defaults bajoFactura to false when omitted", () => {
+    const r = requestAbsenceSchema.safeParse({
+      ...base,
+      absenceReasonId: "ar-enfermedad",
+      isDefault: true,
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.bajoFactura).toBe(false);
+  });
+
+  it("preserves bajoFactura=true", () => {
+    const r = requestAbsenceSchema.safeParse({
+      ...base,
+      absenceReasonId: "ar-enfermedad",
+      isDefault: true,
+      bajoFactura: true,
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.bajoFactura).toBe(true);
+  });
 });
 
 describe("createCompulsorySchema — motivo", () => {
@@ -100,5 +157,39 @@ describe("createCompulsorySchema — motivo", () => {
       const issue = r.error.issues.find((i) => i.path.includes("observation"));
       expect(issue?.message).toBe("Ingrese una observación");
     }
+  });
+
+  it("requires observation when isDefault is false", () => {
+    const r = createCompulsorySchema.safeParse({
+      ...compulsoryBase,
+      absenceReasonId: "ar-otros",
+      isDefault: false,
+    });
+    expect(r.success).toBe(false);
+    if (!r.success) {
+      const issue = r.error.issues.find((i) => i.path.includes("observation"));
+      expect(issue?.message).toBe("Ingrese una observación");
+    }
+  });
+
+  it("defaults bajoFactura to false when omitted", () => {
+    const r = createCompulsorySchema.safeParse({
+      ...compulsoryBase,
+      absenceReasonId: "ar-vacaciones",
+      isDefault: true,
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.bajoFactura).toBe(false);
+  });
+
+  it("preserves bajoFactura=true", () => {
+    const r = createCompulsorySchema.safeParse({
+      ...compulsoryBase,
+      absenceReasonId: "ar-vacaciones",
+      isDefault: true,
+      bajoFactura: true,
+    });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.bajoFactura).toBe(true);
   });
 });
