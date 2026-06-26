@@ -23,7 +23,8 @@
       "@shared/*": ["./src/shared/*"],
       "@users/*": ["./src/modules/users/*"],
       "@specialties/*": ["./src/modules/specialties/*"],
-      "@shift-replacements/*": ["./src/modules/shift-replacements/*"]
+      "@shift-replacements/*": ["./src/modules/shift-replacements/*"],
+      "@absence-reasons/*": ["./src/modules/absence-reasons/*"]
     }
   },
   "include": [
