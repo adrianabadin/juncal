@@ -61,6 +61,12 @@ model ShiftReplacement {
   requesterStart DateTime
   requesterEnd  DateTime
   resolvedById  String?
+<<<<<<< Updated upstream
+=======
+  absenceReasonId String?
+  observation     String?
+  bajoFactura     Boolean  @default(false)
+>>>>>>> Stashed changes
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
