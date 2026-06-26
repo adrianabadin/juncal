@@ -12,6 +12,12 @@ interface ShiftProps {
   requesterStart: Date;
   requesterEnd: Date;
   resolvedById: string | null;
+<<<<<<< Updated upstream
+=======
+  absenceReasonId: string | null;
+  observation: string | null;
+  bajoFactura: boolean;
+>>>>>>> Stashed changes
 }
 
 type Transition = Result<void, DomainError>;
@@ -36,6 +42,12 @@ export class ShiftReplacement {
   get moduleHours(): number { return this.props.moduleHours; }
   get requesterStart(): Date { return this.props.requesterStart; }
   get requesterEnd(): Date { return this.props.requesterEnd; }
+<<<<<<< Updated upstream
+=======
+  get absenceReasonId(): string | null { return this.props.absenceReasonId; }
+  get observation(): string | null { return this.props.observation; }
+  get bajoFactura(): boolean { return this.props.bajoFactura; }
+>>>>>>> Stashed changes
 
   get isOpen(): boolean { return this.props.state === RequestState.OPEN; }
 

@@ -29,6 +29,12 @@ export class ShiftReplacementMapper {
       requesterStart: row.requesterStart,
       requesterEnd: row.requesterEnd,
       resolvedById: row.resolvedById ?? null,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: row.absenceReasonId ?? null,
+      observation: row.observation ?? null,
+      bajoFactura: row.bajoFactura,
+>>>>>>> Stashed changes
     });
   }
 }

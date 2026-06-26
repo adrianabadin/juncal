@@ -96,6 +96,12 @@ export async function requestAbsenceAction(
     moduleHours: parsed.data.moduleHours,
     requesterStart: parsed.data.requesterStart,
     requesterEnd: parsed.data.requesterEnd,
+<<<<<<< Updated upstream
+=======
+    absenceReasonId: parsed.data.absenceReasonId,
+    observation: parsed.data.observation,
+    bajoFactura: parsed.data.bajoFactura,
+>>>>>>> Stashed changes
   });
 
   if (!result.isOk) {
@@ -391,6 +397,12 @@ export async function createCompulsoryAction(
     applicantId: parsed.data.applicantId,
     coverageStart: parsed.data.coverageStart,
     coverageEnd: parsed.data.coverageEnd,
+<<<<<<< Updated upstream
+=======
+    absenceReasonId: parsed.data.absenceReasonId,
+    observation: parsed.data.observation,
+    bajoFactura: parsed.data.bajoFactura,
+>>>>>>> Stashed changes
   });
 
   if (!result.isOk) {
@@ -411,6 +423,7 @@ export async function listConfirmedShiftsByDateRangeAction(
 
   const startDate = new Date(start);
   const endDate = new Date(end);
+  endDate.setHours(23, 59, 59, 999);
   if (isNaN(startDate.getTime()) || isNaN(endDate.getTime()))
     return { ok: false, error: "Fechas inválidas" };
 

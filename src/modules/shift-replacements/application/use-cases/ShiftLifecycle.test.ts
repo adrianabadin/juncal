@@ -26,6 +26,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     expect(created.isOk).toBe(true);
     if (!created.isOk) return;
@@ -49,6 +53,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     const rej = await new ResolveRequest(repo).execute({
@@ -62,6 +70,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const r = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s2",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     expect(r.isOk).toBe(false);
   });
@@ -70,6 +82,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const r = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 8, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     expect(r.isOk).toBe(false);
   });
@@ -78,6 +94,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     await new ResolveRequest(repo).execute({
@@ -94,6 +114,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     const post = await new PostulateForReplacement(repo, hasSpecialty).execute({
@@ -107,6 +131,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
 
@@ -125,6 +153,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
 
@@ -148,6 +180,10 @@ describe("Shift lifecycle (coverage model)", () => {
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 24, requesterStart: new Date("2026-07-01T00:00:00"),
       requesterEnd: new Date("2026-07-02T00:00:00"),
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
 
@@ -170,6 +206,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     const conf = await new ResolveRequest(repo).execute({
@@ -182,6 +222,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     const cov = await new AssignCompulsoryCoverage(repo).execute({
@@ -195,6 +239,10 @@ describe("Shift lifecycle (coverage model)", () => {
     const created = await new RequestAbsence(repo, hasSpecialty).execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
+>>>>>>> Stashed changes
     });
     if (!created.isOk) return;
     await new PostulateForReplacement(repo, hasSpecialty).execute({

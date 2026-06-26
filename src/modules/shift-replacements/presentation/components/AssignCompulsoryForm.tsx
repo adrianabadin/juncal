@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
   assignCompulsoryCoverageSchema,
-  createCompulsorySchema,
 } from "@shift-replacements/domain/schemas/shift-replacement.schema";
 import {
   assignCompulsoryCoverageAction,
@@ -17,6 +16,14 @@ import {
   listUsersBySpecialtyAction,
   UserOptionDto,
 } from "@users/presentation/actions/userAdminActions";
+import {
+  AbsenceReasonOption,
+  absenceFormDefaults,
+  isCustomReason,
+  resolveAbsenceReasonName,
+  visibleAbsenceReasons,
+} from "@shift-replacements/presentation/components/absenceMotivoForm";
+import { useToast } from "@shared/presentation/ui/Toast";
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";
 
@@ -36,6 +43,7 @@ interface ShiftOption {
 interface AssignCompulsoryFormProps {
   specialties: SpecialtyOption[];
   openShifts: ShiftOption[];
+  reasons: AbsenceReasonOption[];
 }
 
 const selectClass = (hasError: boolean): string =>
@@ -50,6 +58,7 @@ const selectClass = (hasError: boolean): string =>
 
 function ExistingShiftForm({ specialties, openShifts }: AssignCompulsoryFormProps) {
   const router = useRouter();
+  const { toast } = useToast();
   const [doctors, setDoctors] = useState<UserOptionDto[]>([]);
   const [loadingDoctors, setLoadingDoctors] = useState(false);
 
@@ -67,6 +76,7 @@ function ExistingShiftForm({ specialties, openShifts }: AssignCompulsoryFormProp
     setError,
     watch,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ExistingInput>({
     resolver: zodResolver(existingSchema),
@@ -74,6 +84,8 @@ function ExistingShiftForm({ specialties, openShifts }: AssignCompulsoryFormProp
   });
 
   const shiftId = watch("shiftId");
+  const start = watch("start");
+  const end = watch("end");
   const selectedShift = openShifts.find((s) => s.id === shiftId);
 
   useEffect(() => {
@@ -98,7 +110,13 @@ function ExistingShiftForm({ specialties, openShifts }: AssignCompulsoryFormProp
 
   async function onSubmit(data: ExistingInput) {
     const result = await assignCompulsoryCoverageAction(data);
-    if (!result.ok) { setError("root", { message: result.error }); return; }
+    if (!result.ok) {
+      setError("root", { message: result.error });
+      toast(result.error, "error");
+      return;
+    }
+    reset();
+    toast("Cobertura asignada exitosamente", "success");
     router.refresh();
   }
 
@@ -138,8 +156,15 @@ function ExistingShiftForm({ specialties, openShifts }: AssignCompulsoryFormProp
 
 // ── Modo 2: Crear desde cero ──────────────────────────────────────────────
 
-function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[] }) {
+function CreateFromScratchForm({
+  specialties,
+  reasons,
+}: {
+  specialties: SpecialtyOption[];
+  reasons: AbsenceReasonOption[];
+}) {
   const router = useRouter();
+  const { toast } = useToast();
   const [doctors, setDoctors] = useState<UserOptionDto[]>([]);
   const [loadingDoctors, setLoadingDoctors] = useState(false);
 
@@ -152,6 +177,9 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
     applicantId: z.string().min(1, "Requerido"),
     coverageStart: z.string().min(1, "Requerido"),
     coverageEnd: z.string().min(1, "Requerido"),
+    absenceReasonId: z.string().min(1, "Seleccione un motivo"),
+    observation: z.string().optional(),
+    bajoFactura: z.boolean(),
   });
   type ScratchInput = z.infer<typeof scratchSchema>;
 
@@ -160,16 +188,55 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
     handleSubmit,
     setError,
     watch,
+    control,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ScratchInput>({
     resolver: zodResolver(scratchSchema),
-    defaultValues: { specialtyId: "", moduleHours: 12, requesterId: "", applicantId: "" },
+    defaultValues: {
+      specialtyId: "",
+      moduleHours: 12,
+      requesterId: "",
+      applicantId: "",
+      absenceReasonId: "",
+      observation: "",
+      bajoFactura: absenceFormDefaults.bajoFactura,
+    },
   });
 
-  const specialtyId = watch("specialtyId");
-  const requesterId = watch("requesterId");
+  const specialtyId = useWatch({ control, name: "specialtyId" });
+  const absenceReasonId = useWatch({ control, name: "absenceReasonId" });
+  const selectedReasonName = resolveAbsenceReasonName(reasons, absenceReasonId);
+  const showObservation = isCustomReason(selectedReasonName, reasons);
+  const selectableReasons = visibleAbsenceReasons(reasons);
+  const requesterId = useWatch({ control, name: "requesterId" });
+  const requesterStart = useWatch({ control, name: "requesterStart" });
+  const requesterEnd = useWatch({ control, name: "requesterEnd" });
+  const moduleHours = useWatch({ control, name: "moduleHours" });
+  const userEditedEnd = useRef(false);
 
+  // Auto-fill requesterEnd from requesterStart + moduleHours
+  useEffect(() => {
+    if (!requesterStart || !moduleHours || userEditedEnd.current) return;
+    const start = new Date(requesterStart);
+    if (isNaN(start.getTime())) return;
+    start.setHours(start.getHours() + Number(moduleHours));
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const endStr = `${start.getFullYear()}-${pad(start.getMonth() + 1)}-${pad(start.getDate())}T${pad(start.getHours())}:${pad(start.getMinutes())}`;
+    setValue("requesterEnd", endStr);
+  }, [requesterStart, moduleHours, setValue]);
+
+  // Auto-fill coverage times from requester times
+  useEffect(() => {
+    if (requesterStart) setValue("coverageStart", requesterStart);
+  }, [requesterStart, setValue]);
+
+  useEffect(() => {
+    if (requesterEnd) setValue("coverageEnd", requesterEnd);
+  }, [requesterEnd, setValue]);
+
+  // Load doctors when specialty changes
   useEffect(() => {
     let active = true;
     setValue("requesterId", "");
@@ -184,6 +251,7 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
     return () => { active = false; };
   }, [specialtyId, setValue]);
 
+  // Clear applicant if same as requester
   useEffect(() => {
     if (requesterId && watch("applicantId") === requesterId) {
       setValue("applicantId", "");
@@ -191,8 +259,34 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
   }, [requesterId, setValue, watch]);
 
   async function onSubmit(data: ScratchInput) {
-    const result = await createCompulsoryAction(data);
-    if (!result.ok) { setError("root", { message: result.error }); return; }
+    const reasonName = resolveAbsenceReasonName(reasons, data.absenceReasonId);
+    const custom = isCustomReason(reasonName, reasons);
+    if (custom && !data.observation?.trim()) {
+      setError("observation", { message: "Ingrese una observación" });
+      return;
+    }
+
+    const result = await createCompulsoryAction({
+      ...data,
+      isDefault: !custom,
+      observation: custom ? data.observation : null,
+    });
+    if (!result.ok) {
+      setError("root", { message: result.error });
+      toast(result.error, "error");
+      return;
+    }
+    userEditedEnd.current = false;
+    reset({
+      specialtyId: "",
+      moduleHours: 12,
+      requesterId: "",
+      applicantId: "",
+      absenceReasonId: "",
+      observation: "",
+      bajoFactura: absenceFormDefaults.bajoFactura,
+    });
+    toast("Reemplazo compulsivo creado exitosamente", "success");
     router.refresh();
   }
 
@@ -221,7 +315,7 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
       </div>
 
       <Input id="requesterStart" label="Entrada del turno" type="datetime-local" error={errors.requesterStart?.message} {...register("requesterStart")} />
-      <Input id="requesterEnd" label="Salida del turno" type="datetime-local" error={errors.requesterEnd?.message} {...register("requesterEnd")} />
+      <Input id="requesterEnd" label="Salida del turno" type="datetime-local" error={errors.requesterEnd?.message} {...register("requesterEnd")} onChange={(e) => { userEditedEnd.current = true; register("requesterEnd").onChange(e); }} />
 
       {noDoctors && <p className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-amber-200">No hay profesionales activos con esta especialidad.</p>}
 
@@ -245,6 +339,32 @@ function CreateFromScratchForm({ specialties }: { specialties: SpecialtyOption[]
 
       <Input id="coverageStart" label="Entrada de la cobertura" type="datetime-local" error={errors.coverageStart?.message} {...register("coverageStart")} />
       <Input id="coverageEnd" label="Salida de la cobertura" type="datetime-local" error={errors.coverageEnd?.message} {...register("coverageEnd")} />
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="absenceReasonId" className="text-sm font-medium text-brand-800">Motivo</label>
+        <select id="absenceReasonId" aria-invalid={errors.absenceReasonId ? true : undefined} className={selectClass(Boolean(errors.absenceReasonId))} {...register("absenceReasonId")}>
+          <option value="">Seleccioná un motivo</option>
+          {selectableReasons.map((r) => (<option key={r.id} value={r.id}>{r.name}</option>))}
+        </select>
+        {errors.absenceReasonId && <p role="alert" className="mt-1 text-sm text-red-600">{errors.absenceReasonId.message}</p>}
+      </div>
+
+      {showObservation && (
+        <div className="flex flex-col gap-1">
+          <label htmlFor="observation" className="text-sm font-medium text-brand-800">Observación</label>
+          <textarea id="observation" rows={3} maxLength={500} aria-invalid={errors.observation ? true : undefined} className={selectClass(Boolean(errors.observation))} {...register("observation")} />
+          {errors.observation && <p role="alert" className="mt-1 text-sm text-red-600">{errors.observation.message}</p>}
+        </div>
+      )}
+
+      <label className="flex items-center gap-2 text-sm font-medium text-brand-800">
+        <input
+          type="checkbox"
+          className="h-4 w-4 rounded border-slate-300 text-brand-600 focus-visible:ring-2 focus-visible:ring-brand-500"
+          {...register("bajoFactura")}
+        />
+        Bajo factura
+      </label>
 
       {errors.root && <p role="alert" className="text-sm text-red-600">{errors.root.message}</p>}
       <Button type="submit" isLoading={isSubmitting} disabled={noDoctors}>Crear reemplazo compulsivo</Button>
@@ -284,9 +404,9 @@ export default function AssignCompulsoryForm(props: AssignCompulsoryFormProps) {
         </button>
       </div>
       {mode === "scratch" ? (
-        <CreateFromScratchForm specialties={props.specialties} />
+        <CreateFromScratchForm specialties={props.specialties} reasons={props.reasons} />
       ) : (
-        <ExistingShiftForm specialties={props.specialties} openShifts={props.openShifts} />
+        <ExistingShiftForm specialties={props.specialties} openShifts={props.openShifts} reasons={props.reasons} />
       )}
     </div>
   );

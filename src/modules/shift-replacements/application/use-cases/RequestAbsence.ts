@@ -17,6 +17,12 @@ export interface RequestAbsenceCommand {
   moduleHours: number;
   requesterStart: Date;
   requesterEnd: Date;
+<<<<<<< Updated upstream
+=======
+  absenceReasonId: string;
+  observation: string | null;
+  bajoFactura: boolean;
+>>>>>>> Stashed changes
 }
 
 export class RequestAbsence {
@@ -52,6 +58,12 @@ export class RequestAbsence {
       requesterEnd: cmd.requesterEnd,
       state: RequestState.OPEN,
       resolvedById: null,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivo.value.absenceReasonId,
+      observation: motivo.value.observation,
+      bajoFactura: cmd.bajoFactura,
+>>>>>>> Stashed changes
     });
     return ok(created);
   }

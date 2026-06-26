@@ -10,6 +10,12 @@ const base = {
   requesterStart: new Date("2026-07-01T08:00:00"),
   requesterEnd: new Date("2026-07-01T20:00:00"),
   resolvedById: null as string | null,
+<<<<<<< Updated upstream
+=======
+  absenceReasonId: null as string | null,
+  observation: null as string | null,
+  bajoFactura: false,
+>>>>>>> Stashed changes
 };
 
 const open = (overrides?: Partial<typeof base>) =>

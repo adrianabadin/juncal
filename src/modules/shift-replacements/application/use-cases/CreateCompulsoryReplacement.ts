@@ -17,6 +17,12 @@ export interface CreateCompulsoryCommand {
   applicantId: string;
   coverageStart: Date;
   coverageEnd: Date;
+<<<<<<< Updated upstream
+=======
+  absenceReasonId: string;
+  observation: string | null;
+  bajoFactura: boolean;
+>>>>>>> Stashed changes
 }
 
 // El coordinador crea una solicitud de ausencia + cobertura compulsiva + la
@@ -48,6 +54,26 @@ export class CreateCompulsoryReplacement {
         new DomainError("SELF_REPLACEMENT", "El reemplazante no puede ser el mismo que el ausente"),
       );
 
+<<<<<<< Updated upstream
+=======
+    const motivo = await resolveMotivo(
+      this.reasons,
+      cmd.absenceReasonId,
+      cmd.observation,
+    );
+    if (!motivo.isOk) return err(motivo.error);
+
+    const overlapping = await this.repo.findOverlappingCoverages(
+      cmd.applicantId,
+      cmd.coverageStart,
+      cmd.coverageEnd,
+    );
+    if (overlapping.length > 0)
+      return err(
+        new DomainError("DUPLICATE_COVERAGE", "Reemplazo duplicado: ya tenés una cobertura en ese período"),
+      );
+
+>>>>>>> Stashed changes
     // Crear la solicitud directamente en CONFIRMED
     const shift = await this.repo.create({
       date: cmd.requesterStart,
@@ -58,6 +84,12 @@ export class CreateCompulsoryReplacement {
       requesterEnd: cmd.requesterEnd,
       state: RequestState.CONFIRMED,
       resolvedById: cmd.coordinatorId,
+<<<<<<< Updated upstream
+=======
+      absenceReasonId: motivo.value.absenceReasonId,
+      observation: motivo.value.observation,
+      bajoFactura: cmd.bajoFactura,
+>>>>>>> Stashed changes
     });
 
     // Agregar la cobertura compulsiva
