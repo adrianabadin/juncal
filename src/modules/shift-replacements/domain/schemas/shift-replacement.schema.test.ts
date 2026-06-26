@@ -25,24 +25,24 @@ describe("requestAbsenceSchema — motivo", () => {
     expect(r.success).toBe(false);
   });
 
-  it("accepts a default reason without observation", () => {
+  it("accepts a standard reason without observation", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
-      absenceReasonId: "ar-vacaciones",
-      isDefault: true,
+      absenceReasonId: "ar-enfermedad",
+      absenceReasonName: "Enfermedad",
     });
     expect(r.success).toBe(true);
     if (r.success) {
-      expect(r.data.absenceReasonId).toBe("ar-vacaciones");
+      expect(r.data.absenceReasonId).toBe("ar-enfermedad");
       expect(r.data.observation).toBeNull();
     }
   });
 
-  it("rejects a custom reason without observation", () => {
+  it("rejects Otros without observation", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
-      absenceReasonId: "ar-curso",
-      isDefault: false,
+      absenceReasonId: "ar-otros",
+      absenceReasonName: "Otros",
     });
     expect(r.success).toBe(false);
     if (!r.success) {
@@ -51,11 +51,11 @@ describe("requestAbsenceSchema — motivo", () => {
     }
   });
 
-  it("accepts a custom reason with observation", () => {
+  it("accepts Otros with observation", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
-      absenceReasonId: "ar-curso",
-      isDefault: false,
+      absenceReasonId: "ar-otros",
+      absenceReasonName: "Otros",
       observation: "Trámite personal urgente",
     });
     expect(r.success).toBe(true);
@@ -65,34 +65,11 @@ describe("requestAbsenceSchema — motivo", () => {
   it("rejects observation longer than 500 chars", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
-      absenceReasonId: "ar-curso",
-      isDefault: false,
+      absenceReasonId: "ar-otros",
+      absenceReasonName: "Otros",
       observation: "x".repeat(501),
     });
     expect(r.success).toBe(false);
-  });
-});
-
-describe("requestAbsenceSchema — bajoFactura", () => {
-  it("defaults bajoFactura to false when omitted", () => {
-    const r = requestAbsenceSchema.safeParse({
-      ...base,
-      absenceReasonId: "ar-vacaciones",
-      isDefault: true,
-    });
-    expect(r.success).toBe(true);
-    if (r.success) expect(r.data.bajoFactura).toBe(false);
-  });
-
-  it("accepts bajoFactura true", () => {
-    const r = requestAbsenceSchema.safeParse({
-      ...base,
-      absenceReasonId: "ar-vacaciones",
-      isDefault: true,
-      bajoFactura: true,
-    });
-    expect(r.success).toBe(true);
-    if (r.success) expect(r.data.bajoFactura).toBe(true);
   });
 });
 
@@ -102,21 +79,21 @@ describe("createCompulsorySchema — motivo", () => {
     expect(r.success).toBe(false);
   });
 
-  it("accepts a default reason without observation", () => {
+  it("accepts a standard reason without observation", () => {
     const r = createCompulsorySchema.safeParse({
       ...compulsoryBase,
       absenceReasonId: "ar-vacaciones",
-      isDefault: true,
+      absenceReasonName: "Vacaciones",
     });
     expect(r.success).toBe(true);
     if (r.success) expect(r.data.observation).toBeNull();
   });
 
-  it("rejects a custom reason without observation", () => {
+  it("rejects Otros without observation", () => {
     const r = createCompulsorySchema.safeParse({
       ...compulsoryBase,
-      absenceReasonId: "ar-curso",
-      isDefault: false,
+      absenceReasonId: "ar-otros",
+      absenceReasonName: "Otros",
     });
     expect(r.success).toBe(false);
     if (!r.success) {
