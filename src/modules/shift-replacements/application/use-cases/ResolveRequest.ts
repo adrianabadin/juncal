@@ -84,12 +84,8 @@ export class ResolveRequest {
         requesterEnd: gap.end,
         state: RequestState.OPEN,
         resolvedById: null,
-<<<<<<< Updated upstream
-=======
         absenceReasonId: confirmed.absenceReasonId,
         observation: confirmed.observation,
-        bajoFactura: confirmed.bajoFactura,
->>>>>>> Stashed changes
       });
     }
   }

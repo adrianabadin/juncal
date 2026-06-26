@@ -10,12 +10,8 @@ const base = {
   requesterStart: new Date("2026-07-01T08:00:00"),
   requesterEnd: new Date("2026-07-01T20:00:00"),
   resolvedById: null as string | null,
-<<<<<<< Updated upstream
-=======
   absenceReasonId: null as string | null,
   observation: null as string | null,
-  bajoFactura: false,
->>>>>>> Stashed changes
 };
 
 const open = (overrides?: Partial<typeof base>) =>
@@ -64,5 +60,14 @@ describe("ShiftReplacement state machine", () => {
     expect(r.moduleHours).toBe(12);
     expect(r.requesterStart).toEqual(new Date("2026-07-01T08:00:00"));
     expect(r.requesterEnd).toEqual(new Date("2026-07-01T20:00:00"));
+  });
+
+  it("exposes motivo getters: null for legacy records, value when present", () => {
+    expect(open().absenceReasonId).toBeNull();
+    expect(open().observation).toBeNull();
+
+    const withMotivo = open({ absenceReasonId: "ar-otros", observation: "Detalle" });
+    expect(withMotivo.absenceReasonId).toBe("ar-otros");
+    expect(withMotivo.observation).toBe("Detalle");
   });
 });

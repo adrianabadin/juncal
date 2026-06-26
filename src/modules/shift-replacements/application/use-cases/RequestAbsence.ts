@@ -4,6 +4,8 @@ import { ShiftReplacement } from "@shift-replacements/domain/entities/ShiftRepla
 import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 import { isShiftModule } from "@shift-replacements/domain/enums/ShiftModule";
 import { ShiftReplacementRepository } from "@shift-replacements/domain/ports/ShiftReplacementRepository";
+import { AbsenceReasonRepository } from "@absence-reasons/domain/ports/AbsenceReasonRepository";
+import { resolveMotivo } from "@shift-replacements/application/use-cases/resolveMotivo";
 
 export type HasSpecialty = (
   userId: string,
@@ -17,18 +19,15 @@ export interface RequestAbsenceCommand {
   moduleHours: number;
   requesterStart: Date;
   requesterEnd: Date;
-<<<<<<< Updated upstream
-=======
   absenceReasonId: string;
   observation: string | null;
-  bajoFactura: boolean;
->>>>>>> Stashed changes
 }
 
 export class RequestAbsence {
   constructor(
     private readonly repo: ShiftReplacementRepository,
     private readonly hasSpecialty: HasSpecialty,
+    private readonly reasons: AbsenceReasonRepository,
   ) {}
 
   async execute(
@@ -49,6 +48,13 @@ export class RequestAbsence {
         new DomainError("SPECIALTY_NOT_OWNED", "No tenés esa especialidad asignada"),
       );
 
+    const motivo = await resolveMotivo(
+      this.reasons,
+      cmd.absenceReasonId,
+      cmd.observation,
+    );
+    if (!motivo.isOk) return err(motivo.error);
+
     const created = await this.repo.create({
       date: cmd.requesterStart,
       requesterId: cmd.requesterId,
@@ -58,12 +64,8 @@ export class RequestAbsence {
       requesterEnd: cmd.requesterEnd,
       state: RequestState.OPEN,
       resolvedById: null,
-<<<<<<< Updated upstream
-=======
       absenceReasonId: motivo.value.absenceReasonId,
       observation: motivo.value.observation,
-      bajoFactura: cmd.bajoFactura,
->>>>>>> Stashed changes
     });
     return ok(created);
   }

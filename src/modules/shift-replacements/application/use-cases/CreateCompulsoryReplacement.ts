@@ -5,6 +5,8 @@ import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 import { CoverageOrigin } from "@shift-replacements/domain/enums/CoverageOrigin";
 import { isShiftModule } from "@shift-replacements/domain/enums/ShiftModule";
 import { ShiftReplacementRepository } from "@shift-replacements/domain/ports/ShiftReplacementRepository";
+import { AbsenceReasonRepository } from "@absence-reasons/domain/ports/AbsenceReasonRepository";
+import { resolveMotivo } from "@shift-replacements/application/use-cases/resolveMotivo";
 
 export interface CreateCompulsoryCommand {
   actorIsCoordinator: boolean;
@@ -17,18 +19,17 @@ export interface CreateCompulsoryCommand {
   applicantId: string;
   coverageStart: Date;
   coverageEnd: Date;
-<<<<<<< Updated upstream
-=======
   absenceReasonId: string;
   observation: string | null;
-  bajoFactura: boolean;
->>>>>>> Stashed changes
 }
 
 // El coordinador crea una solicitud de ausencia + cobertura compulsiva + la
 // confirma, todo en un solo paso. La solicitud nace directamente en CONFIRMED.
 export class CreateCompulsoryReplacement {
-  constructor(private readonly repo: ShiftReplacementRepository) {}
+  constructor(
+    private readonly repo: ShiftReplacementRepository,
+    private readonly reasons: AbsenceReasonRepository,
+  ) {}
 
   async execute(
     cmd: CreateCompulsoryCommand,
@@ -54,8 +55,6 @@ export class CreateCompulsoryReplacement {
         new DomainError("SELF_REPLACEMENT", "El reemplazante no puede ser el mismo que el ausente"),
       );
 
-<<<<<<< Updated upstream
-=======
     const motivo = await resolveMotivo(
       this.reasons,
       cmd.absenceReasonId,
@@ -63,17 +62,6 @@ export class CreateCompulsoryReplacement {
     );
     if (!motivo.isOk) return err(motivo.error);
 
-    const overlapping = await this.repo.findOverlappingCoverages(
-      cmd.applicantId,
-      cmd.coverageStart,
-      cmd.coverageEnd,
-    );
-    if (overlapping.length > 0)
-      return err(
-        new DomainError("DUPLICATE_COVERAGE", "Reemplazo duplicado: ya tenés una cobertura en ese período"),
-      );
-
->>>>>>> Stashed changes
     // Crear la solicitud directamente en CONFIRMED
     const shift = await this.repo.create({
       date: cmd.requesterStart,
@@ -84,12 +72,8 @@ export class CreateCompulsoryReplacement {
       requesterEnd: cmd.requesterEnd,
       state: RequestState.CONFIRMED,
       resolvedById: cmd.coordinatorId,
-<<<<<<< Updated upstream
-=======
       absenceReasonId: motivo.value.absenceReasonId,
       observation: motivo.value.observation,
-      bajoFactura: cmd.bajoFactura,
->>>>>>> Stashed changes
     });
 
     // Agregar la cobertura compulsiva

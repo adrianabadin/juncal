@@ -18,6 +18,7 @@ import { CreateCompulsoryReplacement } from "@shift-replacements/application/use
 import { AssignCompulsoryCoverage } from "@shift-replacements/application/use-cases/AssignCompulsoryCoverage";
 import { RemoveCoverage } from "@shift-replacements/application/use-cases/RemoveCoverage";
 import { PrismaShiftReplacementRepository } from "@shift-replacements/infrastructure/persistence/PrismaShiftReplacementRepository";
+import { PrismaAbsenceReasonRepository } from "@absence-reasons/infrastructure/persistence/PrismaAbsenceReasonRepository";
 import { prismaHasSpecialty } from "@users/infrastructure/persistence/prismaHasSpecialty";
 import { getCurrentActor } from "@users/presentation/session";
 import { prisma } from "@shared/infrastructure/prisma/client";
@@ -88,7 +89,8 @@ export async function requestAbsenceAction(
   }
 
   const repo = new PrismaShiftReplacementRepository();
-  const uc = new RequestAbsence(repo, prismaHasSpecialty);
+  const reasons = new PrismaAbsenceReasonRepository();
+  const uc = new RequestAbsence(repo, prismaHasSpecialty, reasons);
   const result = await uc.execute({
     requesterId: actor.userId,
     isActive: actor.isActive,
@@ -96,12 +98,8 @@ export async function requestAbsenceAction(
     moduleHours: parsed.data.moduleHours,
     requesterStart: parsed.data.requesterStart,
     requesterEnd: parsed.data.requesterEnd,
-<<<<<<< Updated upstream
-=======
     absenceReasonId: parsed.data.absenceReasonId,
     observation: parsed.data.observation,
-    bajoFactura: parsed.data.bajoFactura,
->>>>>>> Stashed changes
   });
 
   if (!result.isOk) {
@@ -385,7 +383,8 @@ export async function createCompulsoryAction(
   }
 
   const repo = new PrismaShiftReplacementRepository();
-  const uc = new CreateCompulsoryReplacement(repo);
+  const reasons = new PrismaAbsenceReasonRepository();
+  const uc = new CreateCompulsoryReplacement(repo, reasons);
   const result = await uc.execute({
     actorIsCoordinator: actor.role === Role.COORDINATOR,
     coordinatorId: actor.userId,
@@ -397,12 +396,8 @@ export async function createCompulsoryAction(
     applicantId: parsed.data.applicantId,
     coverageStart: parsed.data.coverageStart,
     coverageEnd: parsed.data.coverageEnd,
-<<<<<<< Updated upstream
-=======
     absenceReasonId: parsed.data.absenceReasonId,
     observation: parsed.data.observation,
-    bajoFactura: parsed.data.bajoFactura,
->>>>>>> Stashed changes
   });
 
   if (!result.isOk) {
@@ -423,7 +418,6 @@ export async function listConfirmedShiftsByDateRangeAction(
 
   const startDate = new Date(start);
   const endDate = new Date(end);
-  endDate.setHours(23, 59, 59, 999);
   if (isNaN(startDate.getTime()) || isNaN(endDate.getTime()))
     return { ok: false, error: "Fechas inválidas" };
 
