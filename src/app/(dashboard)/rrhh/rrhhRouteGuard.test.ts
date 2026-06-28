@@ -35,10 +35,11 @@ describe("RRHH route guard", () => {
     expect(source).toMatch(/if\s*\(!actor\)\s*redirect\("\/login"\)/);
   });
 
-  it("redirects non-RRHH actors away from /rrhh", () => {
+  it("redirects non-RRHH, non-coordinator actors away from /rrhh", () => {
     expect(source).toMatch(
-      /actor\.role\s*!==\s*Role\.RRHH\)\s*redirect\("\/dashboard"\)/,
+      /actor\.role\s*!==\s*Role\.RRHH\s*&&\s*actor\.role\s*!==\s*Role\.COORDINATOR/,
     );
+    expect(source).toMatch(/redirect\("\/dashboard"\)/);
   });
 
   it("reads the current actor before rendering (server guard, not client)", () => {
