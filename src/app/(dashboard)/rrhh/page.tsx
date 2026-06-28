@@ -53,7 +53,12 @@ export default async function RrhhPage({
 }) {
   const actor = await getCurrentActor();
   if (!actor) redirect("/login");
-  if (actor.role !== Role.RRHH) redirect("/dashboard");
+  // RRHH users get the dedicated HR panel. Coordinators also get read-only
+  // access so they can validate the statistical view during operations
+  // without having to assign the RRHH role to a separate account.
+  if (actor.role !== Role.RRHH && actor.role !== Role.COORDINATOR) {
+    redirect("/dashboard");
+  }
 
   const params = await searchParams;
   const fallback = defaultRange();

@@ -44,14 +44,25 @@ export default async function DashboardPage() {
       ? [
           {
             href: "/coordinator",
-            title: "Worklist general",
+            title: "Gestión de Reemplazos",
             description:
               "Resolvé los reemplazos postulados y asigná compulsivos.",
+          },
+          {
+            href: "/rrhh",
+            title: "Panel RRHH (estadísticas)",
+            description:
+              "Vista analítica de reemplazos aprobados: KPIs, filtros y exportación.",
           },
           {
             href: "/specialties",
             title: "Especialidades",
             description: "Alta, baja y modificación de especialidades.",
+          },
+          {
+            href: "/motivos",
+            title: "Motivos de ausencia",
+            description: "Alta, edición, desactivación y eliminación de motivos.",
           },
           {
             href: "/users",
