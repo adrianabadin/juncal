@@ -15,14 +15,31 @@ export default async function DashboardPage() {
   if (!actor) redirect("/login");
 
   const isCoordinator = actor.role === Role.COORDINATOR;
-  const roleLabel = isCoordinator ? "Coordinador" : "Profesional de base";
+  const isRRHH = actor.role === Role.RRHH;
+  const roleLabel = isCoordinator
+    ? "Coordinador"
+    : isRRHH
+      ? "Recursos Humanos"
+      : "Profesional de base";
 
   const sections: SectionCard[] = [
-    {
-      href: "/worklist",
-      title: "Worklist de especialidad",
-      description: "Solicitá una ausencia o postulate a un reemplazo abierto.",
-    },
+    ...(isRRHH
+      ? [
+          {
+            href: "/rrhh",
+            title: "Tablero RRHH",
+            description:
+              "Análisis de reemplazos aprobados con filtros y exportación.",
+          },
+        ]
+      : [
+          {
+            href: "/worklist",
+            title: "Worklist de especialidad",
+            description:
+              "Solicitá una ausencia o postulate a un reemplazo abierto.",
+          },
+        ]),
     ...(isCoordinator
       ? [
           {

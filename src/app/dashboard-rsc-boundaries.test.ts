@@ -23,6 +23,7 @@ const repoRoot = join(__dirname, "..", "..");
 const serverOnlyEntrypoints = [
   "src/app/(dashboard)/layout.tsx",
   "src/app/(dashboard)/motivos/page.tsx",
+  "src/app/(dashboard)/rrhh/page.tsx",
 ];
 
 function firstDirective(source: string): string | null {
