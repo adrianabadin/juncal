@@ -84,6 +84,9 @@ export class ResolveRequest {
         requesterEnd: gap.end,
         state: RequestState.OPEN,
         resolvedById: null,
+        absenceReasonId: confirmed.absenceReasonId,
+        observation: confirmed.observation,
+        bajoFactura: confirmed.bajoFactura,
       });
     }
   }

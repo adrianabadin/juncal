@@ -29,6 +29,9 @@ export class InMemoryShiftReplacementRepository
       requesterStart: data.requesterStart,
       requesterEnd: data.requesterEnd,
       resolvedById: data.resolvedById,
+      absenceReasonId: data.absenceReasonId,
+      observation: data.observation,
+      bajoFactura: data.bajoFactura,
     });
     this.items.push(s);
     return s;
@@ -67,6 +70,11 @@ export class InMemoryShiftReplacementRepository
   async listCoverages(shiftReplacementId: string): Promise<ShiftCoverage[]> {
     return this.coverages.filter(
       (c) => c.shiftReplacementId === shiftReplacementId,
+    );
+  }
+  async findOverlappingCoverages(applicantId: string, start: Date, end: Date): Promise<ShiftCoverage[]> {
+    return this.coverages.filter(
+      (c) => c.applicantId === applicantId && c.start < end && c.end > start,
     );
   }
 }

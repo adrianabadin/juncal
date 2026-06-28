@@ -18,19 +18,27 @@ interface ShiftOption {
   requesterEnd: string;
 }
 
+interface AbsenceReasonOption {
+  id: string;
+  name: string;
+  isDefault: boolean;
+  isActive: boolean;
+}
+
 interface AssignCompulsoryButtonProps {
   specialties: SpecialtyOption[];
   openShifts: ShiftOption[];
+  reasons: AbsenceReasonOption[];
 }
 
-export default function AssignCompulsoryButton({ specialties, openShifts }: AssignCompulsoryButtonProps) {
+export default function AssignCompulsoryButton({ specialties, openShifts, reasons }: AssignCompulsoryButtonProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Asignar cobertura compulsiva</Button>
       <Modal isOpen={open} onClose={() => setOpen(false)} title="Asignar cobertura compulsiva">
-        <AssignCompulsoryForm specialties={specialties} openShifts={openShifts} />
+        <AssignCompulsoryForm specialties={specialties} openShifts={openShifts} reasons={reasons} />
       </Modal>
     </>
   );

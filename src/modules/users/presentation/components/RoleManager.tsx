@@ -16,6 +16,7 @@ interface RoleManagerProps {
 const roleLabel: Record<Role, string> = {
   BASE_PROFESSIONAL: "Profesional",
   COORDINATOR: "Coordinador",
+  RRHH: "RRHH (Recursos Humanos)",
 };
 
 export default function RoleManager({
@@ -96,6 +97,7 @@ export default function RoleManager({
                     <option value={Role.COORDINATOR}>
                       {roleLabel.COORDINATOR}
                     </option>
+                    <option value={Role.RRHH}>{roleLabel.RRHH}</option>
                   </select>
                   {savingId === u.id && (
                     <span className="text-xs text-muted-foreground">

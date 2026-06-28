@@ -30,6 +30,27 @@ describe("ChangeUserRole", () => {
     if (res.isOk) expect(res.value.role).toBe(Role.COORDINATOR);
   });
 
+  it("un coordinador asigna el rol RRHH a un usuario activo", async () => {
+    const target = await repo.create({
+      email: "rrhh@s.com",
+      passwordHash: "h",
+      name: "RRHH User",
+      role: Role.BASE_PROFESSIONAL,
+    });
+    await repo.activateWithSpecialties(target.id, ["s1"]);
+
+    const uc = new ChangeUserRole(repo);
+    const res = await uc.execute({
+      actorIsCoordinator: true,
+      actorId: "coord",
+      userId: target.id,
+      role: Role.RRHH,
+    });
+
+    expect(res.isOk).toBe(true);
+    if (res.isOk) expect(res.value.role).toBe(Role.RRHH);
+  });
+
   it("rechaza si el actor no es coordinador", async () => {
     const target = await repo.create({
       email: "a@s.com",

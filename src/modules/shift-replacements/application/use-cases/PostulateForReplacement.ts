@@ -51,6 +51,16 @@ export class PostulateForReplacement {
         new DomainError("ALREADY_POSTULATED", "Ya cubrís un tramo de esta guardia"),
       );
 
+    const overlapping = await this.repo.findOverlappingCoverages(
+      cmd.applicantId,
+      cmd.start,
+      cmd.end,
+    );
+    if (overlapping.length > 0)
+      return err(
+        new DomainError("DUPLICATE_COVERAGE", "Reemplazo duplicado: ya tenés una cobertura en ese período"),
+      );
+
     const coverage = await this.repo.addCoverage({
       shiftReplacementId: shift.id,
       applicantId: cmd.applicantId,

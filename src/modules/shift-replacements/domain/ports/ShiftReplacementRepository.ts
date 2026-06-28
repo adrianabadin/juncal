@@ -12,6 +12,9 @@ export interface CreateShiftData {
   requesterEnd: Date;
   state: RequestState;
   resolvedById: string | null;
+  absenceReasonId: string | null;
+  observation: string | null;
+  bajoFactura: boolean;
 }
 
 export interface CreateCoverageData {
@@ -33,4 +36,5 @@ export interface ShiftReplacementRepository {
   removeCoverage(coverageId: string): Promise<void>;
   findCoverageById(coverageId: string): Promise<ShiftCoverage | null>;
   listCoverages(shiftReplacementId: string): Promise<ShiftCoverage[]>;
+  findOverlappingCoverages(applicantId: string, start: Date, end: Date): Promise<ShiftCoverage[]>;
 }

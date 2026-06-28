@@ -10,18 +10,26 @@ interface SpecialtyOption {
   name: string;
 }
 
-interface RequestAbsenceButtonProps {
-  specialties: SpecialtyOption[];
+interface AbsenceReasonOption {
+  id: string;
+  name: string;
+  isDefault: boolean;
+  isActive: boolean;
 }
 
-export default function RequestAbsenceButton({ specialties }: RequestAbsenceButtonProps) {
+interface RequestAbsenceButtonProps {
+  specialties: SpecialtyOption[];
+  reasons: AbsenceReasonOption[];
+}
+
+export default function RequestAbsenceButton({ specialties, reasons }: RequestAbsenceButtonProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Solicitar ausencia</Button>
       <Modal isOpen={open} onClose={() => setOpen(false)} title="Solicitar ausencia">
-        <RequestAbsenceForm specialties={specialties} />
+        <RequestAbsenceForm specialties={specialties} reasons={reasons} />
       </Modal>
     </>
   );

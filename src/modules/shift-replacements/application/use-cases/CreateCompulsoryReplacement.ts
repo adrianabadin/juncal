@@ -5,6 +5,8 @@ import { RequestState } from "@shift-replacements/domain/enums/RequestState";
 import { CoverageOrigin } from "@shift-replacements/domain/enums/CoverageOrigin";
 import { isShiftModule } from "@shift-replacements/domain/enums/ShiftModule";
 import { ShiftReplacementRepository } from "@shift-replacements/domain/ports/ShiftReplacementRepository";
+import { AbsenceReasonRepository } from "@absence-reasons/domain/ports/AbsenceReasonRepository";
+import { resolveMotivo } from "@shift-replacements/application/use-cases/resolveMotivo";
 
 export interface CreateCompulsoryCommand {
   actorIsCoordinator: boolean;
@@ -17,12 +19,18 @@ export interface CreateCompulsoryCommand {
   applicantId: string;
   coverageStart: Date;
   coverageEnd: Date;
+  absenceReasonId: string;
+  observation: string | null;
+  bajoFactura: boolean;
 }
 
 // El coordinador crea una solicitud de ausencia + cobertura compulsiva + la
 // confirma, todo en un solo paso. La solicitud nace directamente en CONFIRMED.
 export class CreateCompulsoryReplacement {
-  constructor(private readonly repo: ShiftReplacementRepository) {}
+  constructor(
+    private readonly repo: ShiftReplacementRepository,
+    private readonly reasons: AbsenceReasonRepository,
+  ) {}
 
   async execute(
     cmd: CreateCompulsoryCommand,
@@ -48,6 +56,13 @@ export class CreateCompulsoryReplacement {
         new DomainError("SELF_REPLACEMENT", "El reemplazante no puede ser el mismo que el ausente"),
       );
 
+    const motivo = await resolveMotivo(
+      this.reasons,
+      cmd.absenceReasonId,
+      cmd.observation,
+    );
+    if (!motivo.isOk) return err(motivo.error);
+
     // Crear la solicitud directamente en CONFIRMED
     const shift = await this.repo.create({
       date: cmd.requesterStart,
@@ -58,6 +73,9 @@ export class CreateCompulsoryReplacement {
       requesterEnd: cmd.requesterEnd,
       state: RequestState.CONFIRMED,
       resolvedById: cmd.coordinatorId,
+      absenceReasonId: motivo.value.absenceReasonId,
+      observation: motivo.value.observation,
+      bajoFactura: cmd.bajoFactura,
     });
 
     // Agregar la cobertura compulsiva

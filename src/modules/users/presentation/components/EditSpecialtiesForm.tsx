@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -34,6 +34,7 @@ export default function EditSpecialtiesForm({
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [currentIds, setCurrentIds] = useState<string[]>([]);
+  const [isPending, startTransition] = useTransition();
 
   const {
     register,
@@ -48,7 +49,9 @@ export default function EditSpecialtiesForm({
 
   useEffect(() => {
     if (!isOpen) return;
-    setLoading(true);
+    startTransition(() => {
+      setLoading(true);
+    });
     getUserSpecialtyIdsAction(userId).then((res) => {
       const ids = res.ok ? (res.data ?? []) : [];
       setCurrentIds(ids);

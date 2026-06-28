@@ -21,7 +21,7 @@ export type ActivateUserInput = z.infer<typeof activateUserSchema>;
 
 export const changeUserRoleSchema = z.object({
   userId: z.string().min(1),
-  role: z.enum(["BASE_PROFESSIONAL", "COORDINATOR"]),
+  role: z.enum(["BASE_PROFESSIONAL", "COORDINATOR", "RRHH"]),
 });
 export type ChangeUserRoleInput = z.infer<typeof changeUserRoleSchema>;
 

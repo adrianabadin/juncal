@@ -1,3 +1,4 @@
+import "server-only";
 import { cookies } from "next/headers";
 import { Role } from "@users/domain/enums/Role";
 import { PrismaUserRepository } from "@users/infrastructure/persistence/PrismaUserRepository";

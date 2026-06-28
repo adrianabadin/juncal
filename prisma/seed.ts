@@ -2,6 +2,7 @@ import argon2 from "argon2";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { Role } from "../src/modules/users/domain/enums/Role";
+import { defaultAbsenceReasons } from "../src/modules/absence-reasons/domain/defaultAbsenceReasons";
 
 // Bootstrap del sistema: crea el primer COORDINATOR y especialidades base.
 // Sin esto no existe forma de activar cuentas (la activación requiere un coordinador previo).
@@ -38,6 +39,22 @@ async function main(): Promise<void> {
     });
   }
   console.log(`✓ Especialidades base aseguradas: ${specialties.join(", ")}`);
+
+  // Motivos de ausencia por defecto: protegidos (no se pueden borrar, solo editar/desactivar).
+  for (const reason of defaultAbsenceReasons) {
+    await prisma.absenceReason.upsert({
+      where: { name: reason.name },
+      update: { isDefault: reason.isDefault },
+      create: {
+        name: reason.name,
+        isDefault: reason.isDefault,
+        isActive: reason.isActive,
+      },
+    });
+  }
+  console.log(
+    `✓ Motivos de ausencia por defecto asegurados: ${defaultAbsenceReasons.map((r) => r.name).join(", ")}`,
+  );
 
   // Profesionales demo (activos, con especialidades asignadas) para poder probar
   // postulaciones y reemplazos compulsivos sin tener que dar de alta a mano.

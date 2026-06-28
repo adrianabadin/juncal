@@ -51,6 +51,17 @@ model UserSpecialty {
   @@id([userId, specialtyId])
 }
 
+model AbsenceReason {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  isDefault Boolean  @default(false)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  shifts ShiftReplacement[]
+}
+
 model ShiftReplacement {
   id            String   @id @default(cuid())
   date          DateTime
@@ -61,12 +72,16 @@ model ShiftReplacement {
   requesterStart DateTime
   requesterEnd  DateTime
   resolvedById  String?
+  absenceReasonId String?
+  observation     String?
+  bajoFactura     Boolean  @default(false)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   requester User      @relation("Requester", fields: [requesterId], references: [id])
   resolver  User?     @relation("Resolver", fields: [resolvedById], references: [id])
   specialty Specialty @relation(fields: [specialtyId], references: [id])
+  absenceReason AbsenceReason? @relation(fields: [absenceReasonId], references: [id])
   coverages ShiftCoverage[]
 
   @@index([state, specialtyId])

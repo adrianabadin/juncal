@@ -10,6 +10,7 @@ import {
   ShiftDto,
 } from "@shift-replacements/presentation/actions/shiftActions";
 import { listSpecialtiesAction } from "@specialties/presentation/actions/specialtyActions";
+import { listActiveAbsenceReasonsAction } from "@absence-reasons/presentation/actions/absenceReasonActions";
 import ResolveActions from "@shift-replacements/presentation/components/ResolveActions";
 import AssignCompulsoryButton from "@shift-replacements/presentation/components/AssignCompulsoryButton";
 import ExportExcelButton from "@shift-replacements/presentation/components/ExportExcelButton";
@@ -22,12 +23,13 @@ export default async function CoordinatorPage() {
   if (!actor) redirect("/login");
   if (actor.role !== Role.COORDINATOR) redirect("/dashboard");
 
-  const [postulatedResult, confirmedResult, specialtiesResult, openShiftsResult] =
+  const [postulatedResult, confirmedResult, specialtiesResult, openShiftsResult, reasonsResult] =
     await Promise.all([
       listPostulatedAction(),
       listConfirmedShiftsAction(),
       listSpecialtiesAction(),
       listOpenShiftsAction(),
+      listActiveAbsenceReasonsAction(),
     ]);
 
   const postulatedShifts: PostulatedShiftDto[] = postulatedResult.ok
@@ -40,6 +42,7 @@ export default async function CoordinatorPage() {
   const openShifts: ShiftDto[] = openShiftsResult.ok
     ? (openShiftsResult.data ?? [])
     : [];
+  const reasons = reasonsResult.ok ? (reasonsResult.data ?? []) : [];
 
   const specialtyNameById = new Map(specialties.map((s) => [s.id, s.name]));
 
@@ -125,6 +128,7 @@ export default async function CoordinatorPage() {
               requesterStart: s.requesterStart,
               requesterEnd: s.requesterEnd,
             }))}
+            reasons={reasons}
           />
           <Link href="/dashboard" className="text-sm text-link hover:underline">
             Volver al inicio
@@ -154,7 +158,7 @@ export default async function CoordinatorPage() {
           <h2 className="text-lg font-semibold text-brand-700">
             Aprobados del mes
           </h2>
-          <ExportExcelButton />
+           <ExportExcelButton specialties={specialties} />
         </div>
         {confirmedShifts.length === 0 ? (
           <p className="text-sm text-muted-foreground">

@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { InMemoryShiftReplacementRepository } from "@shift-replacements/infrastructure/persistence/InMemoryShiftReplacementRepository";
+import { InMemoryAbsenceReasonRepository } from "@absence-reasons/infrastructure/persistence/InMemoryAbsenceReasonRepository";
 import { RequestAbsence } from "@shift-replacements/application/use-cases/RequestAbsence";
 import { PostulateForReplacement } from "@shift-replacements/application/use-cases/PostulateForReplacement";
 import { ResolveRequest } from "@shift-replacements/application/use-cases/ResolveRequest";
@@ -18,14 +19,23 @@ const covEnd = new Date("2026-07-01T14:00:00");
 
 describe("Shift lifecycle (coverage model)", () => {
   let repo: InMemoryShiftReplacementRepository;
-  beforeEach(() => {
+  let reasons: InMemoryAbsenceReasonRepository;
+  let motivoId: string;
+  let requestAbsence: RequestAbsence;
+
+  beforeEach(async () => {
     repo = new InMemoryShiftReplacementRepository();
+    reasons = new InMemoryAbsenceReasonRepository();
+    const enfermedad = await reasons.create({ name: "Enfermedad", isDefault: true });
+    motivoId = enfermedad.id;
+    requestAbsence = new RequestAbsence(repo, hasSpecialty, reasons);
   });
 
   it("flujo completo: request → postulate → confirm", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     expect(created.isOk).toBe(true);
     if (!created.isOk) return;
@@ -46,9 +56,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("rechazar solicitud cierra el flujo", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     const rej = await new ResolveRequest(repo).execute({
@@ -59,25 +70,28 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("no se puede solicitar sin especialidad", async () => {
-    const r = await new RequestAbsence(repo, hasSpecialty).execute({
+    const r = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s2",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     expect(r.isOk).toBe(false);
   });
 
   it("no se puede solicitar con módulo inválido", async () => {
-    const r = await new RequestAbsence(repo, hasSpecialty).execute({
+    const r = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 8, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     expect(r.isOk).toBe(false);
   });
 
   it("no se puede postular a solicitud cerrada", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     await new ResolveRequest(repo).execute({
@@ -91,9 +105,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("no se puede postular a solicitud propia", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     const post = await new PostulateForReplacement(repo, hasSpecialty).execute({
@@ -104,9 +119,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("reemplazo compulsivo crea cobertura COMPULSORY", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
 
@@ -122,9 +138,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("remove coverage elimina una cobertura", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
 
@@ -144,10 +161,11 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("coordinador puede confirmar con huecos sin cubrir", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 24, requesterStart: new Date("2026-07-01T00:00:00"),
       requesterEnd: new Date("2026-07-02T00:00:00"),
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
 
@@ -167,9 +185,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("no-coordinador no puede confirmar", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     const conf = await new ResolveRequest(repo).execute({
@@ -179,9 +198,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("no-coordinador no puede asignar compulsivo", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     const cov = await new AssignCompulsoryCoverage(repo).execute({
@@ -192,9 +212,10 @@ describe("Shift lifecycle (coverage model)", () => {
   });
 
   it("no se puede postular dos veces al mismo shift", async () => {
-    const created = await new RequestAbsence(repo, hasSpecialty).execute({
+    const created = await requestAbsence.execute({
       requesterId: "req", isActive: true, specialtyId: "s1",
       moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: motivoId, observation: null, bajoFactura: false,
     });
     if (!created.isOk) return;
     await new PostulateForReplacement(repo, hasSpecialty).execute({
