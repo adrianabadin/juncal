@@ -532,9 +532,27 @@ export async function listConfirmedShiftsForRRHHAction(
   const filtered = filterConfirmedShiftsForRRHH(shifts, filters);
 
   const reasonNameById = await resolveReasonNames(filtered);
+  // `filtered` holds ShiftReplacement CLASS instances whose fields are exposed
+  // via getters over a private `props`. Spreading the instance (`...s`) drops
+  // those getter-backed values after ESBuild compilation, leaving requesterId /
+  // absenceReasonId undefined. Read each field through its getter so the mapped
+  // object carries the real values.
   const augmented: RepoShift[] = filtered.map((s) => ({
-    ...(s as RepoShift),
-    reasonName: s.absenceReasonId ? (reasonNameById.get(s.absenceReasonId) ?? null) : null,
+    id: s.id,
+    date: s.date,
+    state: s.state,
+    specialtyId: s.specialtyId,
+    requesterId: s.requesterId,
+    moduleHours: s.moduleHours,
+    requesterStart: s.requesterStart,
+    requesterEnd: s.requesterEnd,
+    resolvedById: s.resolvedById,
+    bajoFactura: s.bajoFactura,
+    absenceReasonId: s.absenceReasonId,
+    observation: s.observation,
+    reasonName: s.absenceReasonId
+      ? (reasonNameById.get(s.absenceReasonId) ?? null)
+      : null,
   }));
 
   const result = await toPostulatedDtos(repo, augmented);
