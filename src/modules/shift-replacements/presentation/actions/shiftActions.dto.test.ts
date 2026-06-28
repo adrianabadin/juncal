@@ -41,7 +41,11 @@ vi.mock("@shared/infrastructure/prisma/client", () => ({
 
 import { listConfirmedShiftsAction } from "@shift-replacements/presentation/actions/shiftActions";
 
-function buildRow(bajoFactura: boolean, absenceReasonId: string | null = "ar-1") {
+function buildRow(
+  bajoFactura: boolean,
+  absenceReasonId: string | null = "ar-1",
+  observation: string | null = null,
+) {
   return {
     id: "shift-1",
     date: new Date("2026-07-01T08:00:00"),
@@ -54,6 +58,7 @@ function buildRow(bajoFactura: boolean, absenceReasonId: string | null = "ar-1")
     resolvedById: "coord",
     bajoFactura,
     absenceReasonId,
+    observation,
   };
 }
 
@@ -98,6 +103,28 @@ describe("mapShiftToDto — bajoFactura exposure", () => {
     expect(result.ok).toBe(true);
     if (result.ok && result.data) {
       expect(result.data[0].absenceReasonId).toBe("ar-enfermedad");
+    }
+  });
+
+  it("exposes observation when the shift has one", async () => {
+    listByState.mockResolvedValue([buildRow(false, "ar-otros", "Reunión familiar")]);
+
+    const result = await listConfirmedShiftsAction();
+
+    expect(result.ok).toBe(true);
+    if (result.ok && result.data) {
+      expect(result.data[0].observation).toBe("Reunión familiar");
+    }
+  });
+
+  it("exposes observation as null when the shift has none", async () => {
+    listByState.mockResolvedValue([buildRow(false, "ar-enfermedad", null)]);
+
+    const result = await listConfirmedShiftsAction();
+
+    expect(result.ok).toBe(true);
+    if (result.ok && result.data) {
+      expect(result.data[0].observation).toBeNull();
     }
   });
 });

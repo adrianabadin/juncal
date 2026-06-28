@@ -92,3 +92,55 @@ describe("RRHH export respects active filters", () => {
     expect(dataRowValues(ws, 3)).toHaveLength(3);
   });
 });
+
+describe("RRHH export surfaces Motivo / Observación", () => {
+  // Mirror the action-side DTO shape used by RrhhExportButton: each shift
+  // carries a server-resolved reasonName and observation. The button passes
+  // this data straight through to the workbook builder.
+  function dtoRow(id: string, specialtyId: string, motive: string | null, observation: string | null) {
+    return {
+      id,
+      specialtyId,
+      bajoFactura: false,
+      requesterName: `user-${id}`,
+      moduleHours: 12,
+      requesterStart: new Date("2026-07-10T08:00:00.000Z"),
+      requesterEnd: new Date("2026-07-10T20:00:00.000Z"),
+      coverages: [] as { applicantName?: string; start: string; end: string }[],
+      reasonName: motive,
+      observation,
+    };
+  }
+
+  function toExportShiftDto(r: ReturnType<typeof dtoRow>) {
+    return {
+      specialtyId: r.specialtyId,
+      requesterName: r.requesterName,
+      moduleHours: r.moduleHours,
+      requesterStart: r.requesterStart.toISOString(),
+      requesterEnd: r.requesterEnd.toISOString(),
+      coverages: r.coverages,
+      reasonName: r.reasonName,
+      observation: r.observation,
+    };
+  }
+
+  it("writes the resolved Motivo in column 8 and the Otros observation in column 9", () => {
+    const shifts = [
+      dtoRow("o1", "s1", "Otros", "Trámite personal"),
+      dtoRow("c1", "s1", "Cambio de guardia", null),
+    ];
+    const wb = buildConfirmedShiftsWorkbook({
+      shifts: shifts.map(toExportShiftDto),
+      specialtyNameById,
+      start: "2026-07-01",
+      end: "2026-07-31",
+    });
+    const ws = wb.getWorksheet("Reemplazos")!;
+
+    expect(ws.getRow(7).getCell(8).value).toBe("Otros");
+    expect(ws.getRow(7).getCell(9).value).toBe("Trámite personal");
+    expect(ws.getRow(8).getCell(8).value).toBe("Cambio de guardia");
+    expect(ws.getRow(8).getCell(9).value).toBe("—");
+  });
+});

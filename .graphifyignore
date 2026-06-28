@@ -1,0 +1,3 @@
+# Reserved for graphify local cache exclusions.
+# See https://github.com/local/graphify for details.
+.worktrees/

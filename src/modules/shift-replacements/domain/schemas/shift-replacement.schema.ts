@@ -26,11 +26,9 @@ const absenceReasonName = z.string().optional();
 const isDefault = z.boolean().optional();
 const bajoFactura = z.boolean().default(false);
 
-// Require an observation for custom (non-default) reasons. The authoritative
-// rule lives in `resolveMotivo` (via the repository's `isDefault` flag); this
-// client-side mirror accepts `isDefault` directly. The legacy
-// `absenceReasonName === "Otros"` check is kept as a fallback so older callers
-// that only send the reason name keep working.
+// Require an observation only when the motive name is exactly "Otros".
+// Non-Otros motives (including non-default custom reasons) do NOT require
+// observation — they are free to leave it null.
 function requireObservationForCustomReason(
   d: {
     absenceReasonName?: string;
@@ -39,9 +37,8 @@ function requireObservationForCustomReason(
   },
   ctx: z.RefinementCtx,
 ): void {
-  const isCustom =
-    d.isDefault === false || d.absenceReasonName === OTROS_REASON_NAME;
-  if (isCustom && !d.observation?.trim()) {
+  const requiresObservation = d.absenceReasonName === OTROS_REASON_NAME;
+  if (requiresObservation && !d.observation?.trim()) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: "Ingrese una observación",

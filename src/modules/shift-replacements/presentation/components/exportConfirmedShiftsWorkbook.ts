@@ -13,6 +13,10 @@ export interface ExportShift {
   requesterName?: string;
   moduleHours: number;
   coverages: ExportCoverage[];
+  /** Resolved motive name (server-side). Used by `Motivo` column. */
+  reasonName?: string | null;
+  /** Free-text observation. Surfaced under `Observación` when reason is `Otros`. */
+  observation?: string | null;
 }
 
 export interface BuildConfirmedShiftsWorkbookInput {
@@ -41,6 +45,8 @@ const HEADERS = [
   "Salida",
   "Módulo",
   "Coberturas",
+  "Motivo",
+  "Observación",
 ] as const;
 
 function formatDate(iso: string): string {
@@ -88,6 +94,8 @@ export function buildConfirmedShiftsWorkbook({
     { header: "", key: "salida", width: 10 },
     { header: "", key: "modulo", width: 10 },
     { header: "", key: "coberturas", width: 55 },
+    { header: "", key: "motivo", width: 22 },
+    { header: "", key: "observacion", width: 40 },
   ];
 
   if (logoBase64) {
@@ -98,7 +106,7 @@ export function buildConfirmedShiftsWorkbook({
     });
   }
 
-  ws.mergeCells("A1:G1");
+  ws.mergeCells("A1:I1");
   const titleCell = ws.getCell("A1");
   titleCell.value = "Sanatorio Juncal — Gestión de Guardias";
   titleCell.font = {
@@ -115,7 +123,7 @@ export function buildConfirmedShiftsWorkbook({
   titleCell.alignment = { horizontal: "center", vertical: "middle" };
   ws.getRow(1).height = 36;
 
-  ws.mergeCells("A3:G3");
+  ws.mergeCells("A3:I3");
   const subTitle = ws.getCell("A3");
   subTitle.value = "REEMPLAZOS CONFIRMADOS";
   subTitle.font = {
@@ -133,7 +141,7 @@ export function buildConfirmedShiftsWorkbook({
   ws.getRow(3).height = 28;
 
   const dateRange = `Desde: ${formatDate(new Date(start).toISOString())}  —  Hasta: ${formatDate(new Date(end).toISOString())}`;
-  ws.mergeCells("A4:G4");
+  ws.mergeCells("A4:I4");
   const dateCell = ws.getCell("A4");
   dateCell.value = dateRange;
   dateCell.font = {
@@ -176,6 +184,12 @@ export function buildConfirmedShiftsWorkbook({
     const isAlt = idx % 2 === 0;
     const fillColor = isAlt ? BRAND.sageLight : BRAND.white;
 
+    const motivo = s.reasonName ?? "—";
+    const observacion =
+      s.reasonName === "Otros" && s.observation?.trim()
+        ? s.observation
+        : "—";
+
     const values = [
       formatDate(s.requesterStart),
       specialtyNameById.get(s.specialtyId) ?? s.specialtyId,
@@ -189,6 +203,8 @@ export function buildConfirmedShiftsWorkbook({
             `${c.applicantName} (${formatTime(c.start)}-${formatTime(c.end)})`,
         )
         .join(", "),
+      motivo,
+      observacion,
     ];
 
     values.forEach((val, colIdx) => {

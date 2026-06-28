@@ -181,8 +181,8 @@ export default async function RrhhPage({
                   <th className="px-3 py-2">Módulo</th>
                   <th className="px-3 py-2">Bajo Factura</th>
                   <th className="px-3 py-2">Coberturas</th>
-                  <th className="px-3 py-2">Estado</th>
-                  <th className="px-3 py-2">Acciones</th>
+                  <th className="px-3 py-2">Motivo</th>
+                  <th className="px-3 py-2">Observación</th>
                 </tr>
               </thead>
               <tbody>
@@ -219,9 +219,14 @@ export default async function RrhhPage({
                             )
                             .join(", ")}
                     </td>
-                    <td className="px-3 py-2">{shift.state}</td>
-                    <td className="px-3 py-2 text-muted-foreground">
-                      Solo lectura
+                    <td className="px-3 py-2">
+                      {shift.reasonName ?? "—"}
+                    </td>
+                    <td className="px-3 py-2">
+                      {shift.reasonName === "Otros" &&
+                      shift.observation?.trim()
+                        ? shift.observation
+                        : "—"}
                     </td>
                   </tr>
                 ))}

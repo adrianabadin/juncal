@@ -52,7 +52,7 @@ describe("buildConfirmedShiftsWorkbook", () => {
     expect(dates[0]).not.toBe(dates[1]);
   });
 
-  it("writes the 7 column headers in order", () => {
+  it("writes the 9 column headers in order", () => {
     const wb = buildConfirmedShiftsWorkbook({
       shifts,
       specialtyNameById,
@@ -68,6 +68,8 @@ describe("buildConfirmedShiftsWorkbook", () => {
     expect(headerRow.getCell(5).value).toBe("Salida");
     expect(headerRow.getCell(6).value).toBe("Módulo");
     expect(headerRow.getCell(7).value).toBe("Coberturas");
+    expect(headerRow.getCell(8).value).toBe("Motivo");
+    expect(headerRow.getCell(9).value).toBe("Observación");
   });
 
   it("maps each shift into a data row with resolved specialty name and coverages", () => {
@@ -94,6 +96,79 @@ describe("buildConfirmedShiftsWorkbook", () => {
     });
     const ws = wb.getWorksheet("Reemplazos")!;
     expect(ws.getRow(7).getCell(2).value).toBe("unknown");
+  });
+
+  it("writes Motivo and Observación columns from shift data", () => {
+    const wb = buildConfirmedShiftsWorkbook({
+      shifts: [
+        {
+          ...shifts[0],
+          reasonName: "Otros",
+          observation: "Trámite personal urgente",
+        },
+      ],
+      specialtyNameById,
+      start: "2026-07-01",
+      end: "2026-07-31",
+    });
+    const ws = wb.getWorksheet("Reemplazos")!;
+    const dataRow = ws.getRow(7);
+    expect(dataRow.getCell(8).value).toBe("Otros");
+    expect(dataRow.getCell(9).value).toBe("Trámite personal urgente");
+  });
+
+  it("renders Observación as em-dash for non-Otros motives", () => {
+    const wb = buildConfirmedShiftsWorkbook({
+      shifts: [
+        {
+          ...shifts[0],
+          reasonName: "Cambio de guardia",
+          observation: null,
+        },
+      ],
+      specialtyNameById,
+      start: "2026-07-01",
+      end: "2026-07-31",
+    });
+    const ws = wb.getWorksheet("Reemplazos")!;
+    const dataRow = ws.getRow(7);
+    expect(dataRow.getCell(8).value).toBe("Cambio de guardia");
+    expect(dataRow.getCell(9).value).toBe("—");
+  });
+
+  it("renders Observación as em-dash when reasonName is missing", () => {
+    const wb = buildConfirmedShiftsWorkbook({
+      shifts: [{ ...shifts[0] }],
+      specialtyNameById,
+      start: "2026-07-01",
+      end: "2026-07-31",
+    });
+    const ws = wb.getWorksheet("Reemplazos")!;
+    const dataRow = ws.getRow(7);
+    expect(dataRow.getCell(8).value).toBe("—");
+    expect(dataRow.getCell(9).value).toBe("—");
+  });
+
+  it("spans the title, subtitle, and date-range headers across all 9 columns (A1:I1, A3:I3, A4:I4)", () => {
+    const wb = buildConfirmedShiftsWorkbook({
+      shifts,
+      specialtyNameById,
+      start: "2026-07-01",
+      end: "2026-07-31",
+    });
+    const ws = wb.getWorksheet("Reemplazos")!;
+    // Merge ranges are exposed on the worksheet model as a list of strings.
+    // After the update, every banner row should reach column I (the new
+    // Observación column).
+    const merges = (ws.model.merges ?? []) as string[];
+    const mergeAddresses = merges.map((m) => String(m));
+    expect(mergeAddresses).toContain("A1:I1");
+    expect(mergeAddresses).toContain("A3:I3");
+    expect(mergeAddresses).toContain("A4:I4");
+    // Old A1:G1 banner merge must be gone.
+    expect(mergeAddresses).not.toContain("A1:G1");
+    expect(mergeAddresses).not.toContain("A3:G3");
+    expect(mergeAddresses).not.toContain("A4:G4");
   });
 
   // 1x1 transparent PNG, base64-encoded.

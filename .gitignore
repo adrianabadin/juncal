@@ -50,3 +50,9 @@ next-env.d.ts
 
 # playwright mcp
 .playwright-mcp/
+
+# isolated git worktrees (created via `git worktree add ...`)
+/.worktrees/
+
+# graphify local cache
+/graphify-out/

@@ -55,7 +55,7 @@ describe("RequestAbsence — motivo persistence", () => {
     }
   });
 
-  it("rejects a custom reason without observation", async () => {
+  it("accepts a custom non-Otros reason without observation", async () => {
     const curso = await reasons.create({ name: "Curso", isDefault: false });
     const uc = new RequestAbsence(repo, hasSpecialty, reasons);
 
@@ -65,8 +65,42 @@ describe("RequestAbsence — motivo persistence", () => {
       absenceReasonId: curso.id, observation: null, bajoFactura: false,
     });
 
+    expect(r.isOk).toBe(true);
+    if (r.isOk) {
+      expect(r.value.absenceReasonId).toBe(curso.id);
+      expect(r.value.observation).toBeNull();
+    }
+  });
+
+  it("rejects Otros without observation", async () => {
+    const otros = await reasons.create({ name: "Otros", isDefault: false });
+    const uc = new RequestAbsence(repo, hasSpecialty, reasons);
+
+    const r = await uc.execute({
+      requesterId: "req", isActive: true, specialtyId: "s1", moduleHours: 12,
+      requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: otros.id, observation: null, bajoFactura: false,
+    });
+
     expect(r.isOk).toBe(false);
     if (!r.isOk) expect(r.error.code).toBe("OBSERVATION_REQUIRED");
+  });
+
+  it("accepts Otros with observation", async () => {
+    const otros = await reasons.create({ name: "Otros", isDefault: false });
+    const uc = new RequestAbsence(repo, hasSpecialty, reasons);
+
+    const r = await uc.execute({
+      requesterId: "req", isActive: true, specialtyId: "s1", moduleHours: 12,
+      requesterStart: shiftStart, requesterEnd: shiftEnd,
+      absenceReasonId: otros.id, observation: "Trámite personal", bajoFactura: false,
+    });
+
+    expect(r.isOk).toBe(true);
+    if (r.isOk) {
+      expect(r.value.absenceReasonId).toBe(otros.id);
+      expect(r.value.observation).toBe("Trámite personal");
+    }
   });
 
   it("persists bajoFactura=true when requested", async () => {
@@ -170,7 +204,7 @@ describe("CreateCompulsoryReplacement — motivo persistence", () => {
     }
   });
 
-  it("rejects a custom reason without observation", async () => {
+  it("accepts a custom non-Otros reason without observation", async () => {
     const curso = await reasons.create({ name: "Curso", isDefault: false });
     const uc = new CreateCompulsoryReplacement(repo, reasons);
 
@@ -182,8 +216,46 @@ describe("CreateCompulsoryReplacement — motivo persistence", () => {
       absenceReasonId: curso.id, observation: null, bajoFactura: false,
     });
 
+    expect(r.isOk).toBe(true);
+    if (r.isOk) {
+      expect(r.value.absenceReasonId).toBe(curso.id);
+      expect(r.value.observation).toBeNull();
+    }
+  });
+
+  it("rejects Otros without observation", async () => {
+    const otros = await reasons.create({ name: "Otros", isDefault: false });
+    const uc = new CreateCompulsoryReplacement(repo, reasons);
+
+    const r = await uc.execute({
+      actorIsCoordinator: true, coordinatorId: "coord", specialtyId: "s1",
+      moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      requesterId: "req", applicantId: "app",
+      coverageStart: covStart, coverageEnd: covEnd,
+      absenceReasonId: otros.id, observation: null, bajoFactura: false,
+    });
+
     expect(r.isOk).toBe(false);
     if (!r.isOk) expect(r.error.code).toBe("OBSERVATION_REQUIRED");
+  });
+
+  it("accepts Otros with observation", async () => {
+    const otros = await reasons.create({ name: "Otros", isDefault: false });
+    const uc = new CreateCompulsoryReplacement(repo, reasons);
+
+    const r = await uc.execute({
+      actorIsCoordinator: true, coordinatorId: "coord", specialtyId: "s1",
+      moduleHours: 12, requesterStart: shiftStart, requesterEnd: shiftEnd,
+      requesterId: "req", applicantId: "app",
+      coverageStart: covStart, coverageEnd: covEnd,
+      absenceReasonId: otros.id, observation: "Motivo especial", bajoFactura: false,
+    });
+
+    expect(r.isOk).toBe(true);
+    if (r.isOk) {
+      expect(r.value.absenceReasonId).toBe(otros.id);
+      expect(r.value.observation).toBe("Motivo especial");
+    }
   });
 
   it("rejects an inactive motivo", async () => {

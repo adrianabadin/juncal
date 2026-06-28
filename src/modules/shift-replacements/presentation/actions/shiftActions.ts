@@ -40,6 +40,8 @@ export interface ShiftDto {
   resolvedById: string | null;
   bajoFactura: boolean;
   absenceReasonId: string | null;
+  reasonName: string | null;
+  observation: string | null;
 }
 
 export interface CoverageDto {
@@ -69,6 +71,8 @@ function mapShiftToDto(s: {
   resolvedById: string | null;
   bajoFactura: boolean;
   absenceReasonId: string | null;
+  observation?: string | null;
+  reasonName?: string | null;
 }): ShiftDto {
   return {
     id: s.id,
@@ -82,6 +86,8 @@ function mapShiftToDto(s: {
     resolvedById: s.resolvedById,
     bajoFactura: s.bajoFactura,
     absenceReasonId: s.absenceReasonId,
+    observation: s.observation ?? null,
+    reasonName: s.reasonName ?? null,
   };
 }
 
@@ -276,6 +282,21 @@ async function resolveRequesterNames(
 }
 
 type RepoShift = Parameters<typeof mapShiftToDto>[0] & { requesterId: string };
+
+/** Bulk-resolves absence reason names for a list of reason IDs. */
+async function resolveReasonNames(
+  shifts: { absenceReasonId: string | null }[],
+): Promise<Map<string, string>> {
+  const ids = [
+    ...new Set(shifts.map((s) => s.absenceReasonId).filter(Boolean) as string[]),
+  ];
+  if (ids.length === 0) return new Map();
+  const rows = await prisma.absenceReason.findMany({
+    where: { id: { in: ids } },
+    select: { id: true, name: true },
+  });
+  return new Map(rows.map((r) => [r.id, r.name]));
+}
 
 /**
  * Resolves coverages + requester/applicant names for the given shifts and maps
@@ -510,7 +531,13 @@ export async function listConfirmedShiftsForRRHHAction(
   const shifts = await repo.listByState(RequestState.CONFIRMED);
   const filtered = filterConfirmedShiftsForRRHH(shifts, filters);
 
-  const result = await toPostulatedDtos(repo, filtered);
+  const reasonNameById = await resolveReasonNames(filtered);
+  const augmented: RepoShift[] = filtered.map((s) => ({
+    ...(s as RepoShift),
+    reasonName: s.absenceReasonId ? (reasonNameById.get(s.absenceReasonId) ?? null) : null,
+  }));
+
+  const result = await toPostulatedDtos(repo, augmented);
 
   return { ok: true, data: result };
 }

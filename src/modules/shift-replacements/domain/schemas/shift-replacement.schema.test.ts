@@ -72,23 +72,23 @@ describe("requestAbsenceSchema — motivo", () => {
     expect(r.success).toBe(false);
   });
 
-  it("requires observation when isDefault is false", () => {
+  // NEW rule (spec): only exact "Otros" requires observation — non-Otros non-default passes
+  it("accepts a non-default non-Otros reason without observation", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
-      absenceReasonId: "ar-otros",
+      absenceReasonId: "ar-cambio",
+      absenceReasonName: "Cambio de guardia",
       isDefault: false,
     });
-    expect(r.success).toBe(false);
-    if (!r.success) {
-      const issue = r.error.issues.find((i) => i.path.includes("observation"));
-      expect(issue?.message).toBe("Ingrese una observación");
-    }
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.observation).toBeNull();
   });
 
-  it("accepts a non-default reason with observation", () => {
+  it("accepts a non-default Otros reason with observation", () => {
     const r = requestAbsenceSchema.safeParse({
       ...base,
       absenceReasonId: "ar-otros",
+      absenceReasonName: "Otros",
       isDefault: false,
       observation: "Trámite personal urgente",
     });
@@ -159,17 +159,16 @@ describe("createCompulsorySchema — motivo", () => {
     }
   });
 
-  it("requires observation when isDefault is false", () => {
+  // NEW rule (spec): only exact "Otros" requires observation — non-Otros non-default passes
+  it("accepts a non-default non-Otros reason without observation", () => {
     const r = createCompulsorySchema.safeParse({
       ...compulsoryBase,
-      absenceReasonId: "ar-otros",
+      absenceReasonId: "ar-cambio",
+      absenceReasonName: "Cambio de guardia",
       isDefault: false,
     });
-    expect(r.success).toBe(false);
-    if (!r.success) {
-      const issue = r.error.issues.find((i) => i.path.includes("observation"));
-      expect(issue?.message).toBe("Ingrese una observación");
-    }
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.observation).toBeNull();
   });
 
   it("defaults bajoFactura to false when omitted", () => {
