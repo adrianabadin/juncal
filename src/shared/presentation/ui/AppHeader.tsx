@@ -19,10 +19,10 @@ export default function AppHeader({
   isCoordinator,
 }: AppHeaderProps) {
   const links: NavLink[] = [
-    { href: "/worklist", label: "Mi especialidad" },
+    { href: "/worklist", label: "Listado de Solicitudes" },
     ...(isCoordinator
       ? [
-          { href: "/coordinator", label: "General" },
+          { href: "/coordinator", label: "Gestión de Reemplazos" },
           { href: "/specialties", label: "Especialidades" },
           { href: "/motivos", label: "Motivos" },
           { href: "/users", label: "Cuentas" },

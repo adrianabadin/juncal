@@ -38,3 +38,25 @@ describe("worklist visible labels", () => {
     expect(source).not.toContain("Worklist general");
   });
 });
+
+describe("AppHeader nav labels", () => {
+  it("uses 'Listado de Solicitudes' for the specialty worklist link", () => {
+    const source = readSource("src/shared/presentation/ui/AppHeader.tsx");
+    expect(source).toContain('label: "Listado de Solicitudes"');
+  });
+
+  it("uses 'Gestión de Reemplazos' for the coordinator worklist link", () => {
+    const source = readSource("src/shared/presentation/ui/AppHeader.tsx");
+    expect(source).toContain('label: "Gestión de Reemplazos"');
+  });
+
+  it("does NOT contain the legacy 'Mi especialidad' label", () => {
+    const source = readSource("src/shared/presentation/ui/AppHeader.tsx");
+    expect(source).not.toContain("Mi especialidad");
+  });
+
+  it("does NOT contain the legacy 'General' label as a nav link", () => {
+    const source = readSource("src/shared/presentation/ui/AppHeader.tsx");
+    expect(source).not.toMatch(/label:\s*"General"/);
+  });
+});
