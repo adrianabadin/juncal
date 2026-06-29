@@ -1,16 +1,39 @@
 import argon2 from "argon2";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { Role } from "../src/modules/users/domain/enums/Role";
-import { defaultAbsenceReasons } from "../src/modules/absence-reasons/domain/defaultAbsenceReasons";
 
-// Bootstrap del sistema: crea el primer COORDINATOR y especialidades base.
-// Sin esto no existe forma de activar cuentas (la activación requiere un coordinador previo).
+// ── Self-contained constants (no src/modules imports) ─────────────────
+// The seed must run inside the Docker container where src/modules does not
+// exist.  Define the Role enum and the default absence-reasons list here
+// so the script is fully self-contained.
+
+const Role = {
+  BASE_PROFESSIONAL: "BASE_PROFESSIONAL",
+  COORDINATOR: "COORDINATOR",
+  RRHH: "RRHH",
+} as const;
+
+interface DefaultAbsenceReason {
+  name: string;
+  isDefault: boolean;
+  isActive: boolean;
+}
+
+const defaultAbsenceReasons: readonly DefaultAbsenceReason[] = [
+  { name: "Motivos Personales", isDefault: true, isActive: true },
+  { name: "Vacaciones", isDefault: true, isActive: true },
+  { name: "Cambio de guardia", isDefault: true, isActive: true },
+  { name: "Congresos", isDefault: true, isActive: true },
+];
+
+// ── Bootstrap ─────────────────────────────────────────────────────────
+
 const databaseUrl = process.env.DATABASE_URL ?? "file:./dev.db";
 const adapter = new PrismaBetterSqlite3({ url: databaseUrl });
 const prisma = new PrismaClient({ adapter });
 
 async function main(): Promise<void> {
+  // 1. Coordinator (required before any other user can be activated).
   const coordinatorEmail = "coordinador@juncal.local";
   const existing = await prisma.user.findUnique({ where: { email: coordinatorEmail } });
 
@@ -30,6 +53,7 @@ async function main(): Promise<void> {
     console.log(`• Coordinador ya existe: ${coordinatorEmail}`);
   }
 
+  // 2. Specialties.
   const specialties = ["Pediatría", "Emergentología", "Clínica Médica", "Cirugía"];
   for (const name of specialties) {
     await prisma.specialty.upsert({
@@ -40,7 +64,7 @@ async function main(): Promise<void> {
   }
   console.log(`✓ Especialidades base aseguradas: ${specialties.join(", ")}`);
 
-  // Motivos de ausencia por defecto: protegidos (no se pueden borrar, solo editar/desactivar).
+  // 3. Default absence reasons (protected — may be renamed/deactivated, never deleted).
   for (const reason of defaultAbsenceReasons) {
     await prisma.absenceReason.upsert({
       where: { name: reason.name },
@@ -56,9 +80,7 @@ async function main(): Promise<void> {
     `✓ Motivos de ausencia por defecto asegurados: ${defaultAbsenceReasons.map((r) => r.name).join(", ")}`,
   );
 
-  // Motivo "Otros": se crea como razón custom (no-default) para poder probar
-  // el flujo de observación obligatoria. Se upsert con la misma forma idempotente
-  // que los motivos por defecto.
+  // 4. Custom reason "Otros" — used to test obligatory observation flow.
   await prisma.absenceReason.upsert({
     where: { name: "Otros" },
     update: { isDefault: false, isActive: true },
@@ -70,8 +92,7 @@ async function main(): Promise<void> {
   });
   console.log(`✓ Motivo "Otros" asegurado`);
 
-  // Profesionales demo (activos, con especialidades asignadas) para poder probar
-  // postulaciones y reemplazos compulsivos sin tener que dar de alta a mano.
+  // 5. Demo professionals (active, with specialties).
   const demoDoctors: { email: string; name: string; specialties: string[] }[] = [
     { email: "ana.perez@juncal.local", name: "Dra. Ana Pérez", specialties: ["Pediatría", "Clínica Médica"] },
     { email: "luis.gomez@juncal.local", name: "Dr. Luis Gómez", specialties: ["Pediatría"] },
@@ -105,11 +126,7 @@ async function main(): Promise<void> {
   }
   console.log(`✓ ${demoDoctors.length} profesionales demo asegurados (clave: profesional123)`);
 
-  // Usuario demo de RRHH: cuenta activa con perfil profesional base. Sirve
-  // como referencia de login para inspeccionar el panel y verificar seeds.
-  // Nota: queda con `BASE_PROFESSIONAL` (no `Role.RRHH`) a propósito: el panel
-  // /rrhh solo lo verá si un coordinador le asigna ese rol desde la
-  // administración, evitando accesos prematuros a datos sensibles.
+  // 6. RRHH demo user — active, BASE_PROFESSIONAL; coordinator promotes via /users.
   const rrhhDemoEmail = "rrhh.demo@juncal.local";
   await prisma.user.upsert({
     where: { email: rrhhDemoEmail },
@@ -124,9 +141,7 @@ async function main(): Promise<void> {
   });
   console.log(`✓ Usuario RRHH demo asegurado: ${rrhhDemoEmail} (clave: profesional123)`);
 
-  // Reemplazos de ejemplo para verificar el dashboard y el export. Se crean
-  // variedad de motivos: uno con "Otros" + observación obligatoria y otro con
-  // motivo por defecto + observación nula.
+  // 7. Sample shift replacements for RRHH dashboard + export.
   const requesterForSeed = await prisma.user.findUnique({
     where: { email: "ana.perez@juncal.local" },
   });
@@ -193,19 +208,7 @@ async function main(): Promise<void> {
     );
   }
 
-  // Backfill de motivos sobre reemplazos CONFIRMED legacy. Hay filas creadas
-  // antes de la feature de motivos que quedaron con `absenceReasonId: null`.
-  // El dashboard de RRHH y el export muestran "—" para esas filas, lo que se
-  // lee como dato faltante. Este paso les asigna un motivo determinístico para
-  // que el demo se vea completo, sin tocar las filas que ya tienen motivo.
-  //
-  // Determinismo + idempotencia:
-  //   - Se ordenan las filas pendientes por `id` (orden estable).
-  //   - El motivo se elige por índice contra una lista fija de nombres.
-  //   - Solo se usa `update` (nunca `create`), así re-ejecutar el seed no
-  //     duplica nada y no reasigna filas que ya tienen motivo.
-  //   - Cuando el motivo es "Otros" se escribe SIEMPRE una observación no vacía
-  //     (invariante de observación obligatoria); en el resto, observación null.
+  // 8. Backfill motives on legacy CONFIRMED shifts with null absenceReasonId.
   const backfillReasonNames = [
     "Motivos Personales",
     "Vacaciones",
@@ -230,13 +233,12 @@ async function main(): Promise<void> {
     const shift = pendingShifts[i];
     const reasonName = backfillReasonNames[i % backfillReasonNames.length];
     const reasonId = backfillReasons.get(reasonName);
-    if (!reasonId) continue; // motivo ausente: no forzamos un FK inválido
+    if (!reasonId) continue;
 
     await prisma.shiftReplacement.update({
       where: { id: shift.id },
       data: {
         absenceReasonId: reasonId,
-        // Observación obligatoria solo para "Otros"; el resto queda en null.
         observation: reasonName === "Otros" ? "Motivo demo" : null,
       },
     });
