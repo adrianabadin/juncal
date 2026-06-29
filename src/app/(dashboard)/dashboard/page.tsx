@@ -35,7 +35,7 @@ export default async function DashboardPage() {
       : [
           {
             href: "/worklist",
-            title: "Worklist de especialidad",
+            title: "Listado de Solicitudes",
             description:
               "Solicitá una ausencia o postulate a un reemplazo abierto.",
           },

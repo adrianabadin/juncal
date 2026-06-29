@@ -14,9 +14,9 @@ import { listActiveAbsenceReasonsAction } from "@absence-reasons/presentation/ac
 import ResolveActions from "@shift-replacements/presentation/components/ResolveActions";
 import AssignCompulsoryButton from "@shift-replacements/presentation/components/AssignCompulsoryButton";
 import ExportExcelButton from "@shift-replacements/presentation/components/ExportExcelButton";
-import Card from "@shared/presentation/ui/Card";
 import Badge from "@shared/presentation/ui/Badge";
 import { RequestState } from "@shift-replacements/domain/enums/RequestState";
+import { formatShiftDateLabel, formatShiftTime } from "@shift-replacements/presentation/components/worklistFormat";
 
 export default async function CoordinatorPage() {
   const actor = await getCurrentActor();
@@ -46,63 +46,29 @@ export default async function CoordinatorPage() {
 
   const specialtyNameById = new Map(specialties.map((s) => [s.id, s.name]));
 
-  function formatTime(iso: string): string {
-    return new Date(iso).toLocaleTimeString("es-AR", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  }
-
-  function ShiftCard({ shift }: { shift: PostulatedShiftDto }) {
+  function ShiftRow({ shift }: { shift: PostulatedShiftDto }) {
     return (
-      <Card>
-        <div className="flex flex-col gap-4">
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex flex-col gap-1">
-              <p className="text-sm font-medium text-slate-900">
-                {specialtyNameById.get(shift.specialtyId) ?? shift.specialtyId}{" "}
-                — {new Date(shift.requesterStart).toLocaleDateString("es-AR")}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                Solicitante: {shift.requesterName} ·{" "}
-                {formatTime(shift.requesterStart)} – {formatTime(shift.requesterEnd)}
-                {" "}({shift.moduleHours}h)
-              </p>
-            </div>
-            <Badge state={shift.state as RequestState} />
-          </div>
-
-          {shift.coverages.length > 0 && (
-            <div className="flex flex-col gap-2">
-              <p className="text-xs font-medium text-brand-700">
-                Coberturas ({shift.coverages.length}):
-              </p>
-              {shift.coverages.map((cov) => (
-                <div
-                  key={cov.id}
-                  className="flex items-center justify-between rounded-md bg-brand-50 px-3 py-2 ring-1 ring-brand-100"
-                >
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-xs font-medium text-slate-900">
-                      {cov.applicantName ?? cov.applicantId}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {formatTime(cov.start)} – {formatTime(cov.end)} ·{" "}
-                      <span className={cov.origin === "COMPULSORY" ? "text-amber-700" : "text-sage-700"}>
-                        {cov.origin === "COMPULSORY" ? "Compulsiva" : "Postulación"}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
+      <li className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-medium text-slate-900">
+            {formatShiftDateLabel(shift.requesterStart)}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Solicitante: {shift.requesterName} ·{" "}
+            Especialidad: {specialtyNameById.get(shift.specialtyId) ?? shift.specialtyId}{" "}
+            · Módulo: {shift.moduleHours}h
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {formatShiftTime(shift.requesterStart)} – {formatShiftTime(shift.requesterEnd)}
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Badge state={shift.state as RequestState} />
           {shift.state === RequestState.OPEN && (
             <ResolveActions shiftId={shift.id} />
           )}
         </div>
-      </Card>
+      </li>
     );
   }
 
@@ -111,7 +77,7 @@ export default async function CoordinatorPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-brand-800">
-            Worklist general
+            Gestión de Reemplazos
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Resolvé los reemplazos con coberturas y asigná coberturas
@@ -145,11 +111,11 @@ export default async function CoordinatorPage() {
             No hay solicitudes pendientes de resolución.
           </p>
         ) : (
-          <div className="flex flex-col gap-4">
+          <ul className="w-full divide-y divide-slate-200">
             {postulatedShifts.map((shift) => (
-              <ShiftCard key={shift.id} shift={shift} />
+              <ShiftRow key={shift.id} shift={shift} />
             ))}
-          </div>
+          </ul>
         )}
       </section>
 
@@ -165,11 +131,11 @@ export default async function CoordinatorPage() {
             No hay reemplazos aprobados este mes.
           </p>
         ) : (
-          <div className="flex flex-col gap-4">
+          <ul className="w-full divide-y divide-slate-200">
             {confirmedShifts.map((shift) => (
-              <ShiftCard key={shift.id} shift={shift} />
+              <ShiftRow key={shift.id} shift={shift} />
             ))}
-          </div>
+          </ul>
         )}
       </section>
     </div>

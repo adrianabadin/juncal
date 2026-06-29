@@ -33,7 +33,7 @@ export default async function WorklistPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-brand-800">
-            Worklist de especialidad
+            Listado de Solicitudes
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Solicitá una ausencia o postulate a un reemplazo abierto.

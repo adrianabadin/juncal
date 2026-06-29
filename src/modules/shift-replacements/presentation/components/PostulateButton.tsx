@@ -28,8 +28,8 @@ export default function PostulateButton({
     setError(null);
     const result = await postulateAction({
       shiftId,
-      start: new Date(start).toISOString(),
-      end: new Date(end).toISOString(),
+      start,
+      end,
     });
     setIsLoading(false);
     if (!result.ok) {

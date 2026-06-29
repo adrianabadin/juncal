@@ -24,6 +24,7 @@ export default function AppHeader({
       ? [
           { href: "/coordinator", label: "General" },
           { href: "/specialties", label: "Especialidades" },
+          { href: "/motivos", label: "Motivos" },
           { href: "/users", label: "Cuentas" },
         ]
       : []),
