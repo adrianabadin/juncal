@@ -58,7 +58,7 @@ COPY --from=build /app/next.config.* ./
 RUN groupadd --gid 1001 nextjs && \
     useradd --uid 1001 --gid nextjs --shell /bin/bash --create-home nextjs && \
     mkdir -p /app/prisma/data && \
-    chown -R nextjs:nextjs /app/prisma/data
+    chown -R nextjs:nextjs /app/prisma/data /app/.next /app/public
 
 USER nextjs
 
