@@ -50,8 +50,8 @@ const dataset = [
 
 function dataRowValues(ws: import("exceljs").Worksheet, column: number): string[] {
   const values: string[] = [];
-  // Data rows start at row 7 in the shared workbook layout.
-  let r = 7;
+  // Data rows start at row 8 in the shared workbook layout (row 7 is headers).
+  let r = 8;
   while (ws.getRow(r).getCell(3).value != null) {
     values.push(String(ws.getRow(r).getCell(column).value));
     r++;
@@ -138,9 +138,10 @@ describe("RRHH export surfaces Motivo / Observación", () => {
     });
     const ws = wb.getWorksheet("Reemplazos")!;
 
-    expect(ws.getRow(7).getCell(8).value).toBe("Otros");
-    expect(ws.getRow(7).getCell(9).value).toBe("Trámite personal");
-    expect(ws.getRow(8).getCell(8).value).toBe("Cambio de guardia");
-    expect(ws.getRow(8).getCell(9).value).toBe("—");
+    // Row 7 is the header row; data starts at row 8.
+    expect(ws.getRow(8).getCell(8).value).toBe("Otros");
+    expect(ws.getRow(8).getCell(9).value).toBe("Trámite personal");
+    expect(ws.getRow(9).getCell(8).value).toBe("Cambio de guardia");
+    expect(ws.getRow(9).getCell(9).value).toBe("—");
   });
 });

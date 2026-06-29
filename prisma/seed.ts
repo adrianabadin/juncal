@@ -192,6 +192,59 @@ async function main(): Promise<void> {
       "⚠ No se pudieron crear los reemplazos demo (faltan usuarios o motivos base)",
     );
   }
+
+  // Backfill de motivos sobre reemplazos CONFIRMED legacy. Hay filas creadas
+  // antes de la feature de motivos que quedaron con `absenceReasonId: null`.
+  // El dashboard de RRHH y el export muestran "—" para esas filas, lo que se
+  // lee como dato faltante. Este paso les asigna un motivo determinístico para
+  // que el demo se vea completo, sin tocar las filas que ya tienen motivo.
+  //
+  // Determinismo + idempotencia:
+  //   - Se ordenan las filas pendientes por `id` (orden estable).
+  //   - El motivo se elige por índice contra una lista fija de nombres.
+  //   - Solo se usa `update` (nunca `create`), así re-ejecutar el seed no
+  //     duplica nada y no reasigna filas que ya tienen motivo.
+  //   - Cuando el motivo es "Otros" se escribe SIEMPRE una observación no vacía
+  //     (invariante de observación obligatoria); en el resto, observación null.
+  const backfillReasonNames = [
+    "Motivos Personales",
+    "Vacaciones",
+    "Cambio de guardia",
+    "Congresos",
+    "Otros",
+  ] as const;
+
+  const backfillReasons = new Map<string, string>();
+  for (const name of backfillReasonNames) {
+    const reason = await prisma.absenceReason.findUnique({ where: { name } });
+    if (reason) backfillReasons.set(name, reason.id);
+  }
+
+  const pendingShifts = await prisma.shiftReplacement.findMany({
+    where: { state: "CONFIRMED", absenceReasonId: null },
+    orderBy: { id: "asc" },
+  });
+
+  let backfilled = 0;
+  for (let i = 0; i < pendingShifts.length; i++) {
+    const shift = pendingShifts[i];
+    const reasonName = backfillReasonNames[i % backfillReasonNames.length];
+    const reasonId = backfillReasons.get(reasonName);
+    if (!reasonId) continue; // motivo ausente: no forzamos un FK inválido
+
+    await prisma.shiftReplacement.update({
+      where: { id: shift.id },
+      data: {
+        absenceReasonId: reasonId,
+        // Observación obligatoria solo para "Otros"; el resto queda en null.
+        observation: reasonName === "Otros" ? "Motivo demo" : null,
+      },
+    });
+    backfilled++;
+  }
+  console.log(
+    `✓ Motivos backfilled en ${backfilled} reemplazo(s) CONFIRMED legacy sin motivo`,
+  );
 }
 
 main()

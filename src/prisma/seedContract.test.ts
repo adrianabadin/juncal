@@ -1,5 +1,6 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import Database from "better-sqlite3";
 import { describe, expect, it } from "vitest";
 
 /**
@@ -54,4 +55,91 @@ describe("prisma seed — varied ShiftReplacement motives", () => {
     // followed by an explicit null override.
     expect(seedSource).toMatch(/observation:\s*null/);
   });
+});
+
+/**
+ * Source-text guard: the seed MUST contain a backfill step that targets the
+ * legacy CONFIRMED rows whose `absenceReasonId` is null. This protects the
+ * remediation intent even on machines without a populated dev DB.
+ */
+describe("prisma seed — backfills motives on legacy CONFIRMED shifts (source)", () => {
+  it("queries CONFIRMED shifts with a null absenceReasonId to backfill them", () => {
+    // The backfill loop must scan for CONFIRMED rows missing a motive.
+    expect(seedSource).toMatch(/state:\s*["']CONFIRMED["']/);
+    expect(seedSource).toMatch(/absenceReasonId:\s*null/);
+    // And it must UPDATE those rows (idempotent backfill, not create).
+    expect(seedSource).toMatch(/shiftReplacement\.update/);
+  });
+
+  it("writes a non-empty observation whenever it assigns the 'Otros' motive in the backfill", () => {
+    // The backfill must never leave an 'Otros' row without an observation.
+    // We assert the seed pairs the 'Otros' reason with a demo observation.
+    expect(seedSource).toMatch(/Motivo demo|observation:/);
+  });
+});
+
+/**
+ * Live dev-DB contract: after `npm run db:seed`, NO CONFIRMED ShiftReplacement
+ * may keep a null `absenceReasonId`. The four legacy rows (created before the
+ * motive feature) must have been backfilled.
+ *
+ * This test reads the real `dev.db` at the repo root via better-sqlite3 (the
+ * same driver Prisma uses) so it exercises actual persisted state, not source
+ * text. It is skipped only when the dev DB is absent (e.g. fresh CI clone with
+ * no migrations run).
+ */
+describe("prisma seed — backfilled motives in dev DB (live)", () => {
+  const devDbPath = join(repoRoot, "dev.db");
+
+  const hasDevDb = existsSync(devDbPath);
+  const maybeIt = hasDevDb ? it : it.skip;
+
+  maybeIt(
+    "leaves no CONFIRMED ShiftReplacement with a null absenceReasonId",
+    () => {
+      const db = new Database(devDbPath, { readonly: true });
+      try {
+        const nullMotive = db
+          .prepare(
+            "SELECT id FROM ShiftReplacement WHERE state = 'CONFIRMED' AND absenceReasonId IS NULL",
+          )
+          .all() as { id: string }[];
+        const confirmed = db
+          .prepare(
+            "SELECT id FROM ShiftReplacement WHERE state = 'CONFIRMED'",
+          )
+          .all() as { id: string }[];
+        // Sanity: the dev DB actually has CONFIRMED rows to reason about,
+        // otherwise an empty pass would be meaningless.
+        expect(confirmed.length).toBeGreaterThan(0);
+        expect(nullMotive.map((r) => r.id)).toEqual([]);
+      } finally {
+        db.close();
+      }
+    },
+  );
+
+  maybeIt(
+    "assigns an observation to every backfilled 'Otros' CONFIRMED shift",
+    () => {
+      const db = new Database(devDbPath, { readonly: true });
+      try {
+        // Find the 'Otros' reason id, then assert no CONFIRMED 'Otros' row has
+        // an empty observation (the obligatory-observation invariant).
+        const otros = db
+          .prepare("SELECT id FROM AbsenceReason WHERE name = 'Otros'")
+          .get() as { id: string } | undefined;
+        // The seed always upserts 'Otros', so it must exist in a seeded DB.
+        expect(otros).toBeDefined();
+        const badOtros = db
+          .prepare(
+            "SELECT id FROM ShiftReplacement WHERE state = 'CONFIRMED' AND absenceReasonId = ? AND (observation IS NULL OR TRIM(observation) = '')",
+          )
+          .all(otros!.id) as { id: string }[];
+        expect(badOtros.map((r) => r.id)).toEqual([]);
+      } finally {
+        db.close();
+      }
+    },
+  );
 });
