@@ -46,6 +46,7 @@ RUN npm ci --omit=dev
 
 # Copy Prisma schema + generated client for migrate deploy at runtime
 COPY prisma ./prisma/
+COPY prisma.config.ts ./prisma.config.ts
 COPY --from=deps /app/src/generated ./src/generated
 
 # Copy built Next.js output
