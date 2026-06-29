@@ -50,7 +50,7 @@ export default function LoginForm() {
         {...register("password")}
       />
       <div className="text-right">
-        <Link href="/auth/forgot-password" className="text-xs text-link hover:underline">
+        <Link href="/forgot-password" className="text-xs text-link hover:underline">
           ¿Olvidaste tu contraseña?
         </Link>
       </div>
