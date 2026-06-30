@@ -17,16 +17,23 @@ import { useToast } from "@shared/presentation/ui/Toast";
 import Input from "@shared/presentation/ui/Input";
 import Button from "@shared/presentation/ui/Button";
 
+// moduleHours uses z.coerce.number() because HTML <select> always produces
+// string values ("6", "12", "24"); coercion turns them into numbers and rejects
+// non-numeric input. This field only assists autocomplete of requesterEnd;
+// server-side validation (requestAbsenceSchema) enforces the allowed values.
 const formSchema = z.object({
   specialtyId: z.string().min(1, "Requerido"),
-  moduleHours: z.union([z.literal(6), z.literal(12), z.literal(24)]),
+  moduleHours: z.coerce.number(),
   requesterStart: z.string().min(1, "Requerido"),
   requesterEnd: z.string().min(1, "Requerido"),
   absenceReasonId: z.string().min(1, "Seleccione un motivo"),
   observation: z.string().optional(),
   bajoFactura: z.boolean(),
 });
-type FormInput = z.infer<typeof formSchema>;
+// z.coerce.number() makes input (raw select string) differ from output (number),
+// so the form is typed with both: raw values for fields, coerced values for submit.
+type FormInput = z.input<typeof formSchema>;
+type FormOutput = z.output<typeof formSchema>;
 
 interface SpecialtyOption {
   id: string;
@@ -60,7 +67,7 @@ export default function RequestAbsenceForm({
     setValue,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormInput>({
+  } = useForm<FormInput, unknown, FormOutput>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       moduleHours: 12,
@@ -83,13 +90,13 @@ export default function RequestAbsenceForm({
     if (!requesterStart || !moduleHours || userEditedEnd.current) return;
     const start = new Date(requesterStart);
     if (isNaN(start.getTime())) return;
-    start.setHours(start.getHours() + moduleHours);
+    start.setHours(start.getHours() + Number(moduleHours));
     const pad = (n: number) => String(n).padStart(2, "0");
     const endStr = `${start.getFullYear()}-${pad(start.getMonth() + 1)}-${pad(start.getDate())}T${pad(start.getHours())}:${pad(start.getMinutes())}`;
     setValue("requesterEnd", endStr);
   }, [requesterStart, moduleHours, setValue]);
 
-  async function onSubmit(data: FormInput) {
+  async function onSubmit(data: FormOutput) {
     const reasonName = resolveAbsenceReasonName(reasons, data.absenceReasonId);
     const custom = isCustomReason(reasonName, reasons);
     if (custom && !data.observation?.trim()) {

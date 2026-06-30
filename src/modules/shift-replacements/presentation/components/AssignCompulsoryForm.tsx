@@ -174,9 +174,13 @@ function CreateFromScratchForm({
   const [doctors, setDoctors] = useState<UserOptionDto[]>([]);
   const [loadingDoctors, setLoadingDoctors] = useState(false);
 
+  // moduleHours uses z.coerce.number() because HTML <select> always produces
+  // string values ("6", "12", "24"); coercion turns them into numbers and rejects
+  // non-numeric input. This field only assists autocomplete of requesterEnd;
+  // server-side validation (createCompulsorySchema) enforces the allowed values.
   const scratchSchema = z.object({
     specialtyId: z.string().min(1, "Requerido"),
-    moduleHours: z.union([z.literal(6), z.literal(12), z.literal(24)]),
+    moduleHours: z.coerce.number(),
     requesterStart: z.string().min(1, "Requerido"),
     requesterEnd: z.string().min(1, "Requerido"),
     requesterId: z.string().min(1, "Requerido"),
@@ -187,7 +191,10 @@ function CreateFromScratchForm({
     observation: z.string().optional(),
     bajoFactura: z.boolean(),
   });
-  type ScratchInput = z.infer<typeof scratchSchema>;
+  // z.coerce.number() makes input (raw select string) differ from output (number),
+  // so the form is typed with both: raw values for fields, coerced values for submit.
+  type ScratchInput = z.input<typeof scratchSchema>;
+  type ScratchOutput = z.output<typeof scratchSchema>;
 
   const {
     register,
@@ -198,7 +205,7 @@ function CreateFromScratchForm({
     setValue,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<ScratchInput>({
+  } = useForm<ScratchInput, unknown, ScratchOutput>({
     resolver: zodResolver(scratchSchema),
     defaultValues: {
       specialtyId: "",
@@ -264,7 +271,7 @@ function CreateFromScratchForm({
     }
   }, [requesterId, setValue, watch]);
 
-  async function onSubmit(data: ScratchInput) {
+  async function onSubmit(data: ScratchOutput) {
     const reasonName = resolveAbsenceReasonName(reasons, data.absenceReasonId);
     const custom = isCustomReason(reasonName, reasons);
     if (custom && !data.observation?.trim()) {

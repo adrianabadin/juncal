@@ -104,6 +104,71 @@ describe("requestAbsenceAction — bajoFactura forwarding", () => {
   });
 });
 
+// Regression: HTML <select> always produces string values. The domain schema
+// uses z.coerce.number() for moduleHours, so the server action must accept
+// string moduleHours ("6", "12", "24") and coerce them to numbers. Before the
+// fix, the form schemas used z.literal(6) which rejected the string "6" with
+// "Invalid input: expected 6".
+describe("requestAbsenceAction — moduleHours string coercion (regression)", () => {
+  beforeEach(() => {
+    requestAbsenceExecute.mockReset();
+    requestAbsenceExecute.mockResolvedValue(okShift);
+  });
+
+  it("accepts moduleHours as string '6' from HTML select and coerces to number", async () => {
+    const result = await requestAbsenceAction({
+      ...absenceInput,
+      moduleHours: "6" as unknown as number,
+    });
+    expect(result.ok).toBe(true);
+    expect(requestAbsenceExecute).toHaveBeenCalledTimes(1);
+    expect(requestAbsenceExecute.mock.calls[0][0]).toMatchObject({
+      moduleHours: 6,
+    });
+  });
+
+  it("accepts moduleHours as string '12' and coerces to number", async () => {
+    const result = await requestAbsenceAction({
+      ...absenceInput,
+      moduleHours: "12" as unknown as number,
+    });
+    expect(result.ok).toBe(true);
+    expect(requestAbsenceExecute.mock.calls[0][0]).toMatchObject({
+      moduleHours: 12,
+    });
+  });
+
+  it("accepts moduleHours as string '24' and coerces to number", async () => {
+    const result = await requestAbsenceAction({
+      ...absenceInput,
+      moduleHours: "24" as unknown as number,
+    });
+    expect(result.ok).toBe(true);
+    expect(requestAbsenceExecute.mock.calls[0][0]).toMatchObject({
+      moduleHours: 24,
+    });
+  });
+});
+
+describe("createCompulsoryAction — moduleHours string coercion (regression)", () => {
+  beforeEach(() => {
+    createCompulsoryExecute.mockReset();
+    createCompulsoryExecute.mockResolvedValue(okShift);
+  });
+
+  it("accepts moduleHours as string '6' from HTML select and coerces to number", async () => {
+    const result = await createCompulsoryAction({
+      ...compulsoryInput,
+      moduleHours: "6" as unknown as number,
+    });
+    expect(result.ok).toBe(true);
+    expect(createCompulsoryExecute).toHaveBeenCalledTimes(1);
+    expect(createCompulsoryExecute.mock.calls[0][0]).toMatchObject({
+      moduleHours: 6,
+    });
+  });
+});
+
 describe("createCompulsoryAction — bajoFactura forwarding", () => {
   beforeEach(() => {
     createCompulsoryExecute.mockReset();
